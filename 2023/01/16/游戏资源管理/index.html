@@ -24,9 +24,8 @@
 <meta property="og:description" content="游戏资源管理游戏运行就是一个接一个资源的展示，如何管理好这些展示的资源让游戏能够流畅运行在开发中非常重要。需要在合理的地方调用、加载资源，资源空闲时对其进行卸载以减少内存占用。当内存超出预算可能导致游戏闪退，所以对资源的管理实际就是对内存的优化！ 本文争取一文搞懂资源管理。PS：可能和一个视频学完c++差不多(一个视频一个多月) TODOLIST：   分包策略  依赖处理  AssetBundl">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f481-2640.png?v8">
-<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f481-2640.png?v8">
 <meta property="article:published_time" content="2023-01-16T04:56:44.000Z">
-<meta property="article:modified_time" content="2023-01-17T06:16:10.656Z">
+<meta property="article:modified_time" content="2023-02-01T07:29:27.892Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="资源管理">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k 字
+          5.8k 字
         
       </span>
     
@@ -251,7 +250,7 @@
         
         
         
-          47 分钟
+          49 分钟
         
       </span>
     
@@ -382,7 +381,9 @@
 <p>一个资源身上用到了别的AB包中的资源，这时候如果只加载自身的AB包，就会出现资源丢失的情况。这时候就需要把当前资源需要用到的依赖包一起加载出来。</p>
 <p>但是我们又要怎么知道这个资源依赖于哪些包？</p>
 <p>这时候就需要用到Unity提供的AB包依赖文件来判断，后缀<code>.manifest·</code>。</p>
-<h2 id="AssetBundle篇"><a href="#AssetBundle篇" class="headerlink" title="AssetBundle篇"></a>AssetBundle篇</h2><p>Todo<span class="github-emoji"><span>💁♀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f481-2640.png?v8" srcset="/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>这部分以前的笔记找不到了，先欠着。</p>
+<h2 id="Asset篇"><a href="#Asset篇" class="headerlink" title="Asset篇"></a>Asset篇</h2><h3 id="Asset"><a href="#Asset" class="headerlink" title="Asset"></a>Asset</h3><h4 id="什么是Asst？"><a href="#什么是Asst？" class="headerlink" title="什么是Asst？"></a>什么是Asst？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable1.html">浅谈Assets——Unity资源映射 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技 (uwa4d.com)</a></p>
+<h3 id="Resources-1"><a href="#Resources-1" class="headerlink" title="Resources"></a>Resources</h3><h4 id="什么是Resources？"><a href="#什么是Resources？" class="headerlink" title="什么是Resources？"></a>什么是Resources？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable2.html">Resources目录的优点与痛点 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技 (uwa4d.com)</a></p>
+<h3 id="AssetBundle-1"><a href="#AssetBundle-1" class="headerlink" title="AssetBundle"></a>AssetBundle</h3><h4 id="什么是AssetBundle？"><a href="#什么是AssetBundle？" class="headerlink" title="什么是AssetBundle？"></a>什么是AssetBundle？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable3.html">AssetBundle的原理及最佳实践 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技 (uwa4d.com)</a></p>
 <h2 id="热更篇"><a href="#热更篇" class="headerlink" title="热更篇"></a>热更篇</h2><p>Todo<span class="github-emoji"><span>💁♀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f481-2640.png?v8" srcset="/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>这部分内容写在别的地方，比较乱后续整理。</p>
 
                 
