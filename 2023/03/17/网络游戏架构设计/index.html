@@ -35,8 +35,18 @@
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230314232242465.png">
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230314232906957.png">
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230314232915651.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230320090859.jpg">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230720100918090.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230726193709984.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230726195506719.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727093218220.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727101112402.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727101932122.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727103406008.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727110904752.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727152954789.png">
 <meta property="article:published_time" content="2023-03-17T06:07:03.000Z">
-<meta property="article:modified_time" content="2023-03-17T06:09:19.444Z">
+<meta property="article:modified_time" content="2023-07-28T07:39:25.483Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="Manager 框架 ET框架">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +260,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          25k 字
         
       </span>
     
@@ -261,7 +271,7 @@
         
         
         
-          91 分钟
+          210 分钟
         
       </span>
     
@@ -698,6 +708,566 @@
 <p>有些对象池有定时回收的功能，这个功能的缺陷在于，在某一帧可能会回收大量对象，加深了那一帧的时间。</p>
 <p>ET的设计则是将对象池设置个最大容量，超过最大容量时则不入池，避免内存占用过大。</p>
 <p>在一些场景切换中也可以对对象池进行清理，避免没有意义的内存占用。</p>
+<h2 id="第十节-配置Excel、NLog、Options"><a href="#第十节-配置Excel、NLog、Options" class="headerlink" title="第十节 配置Excel、NLog、Options"></a>第十节 配置Excel、NLog、Options</h2><h3 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h3><p><code>Options</code></p>
+<ul>
+<li>Options类 示例</li>
+<li>长名 短名 Required Default HelperText<ul>
+<li><code>OptionAttribute</code> </li>
+<li>Required 为false时不强制要求带参数</li>
+</ul>
+</li>
+<li>序列化 反序列化<ul>
+<li>序列化和反序列称unix和linux命令行风格的字符串</li>
+</ul>
+</li>
+<li>起服命令参数<ul>
+<li>option一般用于服务器启动，起服命令参数一般用于创建进程的配置信息。</li>
+</ul>
+</li>
+<li>GM指令参数，手动解析？<ul>
+<li>GM指令如果是命令行最好使用option的形式来配置。optin提供静态检查，不容易出错。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h3><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230320090859.jpg" srcset="/img/loading.gif" lazyload alt="微信图片_20230320090859"></p>
+<ul>
+<li>Logger单间类</li>
+<li>ILog接口，策略模式<ul>
+<li>策略模式，客户端使用UnityLogger，服务端用NLogger</li>
+</ul>
+</li>
+<li>LogLevel<ul>
+<li>提供Log等级，来按照等级进行输出。开发模式，测试模式和线上模式</li>
+</ul>
+</li>
+<li>Conditional<ul>
+<li>当有些日志需要进行拼接的操作时，拼接消耗性能，就给个宏定义判断。</li>
+<li>通过打标签的形式对指定 Log函数进行标记，等有了宏定义之后才生效。</li>
+<li>一个函数可以定义多个宏</li>
+<li>.NET的新特性，可以使用DefalutInterpolatedStringHandler来减少字符串拼接带来的GC</li>
+</ul>
+</li>
+<li>LogTrace<ul>
+<li>当需要查看日志的堆栈时可以用LogTrace，函数内会创建个堆栈。这里可以看看堆栈的逻辑。</li>
+</ul>
+</li>
+</ul>
+<h3 id="NLog配置"><a href="#NLog配置" class="headerlink" title="NLog配置"></a>NLog配置</h3><p>对应config里的参数</p>
+<ul>
+<li>Variables<ul>
+<li>通过变量修改Config里的配置，来达到指定参数的日志输出</li>
+<li>LogManager.Configuration.Variables</li>
+</ul>
+</li>
+<li>rules</li>
+<li>targets</li>
+<li>async、buffersize</li>
+</ul>
+<h3 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h3><ul>
+<li>StartConfig<ul>
+<li>启动时通过命令行选择加载指定的配置</li>
+</ul>
+</li>
+<li>C S #</li>
+<li>patial<ul>
+<li>有些配置，不方便填类型比如 ip地址等等</li>
+<li>通过patial扩展想要的类型，通过proto反序列化时赋值。</li>
+</ul>
+</li>
+<li>KV<ul>
+<li>通过key value的形式配置buff</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置用时再加载"><a href="#配置用时再加载" class="headerlink" title="配置用时再加载"></a>配置用时再加载</h3><p>节省内存</p>
+<p>懒加载减少同时加载造成的cpu过载</p>
+<h2 id="第十一节-Why-not-继承，多态，组合？"><a href="#第十一节-Why-not-继承，多态，组合？" class="headerlink" title="第十一节 Why not 继承，多态，组合？"></a>第十一节 Why not 继承，多态，组合？</h2><h3 id="成员继承的问题"><a href="#成员继承的问题" class="headerlink" title="成员继承的问题"></a>成员继承的问题</h3><h4 id="类层级调整复杂、耦合，一个变化回影响很多子类"><a href="#类层级调整复杂、耦合，一个变化回影响很多子类" class="headerlink" title="类层级调整复杂、耦合，一个变化回影响很多子类"></a>类层级调整复杂、耦合，一个变化回影响很多子类</h4><p>​	当层级变多了后，插入一个新的对旧的逻辑都都会有影响</p>
+<h4 id="继承成员随意组合问题"><a href="#继承成员随意组合问题" class="headerlink" title="继承成员随意组合问题"></a>继承成员随意组合问题</h4><h4 id="接口-组合？组合优于继承？"><a href="#接口-组合？组合优于继承？" class="headerlink" title="接口 + 组合？组合优于继承？"></a>接口 + 组合？组合优于继承？</h4><p>​	每个类都继承了接口的话，都需要额外实现。</p>
+<p>​	缺乏动态性。当有一个功能，当前不开放但是之后开放。如果是接口，代码实现则需要预先实现，是否开放变成了时机的问题。浪费空间</p>
+<p>​	特殊性影响了普遍性，可能并不是所有成员都拥有的功能，则需要给每个成员都添加对应的逻辑。</p>
+<p>​	临时接口跟成员数量极多。比如各种种类的buff。</p>
+<p>​	成员容易随意放置，没有规范。</p>
+<p>​	patial分开逻辑？没有解决根本的问题，内存占用巨大。不需要的成员拥有了不需要的字段。</p>
+<h3 id="类方法的问题"><a href="#类方法的问题" class="headerlink" title="类方法的问题"></a>类方法的问题</h3><p>函数跟数据混在一起，重构困难。当需要挪出逻辑时，会有private字段限制，不好挪动。</p>
+<p>类和类之间方法互相调用，耦合，重构困难。</p>
+<p>静态方法和类方法，界限不清晰。</p>
+<h3 id="虚函数问题-多态"><a href="#虚函数问题-多态" class="headerlink" title="虚函数问题(多态)"></a>虚函数问题(多态)</h3><p>行为跟类型绑定，类型数量会爆炸</p>
+<p>当一个类拆的不够细时。由于子类做不到任何成员组合，子函数会巨大。</p>
+<p>不同类型经常写差不多的方法</p>
+<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><p>学习成本极大，打补丁的设计模式太多。</p>
+<p>人员要求太高，经常设计不够细致。</p>
+<p>如果没有统一标准，代码维护困难。</p>
+<h3 id="Unity组件的优点"><a href="#Unity组件的优点" class="headerlink" title="Unity组件的优点"></a>Unity组件的优点</h3><p>成员自由搭配</p>
+<p>成员动态插拔的，内存占用率高。</p>
+<p>方法也是动态插拔的，更合理，更不容易出错。</p>
+<p>临时数据不会导致信息爆炸，成员，方法</p>
+<p>代码可读性高，因为内部实现少都是组合。</p>
+<h3 id="Unity组件的缺陷"><a href="#Unity组件的缺陷" class="headerlink" title="Unity组件的缺陷"></a>Unity组件的缺陷</h3><p>数据跟方法没分离，容易耦合，互相调用。</p>
+<p>事件方法基于反射，性能有些损失。</p>
+<p>GameObject过于庞大，里面的东西过多，只需要纯逻辑时不需要view。 </p>
+<p>没有替代多态的解决方案。</p>
+<p>组件无法再挂组件，组件无法再有child。</p>
+<h3 id="ECS的问题"><a href="#ECS的问题" class="headerlink" title="ECS的问题"></a>ECS的问题</h3><p>Entity只有一个ID，全是Entity。全是entity找bug起来很复杂</p>
+<p>组件是strust，限制太大用起来很难受</p>
+<p>非树状结构，不符合对世界的描述，工厂的管理模式。</p>
+<p>组件无法再挂组件，过于扁平，组件无法再有child</p>
+<h2 id="第十二节-实体组件系统"><a href="#第十二节-实体组件系统" class="headerlink" title="第十二节 实体组件系统"></a>第十二节 实体组件系统</h2><h3 id="Entity-Component-System"><a href="#Entity-Component-System" class="headerlink" title="Entity Component System"></a>Entity Component System</h3><p>AddComponet、RemoveComponet、生命周期等等接口名与生命周期都和Unity保持一致。</p>
+<h4 id="Entity和Component合并。原因？区别？"><a href="#Entity和Component合并。原因？区别？" class="headerlink" title="Entity和Component合并。原因？区别？"></a>Entity和Component合并。原因？区别？</h4><p>Entity和Component很类似，功能开发时逻辑很容易互相嵌套，不容易区分。只有Entity能挂组件很不灵活，在线上环境中Component需要扩展成Entity很难进行扩展因为数据已经是Component的形式。</p>
+<h4 id="数据跟方法完全分离"><a href="#数据跟方法完全分离" class="headerlink" title="数据跟方法完全分离"></a>数据跟方法完全分离</h4><h4 id="Entity不能继承"><a href="#Entity不能继承" class="headerlink" title="Entity不能继承"></a>Entity不能继承</h4><p>用组件代替继承，需要什么数据挂在需要的组件。</p>
+<h4 id="Entity树状无限嵌套"><a href="#Entity树状无限嵌套" class="headerlink" title="Entity树状无限嵌套"></a>Entity树状无限嵌套</h4><p>大世界概念，比较容易描述游戏需求。</p>
+<h4 id="跟传统ECS的区别"><a href="#跟传统ECS的区别" class="headerlink" title="跟传统ECS的区别"></a>跟传统ECS的区别</h4><p>传统ECS的System更多是成员的形式。</p>
+<p>传统ECS强调组件的筛选</p>
+<h3 id="ET组件数据跟方法分离的好处"><a href="#ET组件数据跟方法分离的好处" class="headerlink" title="ET组件数据跟方法分离的好处"></a>ET组件数据跟方法分离的好处</h3><p>没有耦合，没有设计模式，学习简单，重构简单</p>
+<p>热重载容易</p>
+<p>多态实现简单，能基于任何字段做逻辑分发</p>
+<h3 id="逻辑分发-多态"><a href="#逻辑分发-多态" class="headerlink" title="逻辑分发-多态"></a>逻辑分发-多态</h3><h4 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h4><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><h4 id="Dictionary-lt-int-Action-gt"><a href="#Dictionary-lt-int-Action-gt" class="headerlink" title="Dictionary<int,Action>"></a>Dictionary&lt;int,Action&gt;</h4><p>状态注册，相比switch而言优化了寻找时的复杂度。</p>
+<p>问题在于需要手动注册状态，删除时需要手动删除相对而言比较麻烦</p>
+<h4 id="ET的分发形式，基于Attribute的自动注册"><a href="#ET的分发形式，基于Attribute的自动注册" class="headerlink" title="ET的分发形式，基于Attribute的自动注册"></a>ET的分发形式，基于Attribute的自动注册</h4><p>eventsystem</p>
+<h3 id="Entity树"><a href="#Entity树" class="headerlink" title="Entity树"></a>Entity树</h3><h4 id="Entity的parent"><a href="#Entity的parent" class="headerlink" title="Entity的parent"></a>Entity的parent</h4><p>最顶层的Scene没有parent</p>
+<p>Entity被反序列化出来时是没有parent的</p>
+<h4 id="Domain"><a href="#Domain" class="headerlink" title="Domain"></a>Domain</h4><p>每个Entity都有一个Domain字段，记录在于哪个场景下</p>
+<p>在找中间某个节点时，防止写了过多的getParent。</p>
+<h4 id="对象生命周期管理的重要性"><a href="#对象生命周期管理的重要性" class="headerlink" title="对象生命周期管理的重要性"></a>对象生命周期管理的重要性</h4><p>创建对象时，谁去管理释放。谁去管理对象的生命周期。</p>
+<p>如果通过单间管理对象的生命周期，又缺少了对单间生命周期的管理。写多了容易遗漏。</p>
+<p>通过父级来管理孩子，父级移除时移除自身挂在的child。</p>
+<h4 id="UISceneComponet-ResourceSceneComponent-Timer等等"><a href="#UISceneComponet-ResourceSceneComponent-Timer等等" class="headerlink" title="UISceneComponet ResourceSceneComponent Timer等等"></a>UISceneComponet ResourceSceneComponent Timer等等</h4><p>按Scene挂ui，根据Scene的生命周期进行资源回收。</p>
+<p>创建时需要想清楚，需要让谁进行管理。</p>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p>不建议把Entity做为另一个Entity的成员，要么作为组件，要么作为Child。</p>
+<p>异步代码，容易出现对象消失，引用还在的情况。特别是用了对象池更危险，做分析器禁止</p>
+<p>服务端逻辑帧一般不用Update和LateUpdate。服务器的一帧1毫秒，实际上不需要这么频繁，用Update100ms或者定时器来实现。</p>
+<h3 id="Entity代码详解"><a href="#Entity代码详解" class="headerlink" title="Entity代码详解"></a>Entity代码详解</h3><p>Entity内，存放Component以Type为key ，一种Type的Component只能存在一个。</p>
+<p>存放AddChild则是以Id为key。</p>
+<h4 id="EntityStatus"><a href="#EntityStatus" class="headerlink" title="EntityStatus"></a>EntityStatus</h4><p>8位的枚举，每一位都记录了一个信息。</p>
+<h4 id="SetParent"><a href="#SetParent" class="headerlink" title="SetParent"></a>SetParent</h4><p>Parent{Set方法}</p>
+<p>严格限制parent必须要有domain，parent必须在数据树上。</p>
+<h4 id="ComponentParent"><a href="#ComponentParent" class="headerlink" title="ComponentParent"></a>ComponentParent</h4><p>只能通过AddComponent来添加。</p>
+<h4 id="Domain-1"><a href="#Domain-1" class="headerlink" title="Domain"></a>Domain</h4><p>根节点的Domain为自己，其他节点的Domain为父节点的Domain</p>
+<p>如果是通过反序列化出来的Entity则没有domain，这时候需要递归把children的domain都设置一遍</p>
+<h4 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h4><p>如果Child继承于ComponentDB或者ChildDB，则会加到componentsDB或childrenDB内。表示需要持久化。</p>
+<h2 id="第十三节-EventSystem"><a href="#第十三节-EventSystem" class="headerlink" title="第十三节 EventSystem"></a>第十三节 EventSystem</h2><p><strong>Type.GetType在IL2CPP中性能很差</strong></p>
+<h3 id="实体组件生命周期相关"><a href="#实体组件生命周期相关" class="headerlink" title="实体组件生命周期相关"></a>实体组件生命周期相关</h3><p>Awake Update LateUpdate Destory</p>
+<h3 id="Publish-自定义的抛事件方法"><a href="#Publish-自定义的抛事件方法" class="headerlink" title="Publish 自定义的抛事件方法"></a>Publish 自定义的抛事件方法</h3><h5 id="类比dll的单项依赖，防止互相依赖"><a href="#类比dll的单项依赖，防止互相依赖" class="headerlink" title="类比dll的单项依赖，防止互相依赖"></a>类比dll的单项依赖，防止互相依赖</h5><h5 id="模块隔离"><a href="#模块隔离" class="headerlink" title="模块隔离"></a>模块隔离</h5><h5 id="同步异步"><a href="#同步异步" class="headerlink" title="同步异步"></a>同步异步</h5><p>异步Publish，等待订阅者完成操作后，发布者才会进行后面逻辑</p>
+<h5 id="SceneType"><a href="#SceneType" class="headerlink" title="SceneType"></a>SceneType</h5><p>all in one的设计，用来区分是客户端还是服务端</p>
+<p>服务端也能用来做进程间的限制</p>
+<h5 id="全局事件-静态事件"><a href="#全局事件-静态事件" class="headerlink" title="全局事件(静态事件)"></a>全局事件(静态事件)</h5><p>动态事件的绑定都有一个绑定的过程，需要额外管理什么时候监听并且什么时候释放。在查看代码时，需要查看监听的绑定调用，会降低可读性。</p>
+<p>不需要每个监听类都有一个callback，只有全局的callback。</p>
+<h3 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h3><p>相当于回调。取决于怎么去触发回调。</p>
+<p>根据id分发。程序启动时把响应方法注册进EventSystem内。</p>
+<h3 id="Invoke和Publish的区别"><a href="#Invoke和Publish的区别" class="headerlink" title="Invoke和Publish的区别"></a>Invoke和Publish的区别</h3><p>Publish抛出去不关心结果不关心订阅者的，Invoke是主动调用(类似函数)需要知道函数真实存在。</p>
+<p>Publish区分SceneType，Invoke没有区分</p>
+<p>Publish没有分发作用，Invoke带有分发作用</p>
+<p>Publish一对多，Invoke一对一</p>
+<p>Publish跟Invoke命名不同，Publish命名跟时间点相关，Invoke命名跟使用者相关</p>
+<h3 id="TypeSystem"><a href="#TypeSystem" class="headerlink" title="TypeSystem"></a>TypeSystem</h3><p>每个Type都有一个对应的OneTypeSystems</p>
+<h4 id="OneTypeSystems"><a href="#OneTypeSystems" class="headerlink" title="OneTypeSystems"></a>OneTypeSystems</h4><p>OneTypeSystems中的QueueFlag记录实现了哪些生命周期，ISystemType中的GetInstanceQueueIndex可以获取到 生命周期的Index</p>
+<p>当Entity实例化时通过OneTypeSystems取生命周期的Flag</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>按照生命周期的Flag来缓存需要生命周期的组件ID队列，因为组件可能被对象池回收，所以缓存组件ID</p>
+<h2 id="第十四节-序列化反序列化"><a href="#第十四节-序列化反序列化" class="headerlink" title="第十四节 序列化反序列化"></a>第十四节 序列化反序列化</h2><h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><p>Excel配置文件，编辑器配置文件，大小跟速度都无所谓</p>
+<p>网络消息 大小速度很重要</p>
+<p>Entity对象，很复杂，需要支持继承等复杂特性</p>
+<p>数据库，mongodb</p>
+<p>命令行</p>
+<h3 id="库的选择"><a href="#库的选择" class="headerlink" title="库的选择"></a>库的选择</h3><p>Google Protobuf 性能最好，代码生成复杂不容易扩展，容易无gc</p>
+<p>Protobuf-net 性能较好，代码简洁，使用最广泛。使用反射机制不好定制</p>
+<p>MessagePack 性能较好，代码简洁，其他语言使用少</p>
+<p>Mongo.Bson 性能较差，功能最强，并且支持Json</p>
+<p>选择Protobuf-net跟MongoDB，满足任何需求</p>
+<h4 id="Protobuf-net"><a href="#Protobuf-net" class="headerlink" title="Protobuf-net"></a>Protobuf-net</h4><h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><p>为了支持protobuf的格式，需要在父类上打标签表示继承关系</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c#">[<span class="hljs-meta">ProtoContract</span>]<br>[<span class="hljs-meta">ProtoInclude(3,typeof(BB))</span>]<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">AA</span>{<br>    [<span class="hljs-meta">ProtoMember(1)</span>]<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> a;<br>    [<span class="hljs-meta">ProtoMember(2)</span>]<br>    <span class="hljs-keyword">public</span> float3 pos;<br>}<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BB</span>:<span class="hljs-title">AA</span>{<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> b;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#">RuntimeTypeModel.Default.<span class="hljs-keyword">add</span>(<span class="hljs-keyword">typeof</span>(float3),<span class="hljs-literal">false</span>).<span class="hljs-keyword">add</span>(<span class="hljs-string">"x"</span>,<span class="hljs-string">"y"</span>,<span class="hljs-string">"z"</span>);<br>AA aa = <span class="hljs-keyword">new</span> AA(){<br>    a =<span class="hljs-number">1</span>,<br>    pos = <span class="hljs-keyword">new</span> float3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="Mongo-Bson"><a href="#Mongo-Bson" class="headerlink" title="Mongo Bson"></a>Mongo Bson</h4><p>MongoDB的C#库，把C#对象序列化成MongoDB可以用的格式，也可以转换成其他格式，并且支持嵌套。</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>Bsonld<ul>
+<li>每条数据都需要有一个Bsonld，如果没有赋值会默认给个96位的Id</li>
+</ul>
+</li>
+<li>BsonElement<ul>
+<li>private字段需要序列化字段的标签</li>
+<li>可以重命名，可以取个别名可以节省空间。序列化反序列速度也能提升</li>
+</ul>
+</li>
+<li>Bsonlgnore<ul>
+<li>public字段不需要序列化的标签</li>
+</ul>
+</li>
+<li>BsonDefaultValue<ul>
+<li>没有赋值则取默认值</li>
+</ul>
+</li>
+<li>BsonlgnoreIfDefault<ul>
+<li>如果是默认值则 序列化过程中不进行序列化</li>
+</ul>
+</li>
+</ul>
+<h5 id="子类默认不能反序列化成父类"><a href="#子类默认不能反序列化成父类" class="headerlink" title="子类默认不能反序列化成父类"></a>子类默认不能反序列化成父类</h5><p><code>BsonIgnoreExtraElements</code>加上则在反序列化过程中排除多余的字段</p>
+<p>每个都加比较麻烦，Mongo Bson提供了默认操作</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">// 自动注册IgnoreExtraElements</span><br>ConventionPack conventionPack = <span class="hljs-keyword">new</span> ConventionPack { <span class="hljs-keyword">new</span> IgnoreExtraElementsConvention(<span class="hljs-literal">true</span>) };<br><br>ConventionRegistry.Register(<span class="hljs-string">"IgnoreExtraElements"</span>, conventionPack, type =&gt; <span class="hljs-literal">true</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="StructBsonSerialize"><a href="#StructBsonSerialize" class="headerlink" title="StructBsonSerialize"></a>StructBsonSerialize</h5><p>注册了结构体后可以反序列化成结构体</p>
+<h5 id="BsonDictionaryOptions"><a href="#BsonDictionaryOptions" class="headerlink" title="BsonDictionaryOptions"></a>BsonDictionaryOptions</h5><p>字典序列化时，默认的key需要为string。因为默认的json库的key是string类型</p>
+<p><code>BsonDictionaryOptions</code>提供了多种字典序列化方式</p>
+<p>一般用ArrayOfArray的形式</p>
+<h5 id="BsonClassMap-LookupClassMap"><a href="#BsonClassMap-LookupClassMap" class="headerlink" title="BsonClassMap.LookupClassMap"></a>BsonClassMap.LookupClassMap</h5><p>mongo在序列化时会记录继承关系，反序列化则会成功。</p>
+<p>但是如果直接进行反序列化，mongo默认不知道继承关系则会失败。 </p>
+<p>把每个类型都进行注册<code>BsonClassMap.LookupClassMap(type)</code></p>
+<h5 id="标准json格式"><a href="#标准json格式" class="headerlink" title="标准json格式"></a>标准json格式</h5><p>MongoHelper.ToJson时可以传入设置，则为标准json格式。</p>
+<h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>ISerializeToEntity ComponentDB ChildrenDB</p>
+<p>DeserializeSystem 反序列化后执行的System</p>
+<h2 id="第十五节-Network-1"><a href="#第十五节-Network-1" class="headerlink" title="第十五节 Network-1"></a>第十五节 Network-1</h2><ul>
+<li>socket</li>
+<li>IP</li>
+<li>Port</li>
+<li>bind</li>
+<li>accept</li>
+<li>connect<ul>
+<li>分为阻塞和非阻塞</li>
+</ul>
+</li>
+<li>read<ul>
+<li>分为阻塞和非阻塞</li>
+<li>socket有缓冲区，read需要等缓冲区满了才会进行读取。</li>
+</ul>
+</li>
+<li>write<ul>
+<li>分为阻塞和非阻塞</li>
+<li>socket有缓冲区，write等缓存去满了才会进行write操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="ET的需求"><a href="#ET的需求" class="headerlink" title="ET的需求"></a>ET的需求</h3><h4 id="一个主线程-一个网络线程"><a href="#一个主线程-一个网络线程" class="headerlink" title="一个主线程 一个网络线程"></a>一个主线程 一个网络线程</h4><p>网络独立线程后不好做，对客户端而言很难实现0gc的操作不能用对象池，客户端对网络性能的需求没那么高。</p>
+<p>对服务端而言，不是复杂场景下单线程网络线程基本满足需求。</p>
+<h4 id="单进程有多个监听-accept-all-in-one"><a href="#单进程有多个监听-accept-all-in-one" class="headerlink" title="单进程有多个监听(accept)	all in one"></a>单进程有多个监听(accept)	all in one</h4><h4 id="序列化跟反序列化在网络线程，减轻主线程压力"><a href="#序列化跟反序列化在网络线程，减轻主线程压力" class="headerlink" title="序列化跟反序列化在网络线程，减轻主线程压力"></a>序列化跟反序列化在网络线程，减轻主线程压力</h4><p>如果放在主线程序列化和反序列化就会造成，在序列化后发送请求时，网络线程可能还需要等待一段时间后才会真正发送。这个时间片段内主线程又重新发送了相同的请求，如果使用了对象池就会修改到前面请求的数据。因为对象池是单线程的。</p>
+<h3 id="ET的设计"><a href="#ET的设计" class="headerlink" title="ET的设计"></a>ET的设计</h3><p>抽象出NetService来处理主线程跟网络线程通信</p>
+<p>抽象出AService来处理监听，管理连接</p>
+<p>抽象出AChannel(网络连接)来做消息收发</p>
+<p>多个AService注册到NetService</p>
+<p>主线程封装NetComponent处理收到的连接，消息，错误</p>
+<p>主线程封装Session做主线程消息发送，以及rpc</p>
+<h3 id="NetServices线程安全队列"><a href="#NetServices线程安全队列" class="headerlink" title="NetServices线程安全队列"></a>NetServices线程安全队列</h3><p>NetServices主要负责主线程跟网络线程之间的通信</p>
+<p>主线程-&gt;网络线程：</p>
+<ol>
+<li>创建连接创建Channel</li>
+<li>发送消息给Channel发送</li>
+</ol>
+<p>网络线程-&gt;主线程: </p>
+<ol>
+<li>接收连接创建Session</li>
+<li>接收消息回调主线程</li>
+<li>网络错误回调</li>
+</ol>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230720100918090.png" srcset="/img/loading.gif" lazyload alt="image-20230720100918090"></p>
+<h4 id="主线程回调函数"><a href="#主线程回调函数" class="headerlink" title="主线程回调函数"></a>主线程回调函数</h4><ul>
+<li>acceptCallback</li>
+<li>readCallback</li>
+<li>errorCallback</li>
+</ul>
+<h4 id="Service管理"><a href="#Service管理" class="headerlink" title="Service管理"></a>Service管理</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> ConcurrentDictionary&lt;<span class="hljs-built_in">long</span>, AService&gt; services = <span class="hljs-keyword">new</span>();<br></code></pre></td></tr></tbody></table></figure>
+
+<h4 id="多线程注意事项"><a href="#多线程注意事项" class="headerlink" title="多线程注意事项"></a>多线程注意事项</h4><ul>
+<li><p>除了线程队列，一个成员永远只能一个线程操作</p>
+<ul>
+<li>一个方法永远只能跑在一个线程中，如果方法内操作了成员非常危险。</li>
+</ul>
+</li>
+<li><p>非常清楚每个字段是哪个线程操作的，绝对不能出错</p>
+</li>
+<li><p><strong>NetOperator</strong>，跨线程消息要注意</p>
+<ul>
+<li><p>只通过跨线程的消息做跨线程的处理</p>
+</li>
+<li><p>只通过双队列进行跨线程的数据传递，通过Update来取出双队列的数据。</p>
+</li>
+</ul>
+ <figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> ConcurrentQueue&lt;NetOperator&gt; netThreadOperators = <span class="hljs-keyword">new</span> ConcurrentQueue&lt;NetOperator&gt;();<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> ConcurrentQueue&lt;NetOperator&gt; mainThreadOperators = <span class="hljs-keyword">new</span> ConcurrentQueue&lt;NetOperator&gt;(); <br></code></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h2 id="第十六节-Network-2"><a href="#第十六节-Network-2" class="headerlink" title="第十六节 Network -2"></a>第十六节 Network -2</h2><h3 id="TCP特点"><a href="#TCP特点" class="headerlink" title="TCP特点"></a>TCP特点</h3><p><strong>监听的socket  监听到连接后，会返回读写的socket</strong></p>
+<p><strong>TODO：看看TService和Tchannel</strong></p>
+<p><strong>面向连接的协议，syn ask fin</strong> <strong>三次握手</strong></p>
+<p><strong>可靠有序</strong></p>
+<p><strong>滑动窗口</strong></p>
+<p>告诉发送方还能发多少还能接受多少数据，避免一次性发送过多，把缓冲区发爆了</p>
+<p><strong>拥塞窗口</strong></p>
+<p>发现丢包就控制下发包数量，未确认的包过多时，则会等待确认后再发包。控制发包速度。</p>
+<p>一旦发生丢包，发送速度会指数型的下降。但是恢复则是线性的增长。</p>
+<p><strong>流</strong></p>
+<p>只保证数据会发送到，不保证顺序和完整性。</p>
+<h3 id="TCP实现"><a href="#TCP实现" class="headerlink" title="TCP实现"></a>TCP实现</h3><ul>
+<li>CPP包装</li>
+<li>BindSend EndSend</li>
+<li>TcpListener TcpClient NetworkSteam<ul>
+<li>c#提供的tcpsocket包装有少量GC</li>
+</ul>
+</li>
+<li>SocketAsyncEventArgs<ul>
+<li>用这个做异步回调，没有gc</li>
+<li>TService</li>
+<li>TChannel</li>
+</ul>
+</li>
+<li>System.IO.Pipelines</li>
+</ul>
+<p>异步回调</p>
+<ul>
+<li>TService Listem</li>
+<li>TChannel Read Write</li>
+</ul>
+<h3 id="IOCP线程，网络线程"><a href="#IOCP线程，网络线程" class="headerlink" title="IOCP线程，网络线程"></a>IOCP线程，网络线程</h3><p>windos下的网络异步api是完成端口。异步回调是在IO线程内。</p>
+<ul>
+<li>SocketAsyncEventArgs的回调<ul>
+<li>回调是在另外一个线程，并不是在哪里调用就是在哪个线程。需要扔回网络线程处理</li>
+</ul>
+</li>
+<li>ConcurrentQueue<targs><ul>
+<li>网络线程处理回调的队列，收到回调时会塞数据到队列中。网络线程Update轮询拿出数据</li>
+</ul>
+</targs></li>
+<li>TArgs<ul>
+<li>类似于NetOperator，用作线程间的传递</li>
+</ul>
+</li>
+</ul>
+<h3 id="CircularBuffer"><a href="#CircularBuffer" class="headerlink" title="CircularBuffer"></a>CircularBuffer</h3><p>减少Read和Write的调用</p>
+<p>把异步的操作变成同步操作(和缓冲队列同理，写入和读取都是同步的)</p>
+<p>socket是在内核里的，每次调用socket的代价算是比较大的。</p>
+<ul>
+<li>recvBuffer<ul>
+<li>socket写入，应用层取出调用</li>
+</ul>
+</li>
+<li>sendBuffer<ul>
+<li>应用层写入，socket取出调用</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230726193709984.png" srcset="/img/loading.gif" lazyload alt="image-20230726193709984"></p>
+<h3 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h3><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230726195506719.png" srcset="/img/loading.gif" lazyload alt="image-20230726195506719"></p>
+<p><code>PacketParser类</code>解析消息</p>
+<h3 id="遇到的问题-1"><a href="#遇到的问题-1" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
+<li>堆栈溢出<ul>
+<li>TChannel.StartSend()内的while循环，之前是用递归写的。递归造成的问题就是调用的层数太多，会造成堆栈溢出</li>
+</ul>
+</li>
+<li>Tcp在linux上占用过多线程， cpu占用过多，不好观察性能</li>
+</ul>
+<h2 id="第十七节-Network-3"><a href="#第十七节-Network-3" class="headerlink" title="第十七节 Network -3"></a>第十七节 Network -3</h2><h3 id="TCP的问题"><a href="#TCP的问题" class="headerlink" title="TCP的问题"></a>TCP的问题</h3><ul>
+<li>有连接<ul>
+<li>内核内，无法定制</li>
+<li>不需要断开连接的时候被断开连接</li>
+</ul>
+</li>
+<li>拥塞控制算法</li>
+<li>丢包重传算法</li>
+<li>ICMP<ul>
+<li>TCP层发送的数据无法到达时，IP层会进行通知</li>
+<li>上层无法控制</li>
+</ul>
+</li>
+<li>容易破解<ul>
+<li>容易创建中间连接，中间连接容易破解数据</li>
+</ul>
+</li>
+<li>内核，不好定制</li>
+</ul>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ul>
+<li>无连接</li>
+<li>不可靠</li>
+<li>无序</li>
+</ul>
+<h3 id="KCP"><a href="#KCP" class="headerlink" title="KCP"></a>KCP</h3><ul>
+<li>应用层连接</li>
+<li>可靠有序<ul>
+<li>模拟tcp</li>
+</ul>
+</li>
+<li>数据冗余，降低丢包影响</li>
+<li>拥塞控制</li>
+<li>好定制</li>
+<li>http3.0</li>
+</ul>
+<h3 id="ET-KCP改进"><a href="#ET-KCP改进" class="headerlink" title="ET KCP改进"></a>ET KCP改进</h3><ul>
+<li>KCP默认连接端才有conn，ET双端都有conn<ul>
+<li>PS：conn连接号</li>
+</ul>
+</li>
+<li>默认客户端只能一个socket一个连接，ET一个socket可以发起多个连接<ul>
+<li>因为双端都有conn带来的好处</li>
+</ul>
+</li>
+<li>ikcp_input修改<ul>
+<li>客户端和服务端各有各的连接号，需要删除连接号的判断条件</li>
+<li><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727093218220.png" srcset="/img/loading.gif" lazyload alt="image-20230727093218220"></li>
+</ul>
+</li>
+</ul>
+<h4 id="KCP改造"><a href="#KCP改造" class="headerlink" title="KCP改造"></a>KCP改造</h4><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727101112402.png" srcset="/img/loading.gif" lazyload alt="image-20230727101112402"></p>
+<h5 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h5><p>标识这条消息的类型，连接消息、断开消息、确认消息等等</p>
+<p><code>TService.Recv()</code></p>
+<ul>
+<li>SYN<ul>
+<li>accept</li>
+</ul>
+</li>
+<li>ACK<ul>
+<li>connect返回</li>
+<li>一旦连接成功开始发送缓冲队列里的包</li>
+</ul>
+</li>
+<li>FIN<ul>
+<li>连接断开</li>
+</ul>
+</li>
+<li>MSG<ul>
+<li>包体信息</li>
+</ul>
+</li>
+</ul>
+<h5 id="Conn"><a href="#Conn" class="headerlink" title="Conn"></a>Conn</h5><p>一条消息会带自己的连接号和对面的连接号，保证无法被攻击。第三方无法读到这两个连接号。每条消息回来都会进行校验。</p>
+<h5 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h5><p>消息的内容</p>
+<h4 id="KCP握手"><a href="#KCP握手" class="headerlink" title="KCP握手"></a>KCP握手</h4><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727101932122.png" srcset="/img/loading.gif" lazyload alt="image-20230727101932122"></p>
+<ol>
+<li>连接方发送握手请求，发送自己的LocalConn。被连接方，收到请求后创建自己的LocalConn并且记录RemoteConn(对方的连接号)</li>
+<li>ack回复，带上双方的Conn。连接方校验自己的连接号后创建连接<ol>
+<li>ack也可能会丢包，连接方会重复发送syn请求连接</li>
+</ol>
+</li>
+<li>为什么少了一次连接方的ack？因为等被连接方发送第一条msg就能表示连接成功</li>
+</ol>
+<h4 id="KCP收消息流程"><a href="#KCP收消息流程" class="headerlink" title="KCP收消息流程"></a>KCP收消息流程</h4><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727103406008.png" srcset="/img/loading.gif" lazyload alt="image-20230727103406008"></p>
+<h5 id="kcp-lib"><a href="#kcp-lib" class="headerlink" title="kcp lib"></a>kcp lib</h5><p>c编写的Kcp库，收到的消息会丢到kcp库执行</p>
+<p>可能会做排序、可靠性检查等操作(与TCP类似)</p>
+<ol>
+<li>KcpInput <ul>
+<li>接受到消息后输入到kcp lib库内执行 排序、检查等操作</li>
+</ul>
+</li>
+<li>KcpPeeksize <ul>
+<li>扔进库后，马上查询kcp lib有没有拼装出完整的包，如果有完整包则读取到应用层</li>
+</ul>
+</li>
+<li>KcpRecv <ul>
+<li>应用层 通过 kcp lib中返回的数据包，在通过kcp lib读取消息</li>
+</ul>
+</li>
+</ol>
+<h4 id="KCP发消息流程"><a href="#KCP发消息流程" class="headerlink" title="KCP发消息流程"></a>KCP发消息流程</h4><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727110904752.png" srcset="/img/loading.gif" lazyload alt="image-20230727110904752"></p>
+<ol>
+<li>KcpWaitSend<ul>
+<li>发送之前的检查，可能网络问题不断重试。或者等待消息超过上限，可能判断连接超时有断开连接的操作。</li>
+</ul>
+</li>
+<li>KcpSend<ul>
+<li>发送检查正常时则把需要发送的数据写入到kcp lib中。</li>
+<li>kcp lib会把数据拆分成多个片段，判断大小根据设置走。<strong>有些路由限制了udp包的大小，超过500字节的到不了，所以et kcp外网每个udp消息限制是470大小。</strong></li>
+</ul>
+</li>
+<li>KcpSetOutPut<ul>
+<li>应用层通过KcpOutPut设置好回调，将回调设置到kcp lib库中。</li>
+<li>KcpOutPut用udp协议，回调设置好通过upd发送到kcp lib中。</li>
+<li>回调包含一些 发送状态的信息</li>
+</ul>
+</li>
+</ol>
+<h4 id="KService-KChannel"><a href="#KService-KChannel" class="headerlink" title="KService KChannel"></a>KService KChannel</h4><h5 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h5><p>KService内有一个Socket，用来收发udp消息。</p>
+<p>同步读socket消息时判断<code>Socket.Available&gt;0</code>。当缓冲队列数据量&gt;0时才进行真正读取，虽然是同步的但是不会造成阻塞。</p>
+<p>PS:如果当前使用的是非阻止 <a href="https://msdn.microsoft.com/zh-cn/library/system.net.sockets.socket(v=vs.110).aspx">Socket</a>，一种较好的做法是在调用 <a href="https://msdn.microsoft.com/zh-cn/library/26f591ax(v=vs.110).aspx">Receive</a> 之前使用 Available 来确定数据是否排队等待读取。可用的数据即网络缓冲区中排队等待读取的全部数据。如果在网络缓冲区中没有排队的数据，则 Available 返回 0。</p>
+<h5 id="KService计时器"><a href="#KService计时器" class="headerlink" title="KService计时器"></a>KService计时器</h5><p>独立的计时器，因为是在网络线程</p>
+<h5 id="InitKcp"><a href="#InitKcp" class="headerlink" title="InitKcp"></a>InitKcp</h5><p>具体参数需要结合文档</p>
+<p><a href="https://github.com/skywind3000/kcp/wiki/KCP-Basic-Usage#%E5%8D%8F%E8%AE%AE%E9%85%8D%E7%BD%AE">KCP Basic Usage · skywind3000/kcp Wiki (github.com)</a></p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InitKcp</span>()</span><br>{<br>   <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">this</span>.Service.ServiceType)<br>   {<br>      <span class="hljs-keyword">case</span> ServiceType.Inner:<br>         <span class="hljs-keyword">this</span>.kcp.SetNoDelay(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>);<br>         <span class="hljs-keyword">this</span>.kcp.SetWindowSize(<span class="hljs-number">1024</span>, <span class="hljs-number">1024</span>);<br>         <span class="hljs-comment">//分片包大小</span><br>         <span class="hljs-keyword">this</span>.kcp.SetMtu(<span class="hljs-number">1400</span>); <span class="hljs-comment">// 默认1400</span><br>         <span class="hljs-keyword">this</span>.kcp.SetMinrto(<span class="hljs-number">30</span>);<br>         <span class="hljs-keyword">this</span>.kcp.InitArrayPool(<span class="hljs-number">1600</span>, <span class="hljs-number">10000</span>);<br>         <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> ServiceType.Outer:<br>         <span class="hljs-keyword">this</span>.kcp.SetNoDelay(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>);<br>         <span class="hljs-keyword">this</span>.kcp.SetWindowSize(<span class="hljs-number">256</span>, <span class="hljs-number">256</span>);<br>         <span class="hljs-keyword">this</span>.kcp.SetMtu(<span class="hljs-number">470</span>);<br>         <span class="hljs-keyword">this</span>.kcp.SetMinrto(<span class="hljs-number">30</span>);<br>         <span class="hljs-keyword">this</span>.kcp.InitArrayPool(<span class="hljs-number">600</span>, <span class="hljs-number">10000</span>);<br>         <span class="hljs-keyword">break</span>;<br>   }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="大包的实现"><a href="#大包的实现" class="headerlink" title="大包的实现"></a>大包的实现</h5><p>超过大包设置的限定值时，进行分片处理</p>
+<h6 id="发送端"><a href="#发送端" class="headerlink" title="发送端"></a>发送端</h6><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">// 先发分片信息</span><br><span class="hljs-comment">// 头部信息，和普通消息做区分，前4个字节是0则代表是分片的包。</span><br><span class="hljs-keyword">this</span>.sendCache.WriteTo(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// 5-8字节 包体大小</span><br><span class="hljs-keyword">this</span>.sendCache.WriteTo(<span class="hljs-number">4</span>, count);<br><span class="hljs-keyword">this</span>.kcp.Send(<span class="hljs-keyword">this</span>.sendCache.AsSpan(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>));<br><br><span class="hljs-comment">// 分片发送</span><br><span class="hljs-built_in">int</span> alreadySendCount = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span> (alreadySendCount &lt; count)<br>{<br>    <span class="hljs-built_in">int</span> leftCount = count - alreadySendCount;<br>    <span class="hljs-built_in">int</span> sendCount = leftCount &lt; AService.MaxCacheBufferSize? leftCount: AService.MaxCacheBufferSize;<br>    <span class="hljs-keyword">this</span>.kcp.Send(memoryStream.GetBuffer().AsSpan((<span class="hljs-built_in">int</span>)memoryStream.Position + alreadySendCount, sendCount));<br><br>    alreadySendCount += sendCount;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h6 id="接收端"><a href="#接收端" class="headerlink" title="接收端"></a>接收端</h6><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>{<br>    <span class="hljs-comment">//...一堆判断条件这里省略</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.needReadSplitCount &gt; <span class="hljs-number">0</span>) <span class="hljs-comment">// 说明消息分片了</span><br>    {<br>        <span class="hljs-built_in">byte</span>[] buffer = readMemory.GetBuffer();<br>        <span class="hljs-built_in">int</span> count = <span class="hljs-keyword">this</span>.kcp.Receive(buffer.AsSpan((<span class="hljs-built_in">int</span>)(<span class="hljs-keyword">this</span>.readMemory.Length - <span class="hljs-keyword">this</span>.needReadSplitCount), n));<br>        <span class="hljs-keyword">this</span>.needReadSplitCount -= count;<br>        <span class="hljs-keyword">if</span> (n != count)<br>        {<br>            Log.Error(<span class="hljs-string">$"kchannel read error1: <span class="hljs-subst">{<span class="hljs-keyword">this</span>.LocalConn}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteConn}</span>"</span>);<br>            <span class="hljs-keyword">this</span>.OnError(ErrorCore.ERR_KcpReadNotSame);<br>            <span class="hljs-keyword">return</span>;<br>        }<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.needReadSplitCount &lt; <span class="hljs-number">0</span>)<br>        {<br>            Log.Error(<span class="hljs-string">$"kchannel read error2: <span class="hljs-subst">{<span class="hljs-keyword">this</span>.LocalConn}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteConn}</span>"</span>);<br>            <span class="hljs-keyword">this</span>.OnError(ErrorCore.ERR_KcpSplitError);<br>            <span class="hljs-keyword">return</span>;<br>        }<br><br>        <span class="hljs-comment">// 没有读完</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.needReadSplitCount != <span class="hljs-number">0</span>)<br>        {<br>            <span class="hljs-keyword">continue</span>;<br>        }<br>    }<br>    <span class="hljs-keyword">else</span><br>    {<br>        <span class="hljs-keyword">this</span>.readMemory = <span class="hljs-keyword">this</span>.Service.Fetch(n);<br>        <span class="hljs-keyword">this</span>.readMemory.SetLength(n);<br>        <span class="hljs-keyword">this</span>.readMemory.Seek(<span class="hljs-number">0</span>, SeekOrigin.Begin);<br><br>        <span class="hljs-built_in">byte</span>[] buffer = readMemory.GetBuffer();<br><br>        <span class="hljs-built_in">int</span> count = <span class="hljs-keyword">this</span>.kcp.Receive(buffer.AsSpan(<span class="hljs-number">0</span>, n));<br>        <span class="hljs-keyword">if</span> (n != count)<br>        {<br>            <span class="hljs-keyword">break</span>;<br>        }<br><br>        <span class="hljs-comment">// 如果是8字节代表有可能是分片包</span><br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">8</span>)<br>        {<br>            <span class="hljs-comment">// 如果前4个字节是0则代表是分片包</span><br>            <span class="hljs-built_in">int</span> headInt = BitConverter.ToInt32(<span class="hljs-keyword">this</span>.readMemory.GetBuffer(), <span class="hljs-number">0</span>);<br>            <span class="hljs-keyword">if</span> (headInt == <span class="hljs-number">0</span>)<br>            {<br>                <span class="hljs-keyword">this</span>.needReadSplitCount = BitConverter.ToInt32(readMemory.GetBuffer(), <span class="hljs-number">4</span>);<br>                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.needReadSplitCount &lt;= AService.MaxCacheBufferSize)<br>                {<br>                    Log.Error(<span class="hljs-string">$"kchannel read error3: <span class="hljs-subst">{<span class="hljs-keyword">this</span>.needReadSplitCount}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.LocalConn}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteConn}</span>"</span>);<br>                    <span class="hljs-keyword">this</span>.OnError(ErrorCore.ERR_KcpSplitCountError);<br>                    <span class="hljs-keyword">return</span>;<br>                }<br>                <span class="hljs-comment">//打包的长度</span><br>                <span class="hljs-keyword">this</span>.readMemory.SetLength(<span class="hljs-keyword">this</span>.needReadSplitCount);<br>                <span class="hljs-keyword">this</span>.readMemory.Seek(<span class="hljs-number">0</span>, SeekOrigin.Begin);<br>                <span class="hljs-keyword">continue</span>;<br>            }<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="代码实现细节"><a href="#代码实现细节" class="headerlink" title="代码实现细节"></a>代码实现细节</h5><h6 id="设置缓冲区"><a href="#设置缓冲区" class="headerlink" title="设置缓冲区"></a>设置缓冲区</h6><p>一个socket对应多条回调的连接监听，缓存区太小容易爆掉</p>
+<p><strong>OSX平台无效</strong></p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">if</span> (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))<br>{<br>    <span class="hljs-keyword">this</span>.Socket.SendBufferSize = Kcp.OneM * <span class="hljs-number">64</span>;<br>    <span class="hljs-keyword">this</span>.Socket.ReceiveBufferSize = Kcp.OneM * <span class="hljs-number">64</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h6 id="发送时的RemoteConn设置"><a href="#发送时的RemoteConn设置" class="headerlink" title="发送时的RemoteConn设置"></a>发送时的RemoteConn设置</h6><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Output</span>(<span class="hljs-params"><span class="hljs-built_in">byte</span>[] bytes, <span class="hljs-built_in">int</span> count</span>)</span><br>{<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.IsDisposed)<br>    {<br>        <span class="hljs-keyword">return</span>;<br>    }<br>    <span class="hljs-keyword">try</span><br>    {           <br>        <span class="hljs-comment">// 没连接上 kcp不往外发消息, 其实本来没连接上不会调用update，这里只是做一层保护</span><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.IsConnected)<br>        {<br>            <span class="hljs-keyword">return</span>;<br>        }<br><br>        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>)<br>        {<br>            Log.Error(<span class="hljs-string">$"output 0"</span>);<br>            <span class="hljs-keyword">return</span>;<br>        }<br>        bytes.WriteTo(<span class="hljs-number">0</span>, KcpProtocalType.MSG);<br>        <span class="hljs-comment">// 每个消息头部写下该channel的id;</span><br>        bytes.WriteTo(<span class="hljs-number">1</span>, <span class="hljs-keyword">this</span>.LocalConn);<br>        <span class="hljs-comment">//这里只写入了LocalConn没有写入RemoteConn，是因为输入的bytes就带了RemoteConn</span><br>        <span class="hljs-keyword">this</span>.Service.Socket.SendTo(bytes, <span class="hljs-number">0</span>, count + <span class="hljs-number">5</span>, SocketFlags.None, <span class="hljs-keyword">this</span>.RemoteAddress);<br>    }<br></code></pre></td></tr></tbody></table></figure>
+
+<h6 id="SetSioUdpConnReset"><a href="#SetSioUdpConnReset" class="headerlink" title="SetSioUdpConnReset"></a>SetSioUdpConnReset</h6><p>只在window平台存在的问题。设置屏蔽</p>
+<p>a向b发送upd的包，a如果关闭了socket会通知b也需要关闭socket</p>
+<h6 id="KChannel连接"><a href="#KChannel连接" class="headerlink" title="KChannel连接"></a>KChannel连接</h6><p>没连接成功前300毫秒发送一次请求连接。</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Connect</span>(<span class="hljs-params"><span class="hljs-built_in">uint</span> timeNow</span>)</span><br>{<br>    <span class="hljs-keyword">try</span><br>    {<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.IsConnected)<br>        {<br>            <span class="hljs-keyword">return</span>;<br>        }<br>        <span class="hljs-comment">// 300毫秒后再次update发送connect请求</span><br>        <span class="hljs-keyword">if</span> (timeNow &lt; <span class="hljs-keyword">this</span>.lastConnectTime + <span class="hljs-number">300</span>)<br>        {<br>            <span class="hljs-comment">//加到Service的updateChannel里做轮询连接</span><br>            <span class="hljs-keyword">this</span>.Service.AddToUpdate(<span class="hljs-number">300</span>, <span class="hljs-keyword">this</span>.Id);<br>            <span class="hljs-keyword">return</span>;<br>        }<br>        <span class="hljs-comment">// 10秒连接超时</span><br>        <span class="hljs-keyword">if</span> (timeNow &gt; <span class="hljs-keyword">this</span>.CreateTime + KService.ConnectTimeoutTime)<br>        {<br>            Log.Error(<span class="hljs-string">$"kChannel connect timeout: <span class="hljs-subst">{<span class="hljs-keyword">this</span>.Id}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteConn}</span> <span class="hljs-subst">{timeNow}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.CreateTime}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.ChannelType}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteAddress}</span>"</span>);<br>            <span class="hljs-keyword">this</span>.OnError(ErrorCore.ERR_KcpConnectTimeout);<br>            <span class="hljs-keyword">return</span>;<br>        }<br>        <span class="hljs-built_in">byte</span>[] buffer = sendCache;<br>        buffer.WriteTo(<span class="hljs-number">0</span>, KcpProtocalType.SYN);<br>        buffer.WriteTo(<span class="hljs-number">1</span>, <span class="hljs-keyword">this</span>.LocalConn);<br>        buffer.WriteTo(<span class="hljs-number">5</span>, <span class="hljs-keyword">this</span>.RemoteConn);<br>        <span class="hljs-keyword">this</span>.Service.Socket.SendTo(buffer, <span class="hljs-number">0</span>, <span class="hljs-number">9</span>, SocketFlags.None, <span class="hljs-keyword">this</span>.RemoteAddress);<br>        <span class="hljs-comment">// 这里很奇怪 调用socket.LocalEndPoint会动到this.RemoteAddressNonAlloc里面的temp，这里就不仔细研究了</span><br>        Log.Info(<span class="hljs-string">$"kchannel connect <span class="hljs-subst">{<span class="hljs-keyword">this</span>.LocalConn}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RemoteConn}</span> <span class="hljs-subst">{<span class="hljs-keyword">this</span>.RealAddress}</span>"</span>);<br><br>        <span class="hljs-keyword">this</span>.lastConnectTime = timeNow;<br><br>        <span class="hljs-keyword">this</span>.Service.AddToUpdate(<span class="hljs-number">300</span>, <span class="hljs-keyword">this</span>.Id);<br>    }<br>    <span class="hljs-keyword">catch</span> (Exception e)<br>    {<br>        Log.Error(e);<br>        <span class="hljs-keyword">this</span>.OnError(ErrorCore.ERR_SocketCantSend);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="第十八节-Network-4"><a href="#第十八节-Network-4" class="headerlink" title="第十八节 Network -4"></a>第十八节 Network -4</h2><h3 id="NetworkComponent"><a href="#NetworkComponent" class="headerlink" title="NetworkComponent"></a>NetworkComponent</h3><ol>
+<li>处理收消息，接收连接，错误等回调<ul>
+<li>NetClientComponent</li>
+<li>NetServerComponent</li>
+<li>NetInnerComponent<ul>
+<li>内部进程通信</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>管理主动的连接跟accept的连接</li>
+</ol>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ol>
+<li>发消息</li>
+<li>rpc</li>
+</ol>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727152954789.png" srcset="/img/loading.gif" lazyload alt="image-20230727152954789"></p>
+<h3 id="配合主线程网络的组件"><a href="#配合主线程网络的组件" class="headerlink" title="配合主线程网络的组件"></a>配合主线程网络的组件</h3><h4 id="OpcodeTypeComponent"><a href="#OpcodeTypeComponent" class="headerlink" title="OpcodeTypeComponent"></a>OpcodeTypeComponent</h4><ol>
+<li>记录外网消息</li>
+<li>记录Request跟Response配对</li>
+</ol>
+<h4 id="MessageDispatcherComponent"><a href="#MessageDispatcherComponent" class="headerlink" title="MessageDispatcherComponent"></a>MessageDispatcherComponent</h4><p>协议消息的分发</p>
+<p>根据Opcode管理具体的事件队列</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">readonly</span> Dictionary&lt;<span class="hljs-built_in">ushort</span>, List&lt;MessageDispatcherInfo&gt;&gt; Handlers = <span class="hljs-keyword">new</span>();<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MessageDispatcherInfo</span><br>{<br>    <span class="hljs-keyword">public</span> SceneType SceneType { <span class="hljs-keyword">get</span>; }<br>    <span class="hljs-keyword">public</span> IMHandler IMHandler { <span class="hljs-keyword">get</span>; }<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MessageDispatcherInfo</span>(<span class="hljs-params">SceneType sceneType, IMHandler imHandler</span>)</span><br>    {<br>        <span class="hljs-keyword">this</span>.SceneType = sceneType;<br>        <span class="hljs-keyword">this</span>.IMHandler = imHandler;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>程序启动时，根据Handler标签进行注册绑定。</p>
+<h5 id="Handler划分"><a href="#Handler划分" class="headerlink" title="Handler划分"></a>Handler划分</h5><ul>
+<li>AMHandler<ul>
+<li>正常调用，没有返回值</li>
+</ul>
+</li>
+<li>AMRpcHandler<ul>
+<li>Rpc调用会创建Response返回并发送给对面</li>
+</ul>
+</li>
+</ul>
+<h4 id="SessionAcceptTimeoutComponent"><a href="#SessionAcceptTimeoutComponent" class="headerlink" title="SessionAcceptTimeoutComponent"></a>SessionAcceptTimeoutComponent</h4><p>连接长时间占用消耗资源</p>
+<p><code>SessionAcceptTimeoutComponent</code>维护连接的时长，持有该组件并且超过限定时间则进行断开连接。</p>
+<p>一些外挂会长时间连接只监听消息</p>
+<h4 id="PingComponent"><a href="#PingComponent" class="headerlink" title="PingComponent"></a>PingComponent</h4><p>心跳包组件，与SessionIdleCheckerComponent对应</p>
+<p>客户端挂上PingComponent，每固定时间发送消息。保持连接</p>
+<h4 id="SessionIdleCheckerComponent"><a href="#SessionIdleCheckerComponent" class="headerlink" title="SessionIdleCheckerComponent"></a>SessionIdleCheckerComponent</h4><p>Session挂上SessionIdleCheckerComponent，超过时间没收到PingComponent判断为断开</p>
+<h4 id="SessionMessageStatisticsComponent"><a href="#SessionMessageStatisticsComponent" class="headerlink" title="SessionMessageStatisticsComponent"></a>SessionMessageStatisticsComponent</h4><p>ET里没有这个组件</p>
+<p>记录一段时间内收了多少条客户端消息。判断是否被发起攻击或者写出bug。检测出异常。</p>
+<h2 id="第二十三节-AI"><a href="#第二十三节-AI" class="headerlink" title="第二十三节 AI"></a>第二十三节 AI</h2><h3 id="AI的用处"><a href="#AI的用处" class="headerlink" title="AI的用处"></a>AI的用处</h3><ol>
+<li>怪物、NPC等行为</li>
+<li>子弹</li>
+<li>机器人</li>
+<li>托管</li>
+</ol>
+<h3 id="AI常用实现方案"><a href="#AI常用实现方案" class="headerlink" title="AI常用实现方案"></a>AI常用实现方案</h3><ul>
+<li>状态机<ul>
+<li>每两个状态都可能发生转换，复杂度是N的平方</li>
+<li>节点与节点之间耦合会很严重</li>
+</ul>
+</li>
+<li>行为树<ul>
+<li>每个方法都要包装成节点，节点太多</li>
+<li>树太大不好编辑</li>
+<li>牵一发而动全身，一个变量的调整可能会导致顺序的调整</li>
+<li>表达弱，难以阅读，难以重构</li>
+<li>协程的支持比较原始，等待的操作会被包装成节点</li>
+</ul>
+</li>
+<li>深度学习</li>
+</ul>
+<h3 id="AI的本质"><a href="#AI的本质" class="headerlink" title="AI的本质"></a>AI的本质</h3><p>根据当前的状态，执行一个行为。</p>
+<h3 id="ET改进"><a href="#ET改进" class="headerlink" title="ET改进"></a>ET改进</h3><p>直接用代码编写AI</p>
+<p>​	复用节点改为复用函数。一个行为由多个函数组成。</p>
+<p>协程化，每个节点是一个协程</p>
+<p>​	在行为内隔一段时间进行条件的判定，当条件满足时打断其他的行为，并执行满足条件的行为。</p>
+<p>节点包含条件跟行为</p>
+<p>​	把行为进行抽象，而不是把状态进行抽象。</p>
 
                 
               </div>
