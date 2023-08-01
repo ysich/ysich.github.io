@@ -45,8 +45,17 @@
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727103406008.png">
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727110904752.png">
 <meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230727152954789.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728163810320.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728171109863.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728173529322.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731095715561.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731101934132.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731102622947.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731195658960.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731195658960.png">
+<meta property="og:image" content="http://ysich.github.io/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731203603381.png">
 <meta property="article:published_time" content="2023-03-17T06:07:03.000Z">
-<meta property="article:modified_time" content="2023-07-28T07:39:25.483Z">
+<meta property="article:modified_time" content="2023-08-01T02:38:37.720Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="Manager 框架 ET框架">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25k 字
+          36k 字
         
       </span>
     
@@ -271,7 +280,7 @@
         
         
         
-          210 分钟
+          300 分钟
         
       </span>
     
@@ -1239,6 +1248,150 @@
 <h4 id="SessionIdleCheckerComponent"><a href="#SessionIdleCheckerComponent" class="headerlink" title="SessionIdleCheckerComponent"></a>SessionIdleCheckerComponent</h4><p>Session挂上SessionIdleCheckerComponent，超过时间没收到PingComponent判断为断开</p>
 <h4 id="SessionMessageStatisticsComponent"><a href="#SessionMessageStatisticsComponent" class="headerlink" title="SessionMessageStatisticsComponent"></a>SessionMessageStatisticsComponent</h4><p>ET里没有这个组件</p>
 <p>记录一段时间内收了多少条客户端消息。判断是否被发起攻击或者写出bug。检测出异常。</p>
+<h2 id="第十九节-软路由"><a href="#第十九节-软路由" class="headerlink" title="第十九节 软路由"></a>第十九节 软路由</h2><p>防止黑客攻击的功能</p>
+<h3 id="黑客攻击"><a href="#黑客攻击" class="headerlink" title="黑客攻击"></a>黑客攻击</h3><h4 id="tcp连接攻击"><a href="#tcp连接攻击" class="headerlink" title="tcp连接攻击"></a>tcp连接攻击</h4><p>黑客创建很多肉鸡创建很多tcp连接，tcp连接消耗内存会把服务器挤爆。</p>
+<h4 id="流量攻击"><a href="#流量攻击" class="headerlink" title="流量攻击"></a>流量攻击</h4><p>不停发消息，把流量吃满。接受不到正常玩家消息也发送不出去</p>
+<h4 id="协议攻击"><a href="#协议攻击" class="headerlink" title="协议攻击"></a>协议攻击</h4><p>破解协议，发送莫名其妙的东西</p>
+<h3 id="Http防攻击"><a href="#Http防攻击" class="headerlink" title="Http防攻击"></a>Http防攻击</h3><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728163810320.png" srcset="/img/loading.gif" lazyload alt="image-20230728163810320"></p>
+<p>http防攻击是每次http请求都通过cdn进行中介请求，实际上被攻击的会是cdn。一台崩了其他的还是正常运行。</p>
+<h3 id="游戏跟http不同"><a href="#游戏跟http不同" class="headerlink" title="游戏跟http不同"></a>游戏跟http不同</h3><ul>
+<li>实时性更高</li>
+<li>交互性更多<ul>
+<li>功能之间交互多，不像http可以拆分成各种服务</li>
+</ul>
+</li>
+<li>逻辑更复杂</li>
+<li>服务更集中</li>
+<li>长连接</li>
+</ul>
+<h3 id="大部分游戏服务器的弱点"><a href="#大部分游戏服务器的弱点" class="headerlink" title="大部分游戏服务器的弱点"></a>大部分游戏服务器的弱点</h3><ul>
+<li>TCP<ul>
+<li>只同步协议一样要分配资源</li>
+</ul>
+</li>
+<li>对外地址固定<ul>
+<li>对外的地址是公布的，容易暴漏地址</li>
+</ul>
+</li>
+<li>协议过于简单</li>
+</ul>
+<h3 id="大部分黑客的特点"><a href="#大部分黑客的特点" class="headerlink" title="大部分黑客的特点"></a>大部分黑客的特点</h3><ul>
+<li>流量不多<ul>
+<li>流量大不会攻击小游戏</li>
+</ul>
+</li>
+<li>攻击单个地址<ul>
+<li>成本问题</li>
+</ul>
+</li>
+<li>比较少进行协议破解攻击<ul>
+<li>技术含量比较高</li>
+</ul>
+</li>
+</ul>
+<h3 id="针对性解决"><a href="#针对性解决" class="headerlink" title="针对性解决"></a>针对性解决</h3><ul>
+<li>使用UDP</li>
+<li>多个对外地址</li>
+<li>提高协议复杂性，提高破解难度</li>
+</ul>
+<h3 id="防攻击目标"><a href="#防攻击目标" class="headerlink" title="防攻击目标"></a>防攻击目标</h3><ul>
+<li>服务器不能受影响</li>
+<li>保持连接，不能让在线的玩家掉线</li>
+<li>在线玩家无感</li>
+</ul>
+<h3 id="软路由方案，增加类似CDN的东西"><a href="#软路由方案，增加类似CDN的东西" class="headerlink" title="软路由方案，增加类似CDN的东西"></a>软路由方案，增加类似CDN的东西</h3><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728171109863.png" srcset="/img/loading.gif" lazyload alt="image-20230728171109863"></p>
+<h4 id="软路由设计"><a href="#软路由设计" class="headerlink" title="软路由设计"></a>软路由设计</h4><ul>
+<li><p>使用UDP+KCP</p>
+<ul>
+<li>tcp可以吗？<ul>
+<li>软路由如果与客户端用TCP连接，那攻击软路由一样会挂掉</li>
+</ul>
+</li>
+<li>主要利用KCP的有序可靠性</li>
+</ul>
+</li>
+<li><p>一个软路由被攻击，玩家客户端可以切换其它软路由转发</p>
+<ul>
+<li>客户端发现卡顿时，超过限定时间会切换路由，重新请求连接。gate发现ReConnect请求后会变更软路由的地址连接。</li>
+<li>在切换软路由过程中，网关怎么知道发送给软路由的包没真正到达客户端？<ul>
+<li>KCP的消息需要确认，收到会发确认包，没收到确认包则会重发。客户端如果收到两条相同的包也会剔除相同的。(KCP底层实现)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>随时增加减少软路由进程</p>
+</li>
+<li><p>获取软路由服务，使用cdn保护</p>
+<ul>
+<li>软路由的地址通过cdn或缺</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230728173529322.png" srcset="/img/loading.gif" lazyload alt="image-20230728173529322"></p>
+<h4 id="RouterComponet"><a href="#RouterComponet" class="headerlink" title="RouterComponet"></a>RouterComponet</h4><p>本质就是校验安全性并且转发的过程</p>
+<p>包含一个内网地址和一个外网地址</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//正在连接，握手的节点</span><br><span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">uint</span>, RouterNode&gt; ConnectIdNodes = <span class="hljs-keyword">new</span> Dictionary&lt;<span class="hljs-built_in">uint</span>, RouterNode&gt;();<br><br><span class="hljs-comment">// 已经连接成功的，虽然跟id一样，但是没有经过验证的不会加到这里</span><br><span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">uint</span>, RouterNode&gt; OuterNodes = <span class="hljs-keyword">new</span> Dictionary&lt;<span class="hljs-built_in">uint</span>, RouterNode&gt;();<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//update轮询查询，内网和外网的监听</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params">RouterComponent self</span>)</span><br>{<br>    <span class="hljs-built_in">long</span> timeNow = TimeHelper.ClientNow();<br>    self.RecvOuter(timeNow);<br>    self.RecvInner(timeNow);<br><br>    <span class="hljs-comment">// 每秒钟检查一次</span><br>    <span class="hljs-keyword">if</span> (timeNow - self.LastCheckTime &gt; <span class="hljs-number">1000</span>)<br>    {<br>        self.CheckConnectTimeout(timeNow);<br>        self.LastCheckTime = timeNow;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>连接与kcp连接不同的是需要告诉路由要连接的地址</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">case</span> KcpProtocalType.RouterReconnectSYN:<br>{<br>    <span class="hljs-keyword">if</span> (messageLength &lt; <span class="hljs-number">13</span>)<br>    {<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-built_in">uint</span> outerConn = BitConverter.ToUInt32(self.Cache, <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">uint</span> innerConn = BitConverter.ToUInt32(self.Cache, <span class="hljs-number">5</span>);<br>    <span class="hljs-comment">//要连接路由的地址，后续不需要发送</span><br>    <span class="hljs-built_in">uint</span> connectId = BitConverter.ToUInt32(self.Cache, <span class="hljs-number">9</span>);<br>    <span class="hljs-built_in">string</span> realAddress = self.Cache.ToStr(<span class="hljs-number">13</span>, messageLength - <span class="hljs-number">13</span>);<br><br>    RouterNode routerNode;<br><br>    <span class="hljs-comment">// RouterAck之后ConnectIdNodes会删除，加入到OuterNodes中来</span><br>    <span class="hljs-keyword">if</span> (!self.OuterNodes.TryGetValue(outerConn, <span class="hljs-keyword">out</span> routerNode))<br>    {<br>        self.ConnectIdNodes.TryGetValue(connectId, <span class="hljs-keyword">out</span> routerNode);<br>        <span class="hljs-keyword">if</span> (routerNode == <span class="hljs-literal">null</span>)<br>        {<br>            Log.Info(<span class="hljs-string">$"router create reconnect: <span class="hljs-subst">{self.IPEndPoint}</span> <span class="hljs-subst">{realAddress}</span> <span class="hljs-subst">{connectId}</span> <span class="hljs-subst">{outerConn}</span> <span class="hljs-subst">{innerConn}</span>"</span>);<br>            routerNode = self.New(realAddress, connectId, outerConn, innerConn, self.CloneAddress());<br>            <span class="hljs-comment">// self.OuterNodes 这里不能add，因为还没验证完成,要在RouterAck中加入</span><br>        }<br>    }<br><br>    <span class="hljs-keyword">if</span> (routerNode.ConnectId != connectId)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kcp router router reconnect connectId diff1: <span class="hljs-subst">{routerNode.SyncIpEndPoint}</span> <span class="hljs-subst">{(IPEndPoint) self.IPEndPoint}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br>    <br>    <span class="hljs-comment">// 不是自己的，outerConn冲突, 直接break,也就是说这个软路由上有个跟自己outerConn冲突的连接，就不能连接了</span><br>    <span class="hljs-comment">// 这个路由连接不上，客户端会换个软路由，所以没关系</span><br>    <span class="hljs-keyword">if</span> (routerNode.InnerConn != innerConn)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kcp router router reconnect inner conn diff1: <span class="hljs-subst">{routerNode.SyncIpEndPoint}</span> <span class="hljs-subst">{(IPEndPoint) self.IPEndPoint}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br>    <br>    <span class="hljs-keyword">if</span> (routerNode.OuterConn != outerConn)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kcp router router reconnect outer conn diff1: <span class="hljs-subst">{routerNode.SyncIpEndPoint}</span> <span class="hljs-subst">{(IPEndPoint) self.IPEndPoint}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-comment">// 校验ip，连接过程中ip不能变化</span><br>    <span class="hljs-keyword">if</span> (!Equals(routerNode.SyncIpEndPoint, self.IPEndPoint))<br>    {<br>        Log.Warning(<span class="hljs-string">$"kcp router syn ip is diff1: <span class="hljs-subst">{routerNode.SyncIpEndPoint}</span> <span class="hljs-subst">{(IPEndPoint) self.IPEndPoint}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-comment">// 校验内网地址</span><br>    <span class="hljs-keyword">if</span> (routerNode.InnerAddress != realAddress)<br>    {<br>        Log.Warning(<span class="hljs-string">$"router sync error2: <span class="hljs-subst">{routerNode.OuterConn}</span> <span class="hljs-subst">{routerNode.InnerAddress}</span> <span class="hljs-subst">{outerConn}</span> <span class="hljs-subst">{realAddress}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br>    <span class="hljs-comment">//大于40条连接请求则判断为是异常连接</span><br>    <span class="hljs-keyword">if</span> (++routerNode.RouterSyncCount &gt; <span class="hljs-number">40</span>)<br>    {<br>        self.OnError(routerNode.Id, ErrorCore.ERR_KcpRouterRouterSyncCountTooMuchTimes);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-comment">// 转发到内网</span><br>    self.Cache.WriteTo(<span class="hljs-number">0</span>, KcpProtocalType.RouterReconnectSYN);<br>    self.Cache.WriteTo(<span class="hljs-number">1</span>, outerConn);<br>    self.Cache.WriteTo(<span class="hljs-number">5</span>, innerConn);<br>    self.Cache.WriteTo(<span class="hljs-number">9</span>, connectId);<br>    self.InnerSocket.SendTo(self.Cache, <span class="hljs-number">0</span>, <span class="hljs-number">13</span>, SocketFlags.None, routerNode.InnerIpEndPoint);<br><br>    <span class="hljs-keyword">if</span> (!routerNode.CheckOuterCount(timeNow))<br>    {<br>        self.OnError(routerNode.Id, ErrorCore.ERR_KcpRouterTooManyPackets);<br>    }<br><br>    <span class="hljs-keyword">break</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="路由重连"><a href="#路由重连" class="headerlink" title="路由重连"></a>路由重连</h5><p>路由繁忙重新选择路由时，软路由转发给网关，网关会进行remoteConn和localConn的校验，判断只有是链接过的没有造假。并且ip地址不能变化。</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">KcpProtocalType.RouterReconnectSYN<br></code></pre></td></tr></tbody></table></figure>
+
+<p>KService的网关校验</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">case</span> KcpProtocalType.RouterReconnectSYN:<br>{<br>    <span class="hljs-comment">// 长度!=5，不是RouterReconnectSYN消息</span><br>    <span class="hljs-keyword">if</span> (messageLength != <span class="hljs-number">13</span>)<br>    {<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-built_in">string</span> realAddress = <span class="hljs-literal">null</span>;<br>    remoteConn = BitConverter.ToUInt32(<span class="hljs-keyword">this</span>.cache, <span class="hljs-number">1</span>);<br>    localConn = BitConverter.ToUInt32(<span class="hljs-keyword">this</span>.cache, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">uint</span> connectId = BitConverter.ToUInt32(<span class="hljs-keyword">this</span>.cache, <span class="hljs-number">9</span>);<br><br>    <span class="hljs-keyword">this</span>.localConnChannels.TryGetValue(localConn, <span class="hljs-keyword">out</span> kChannel);<br>    <span class="hljs-keyword">if</span> (kChannel == <span class="hljs-literal">null</span>)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kchannel reconnect not found channel: <span class="hljs-subst">{localConn}</span> <span class="hljs-subst">{remoteConn}</span> <span class="hljs-subst">{realAddress}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-comment">// 这里必须校验localConn，客户端重连，localConn一定是一样的</span><br>    <span class="hljs-keyword">if</span> (localConn != kChannel.LocalConn)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kchannel reconnect localconn error: <span class="hljs-subst">{localConn}</span> <span class="hljs-subst">{remoteConn}</span> <span class="hljs-subst">{realAddress}</span> <span class="hljs-subst">{kChannel.LocalConn}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-keyword">if</span> (remoteConn != kChannel.RemoteConn)<br>    {<br>        Log.Warning(<span class="hljs-string">$"kchannel reconnect remoteconn error: <span class="hljs-subst">{localConn}</span> <span class="hljs-subst">{remoteConn}</span> <span class="hljs-subst">{realAddress}</span> <span class="hljs-subst">{kChannel.RemoteConn}</span>"</span>);<br>        <span class="hljs-keyword">break</span>;<br>    }<br><br>    <span class="hljs-comment">// 重连的时候router地址变化, 这个不能放到msg中，必须经过严格的验证才能切换</span><br>    <span class="hljs-keyword">if</span> (!Equals(kChannel.RemoteAddress, <span class="hljs-keyword">this</span>.ipEndPoint))<br>    {<br>        kChannel.RemoteAddress = <span class="hljs-keyword">this</span>.CloneAddress();<br>    }<br><br>    <span class="hljs-keyword">try</span><br>    {<br>        <span class="hljs-built_in">byte</span>[] buffer = <span class="hljs-keyword">this</span>.cache;<br>        buffer.WriteTo(<span class="hljs-number">0</span>, KcpProtocalType.RouterReconnectACK);<br>        buffer.WriteTo(<span class="hljs-number">1</span>, kChannel.LocalConn);<br>        buffer.WriteTo(<span class="hljs-number">5</span>, kChannel.RemoteConn);<br>        buffer.WriteTo(<span class="hljs-number">9</span>, connectId);<br>        <span class="hljs-keyword">this</span>.socket.SendTo(buffer, <span class="hljs-number">0</span>, <span class="hljs-number">13</span>, SocketFlags.None, <span class="hljs-keyword">this</span>.ipEndPoint);<br>    }<br>    <span class="hljs-keyword">catch</span> (Exception e)<br>    {<br>        Log.Error(e);<br>        kChannel.OnError(ErrorCore.ERR_SocketCantSend);<br>    }<br><br>    <span class="hljs-keyword">break</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h5 id="客户端登录时的操作"><a href="#客户端登录时的操作" class="headerlink" title="客户端登录时的操作"></a>客户端登录时的操作</h5><p><code>RouterAddressComponent</code>登陆时获取软路由列表</p>
+<p>localConn为软路由创建并返回客户端，因为如果都由客户端随机也有可能重复。</p>
+<h2 id="第二十节-Actor"><a href="#第二十节-Actor" class="headerlink" title="第二十节 Actor"></a>第二十节 Actor</h2><p>传统意义的多线程写法，需要加各种锁做限制，逻辑复杂后锁容易被遗漏，或者多加了锁造成难以维护，变量膨胀。</p>
+<h3 id="why-Actor？"><a href="#why-Actor？" class="headerlink" title="why Actor？"></a>why Actor？</h3><p>每个线程都有自己的变量，每个线程都维护自己的变量。当线程需要访问其他线程的变量时，实际是告诉其他线程自己要执行什么操作。</p>
+<h3 id="Erlang对Actor的进阶设计"><a href="#Erlang对Actor的进阶设计" class="headerlink" title="Erlang对Actor的进阶设计"></a>Erlang对Actor的进阶设计</h3><p>如果只对线程进行actor的操作，实际上还是可以访问到其他线程的变量。如果使用不规范还是会造成bug。</p>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731095715561.png" srcset="/img/loading.gif" lazyload alt="image-20230731095715561"></p>
+<p>不同进程之间进行调度，只需要把需要使用到的进程processid和参数传递到消息通道内，等消息通道执行到时对应进程再从消息通道中取出数据进行执行。</p>
+<p>Erlang对Actor抽象出进程的概念，不同进程之间是不共享内存的所以无法直接访问到其他进程的变量，只通过消息通道进行传递。</p>
+<p>每个虚拟进程都只会通过一个线程进行调度，进程变量通过一个线程进行访问。</p>
+<p>Erlang的虚拟进程使用成本较低，只是数据结构包装成的进程。不需要到内核态进行创建进程，并且能够进行访问地址的有效隔离。</p>
+<h3 id="ET-Actor"><a href="#ET-Actor" class="headerlink" title="ET Actor"></a>ET Actor</h3><p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731101934132.png" srcset="/img/loading.gif" lazyload alt="image-20230731101934132"></p>
+<p>每个进程都有很多个Entity，每个Entity都有一个Id，Id带有进程的信息。发消息的时候只需要知道id就能够进行通信。</p>
+<p>ET的Actor进一步的扩展，可以直接通知到进程中的对象上。而Erlang只能通知到进程，进程再一步通知给对象。</p>
+<p><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731102622947.png" srcset="/img/loading.gif" lazyload alt="image-20230731102622947"></p>
+<h4 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h4><ul>
+<li>InstanceId<ul>
+<li>每个Scene在配置中都有自己的id，在配置AfterEndInit时构造出InstanceId。</li>
+</ul>
+</li>
+<li>StartSceneConfig Scene的InstanceId</li>
+<li>服务器所有内部消息发送，gate转发<ul>
+<li>服务器所有内部信息都用Actor发送</li>
+</ul>
+</li>
+<li>MailboxComponent 三种MailboxType<ul>
+<li><code>MessageDispatcher</code>:队列处理，后续消息都需要进行等待处理完成。</li>
+<li><code>UnOrderMessageDispatcher</code>:不等待，每次消息收到都新开一个协程处理</li>
+<li><code>GateSession</code>:把SessionId缓存在unit上，当收到消息时直接通过SessionId返回给客户端。<ul>
+<li>Session可能会断开。需要额外管理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Actor死锁<ul>
+<li>当两个unit消除处理的mailBox都是队列类型时，当A处理完成后会返回一个rpc消息，当是这时候B又发送了一个消息需要A处理。这时候A在等待B的rpc消息处理，B在等待A的消息处理造成了相互等待。在有队列的maiBox中才会发生。</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<li><p>ActorHandleHelper</p>
+<ul>
+<li>```c#<br>public static async ETTask HandleIActorRequest(long actorId, IActorRequest iActorRequest)<br>{<br>InstanceIdStruct instanceIdStruct = new(actorId);<br>//这里的进程号不是收到的进程号，而是来源的进程号。<br>//因为要response,需要知道从哪个进程来的,回复到哪里取。<br>int fromProcess = instanceIdStruct.Process;<br>instanceIdStruct.Process = Options.Instance.Process;<br>long realActorId = instanceIdStruct.ToLong();<br><br>Entity entity = Root.Instance.Get(realActorId);<br>if (entity == null)<br>{<br>    IActorResponse response = ActorHelper.CreateResponse(iActorRequest, ErrorCore.ERR_NotFoundActor);<br>    Reply(fromProcess, response);<br>    return;<br>}<br><br>MailBoxComponent mailBoxComponent = entity.GetComponent<mailboxcomponent>();<br>if (mailBoxComponent == null)<br>{<br>    Log.Warning($”actor not found mailbox: {entity.GetType().Name} {realActorId} {iActorRequest}”);<br>    IActorResponse response = ActorHelper.CreateResponse(iActorRequest, ErrorCore.ERR_NotFoundActor);<br>    Reply(fromProcess, response);<br>    return;<br>}<br><br>switch (mailBoxComponent.MailboxType)<br>{<br>    case MailboxType.MessageDispatcher:<br>        {<br>            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.Mailbox, realActorId))<br>            {<br>                if (entity.InstanceId != realActorId)<br>                {<br>                    IActorResponse response = ActorHelper.CreateResponse(iActorRequest, ErrorCore.ERR_NotFoundActor);<br>                    Reply(fromProcess, response);<br>                    break;<br>                }<br>                await ActorMessageDispatcherComponent.Instance.Handle(entity, fromProcess, iActorRequest);<br>            }<br>            break;<br>        }<br>    case MailboxType.UnOrderMessageDispatcher:<br>        {<br>            await ActorMessageDispatcherComponent.Instance.Handle(entity, fromProcess, iActorRequest);<br>            break;<br>        }<br>    case MailboxType.GateSession:<br>    default:<br>        throw new Exception($”no mailboxtype: {mailBoxComponent.MailboxType} {iActorRequest}”);<br>}<br>}<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">-</span> ActorHelper<br><br><span class="hljs-bullet">-</span> ActorMessageDispatcherComponentSystem<br><br><span class="hljs-bullet">-</span> ActorMessageSenderComponentSystem<br><br><span class="hljs-bullet">  -</span> 有个超时的设计，Awake时启动定时器每秒钟检查requestCallback内有哪些消息还没返回。方便检查性能。<br><br><span class="hljs-bullet">-</span> AMActorHandler<br><br><span class="hljs-bullet">-</span> AMActorRpcHandler<br><br><span class="hljs-bullet">-</span> MailBoxComponentSystem<br><br><span class="hljs-bullet">-</span> 为什么用两条Session？<br><br><span class="hljs-bullet">  -</span> <span class="hljs-code">`ActorMessageSenderComponentSystem.Call()`</span>为什么调用两个Session来传递，而不是直接用单个Session的call方法？<br><span class="hljs-bullet">  -</span> ![<span class="hljs-string">image-20230731115309727</span>](<span class="hljs-link">网络游戏架构设计/image-20230731115309727.png</span>)<br><span class="hljs-bullet">  -</span> 如果用call返回，这时候再发消息就会有问题。保证Session的单一职责。<br><br><span class="hljs-section">## 第二十一节 ActorLocation</span><br><br>TODO：这部分有点复杂，客户端用不到先简单看下<br><br>LocationComponent<br><br>对Actor基础上的封装，在某些特定场景使用<br><br><span class="hljs-bullet">-</span> 比如Unit <br><span class="hljs-bullet">-</span> InstanceId不固定<br><span class="hljs-bullet">-</span> 只知道Id，并且想通过Id发消息<br><span class="hljs-bullet">  -</span> InstanceId不固定，Id是固定的<br><br><span class="hljs-section">### 设计思路</span><br><br>ActorLocation的概念就像是一个<span class="hljs-code">`中央管理区`</span>，管理所有人的InstanceId，当Id持有的InstanceId需要变更时需要通知给中央管理区，并且锁住状态。当一个actor需要通知到具体对象时，会派出一个<span class="hljs-code">`高级邮递员`</span>向中央管理区请求InstanceId信息，并进行投递。但是在进行投递的过程中，InstanceId还是有可能会变更，<span class="hljs-code">`高级邮递员`</span>还是会发生投递失败的情况，这时候就会重新执行这个流程。需要注意的是，如果InstanceId一直在变更<span class="hljs-code">`高级邮递员`</span>不可能一直处于投递状态，还是需要给个限定时间。<br><br><span class="hljs-section">### 回执</span><br><br>无论有没有回调都需要有一个回执。<br><br><span class="hljs-bullet">-</span> 有内容的回执<br><span class="hljs-bullet">-</span> 没有内容的回执<br><span class="hljs-bullet">  -</span> 只告诉发送者接收者收到了消息。<br><br><span class="hljs-section">### Location作用</span><br><br><span class="hljs-bullet">-</span> zookeeper<br><span class="hljs-bullet">-</span> 分布式锁服务<br><span class="hljs-bullet">-</span> 存键值对<br><br><span class="hljs-section">## 第二十二节 机器人与测试用例</span><br><br><span class="hljs-section">### 机器人的作用</span><br><br><span class="hljs-bullet">-</span> 功能开发的辅助<br><span class="hljs-bullet">-</span> 单元测试<br><span class="hljs-bullet">-</span> 性能压测<br><span class="hljs-bullet">-</span> 逻辑压测<br><span class="hljs-bullet">-</span> 模拟玩家<br><br><span class="hljs-section">### 共享逻辑代码</span><br><br>放在share层，双端可以共享机器人的逻辑代码。<br><br><span class="hljs-section">#### 宏的处理方式</span><br><br>因为是All in one的设计。逻辑层是动态加载出来的，都是编译出来的dll。直接代码里只加客户端的宏就没用了。<br><br><span class="hljs-section">#### ET的宏处理</span><br><br>在<span class="hljs-code">`Define.cs`</span>文件中统一管理宏逻辑，通过宏定义来设置变量的值。通过变量的值来获取状态。<br><br>在逻辑里定义一堆宏反而更麻烦。<br><br><span class="hljs-section">### 测试用例</span><br><br><span class="hljs-bullet">-</span> 测试驱动<br><span class="hljs-bullet">  -</span> 传统概念，写逻辑先写测试用例，先让测试用例测试功能<br><span class="hljs-bullet">  -</span> 但是在游戏中逻辑变化太快，测试用例很容易被推翻。<br><span class="hljs-bullet">-</span> 函数级单元测试<br><span class="hljs-bullet">-</span> 类级别单元测试<br><span class="hljs-bullet">-</span> 协议级的单元测试<br><span class="hljs-bullet">  -</span> 游戏中的测试用例基本都是面向于协议，因为协议较于稳定。<br><br><span class="hljs-section">### 写测试用例的技巧</span><br><br><span class="hljs-bullet">-</span> 利用协程<br><br><span class="hljs-bullet">  -</span> 用协程，发送协议然后等待协议返回，判断结果。当成同步方法来写。<br><br><span class="hljs-bullet">  -</span> 部分协议不是rpc，这时候需要等待其他协议返回时，使用ObjectWait把没有关系的消息进行代码逻辑上的串行。<br><br><span class="hljs-code">    ```c#</span><br><span class="hljs-code">    namespace ET.Server{</span><br><span class="hljs-code">    	//虽然协议响应的场景是Client但是是Server命名空间下，所以编译成程序集时是在Server内。</span><br><span class="hljs-code">        //具体协议Handler</span><br><span class="hljs-code">        [MessageHandler(SceneType.Client)]</span><br><span class="hljs-code">        public class xxxHandler:AMHandler&lt;xxx协议&gt;{</span><br><span class="hljs-code">            protected override async ETTask Run(Session session,xxx协议 message){</span><br><span class="hljs-code">                ObjectWait objectWait = session.clientScene().GetComponent&lt;ObjectWait&gt;();</span><br><span class="hljs-code">                objectWait.Notify(new RobotCase_xxx(){});</span><br><span class="hljs-code">            }</span><br><span class="hljs-code">        }</span><br><span class="hljs-code">        public class RobotCase_xxx:ARobotCase{</span><br><span class="hljs-code">            protected override async ETTask Run(RobotCase robotCase){</span><br><span class="hljs-code">                ObjectWait objectWait = robotScene.GetComponent&lt;ObjectWait&gt;();</span><br><span class="hljs-code">                await objectWait&lt;RobotCase_xxx&gt;();</span><br><span class="hljs-code">            }</span><br><span class="hljs-code">        }</span><br><span class="hljs-code">    }</span><br><span class="hljs-code">    </span><br></code></pre></td></tr></tbody></table></figure></mailboxcomponent></li>
+</ul>
+</li>
+<li><p>利用消息事件回调</p>
+</li>
+<li><p>不要用时间来卡逻辑</p>
+</li>
+</ul>
 <h2 id="第二十三节-AI"><a href="#第二十三节-AI" class="headerlink" title="第二十三节 AI"></a>第二十三节 AI</h2><h3 id="AI的用处"><a href="#AI的用处" class="headerlink" title="AI的用处"></a>AI的用处</h3><ol>
 <li>怪物、NPC等行为</li>
 <li>子弹</li>
@@ -1268,6 +1421,65 @@
 <p>​	在行为内隔一段时间进行条件的判定，当条件满足时打断其他的行为，并执行满足条件的行为。</p>
 <p>节点包含条件跟行为</p>
 <p>​	把行为进行抽象，而不是把状态进行抽象。</p>
+<h2 id="第二十四节-架构设计细节"><a href="#第二十四节-架构设计细节" class="headerlink" title="第二十四节 架构设计细节"></a>第二十四节 架构设计细节</h2><ul>
+<li>推图游戏<ul>
+<li><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731195658960.png" srcset="/img/loading.gif" lazyload alt="image-20230731195658960"></li>
+<li>主要就是房间管理的设计，如果有单人和多人的玩法。双端共享代码带来的优势。<ul>
+<li>多人玩法的代码可以通过服务器请求，房间在服务器上，通过协议驱动view表现。</li>
+<li>单人玩法则可以在本地创建一个Scene当作逻辑层模拟服务器房间，驱动view层。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>帧同步 状态帧<ul>
+<li><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731195658960.png" srcset="/img/loading.gif" lazyload alt="image-20230731200542296"></li>
+<li>逻辑层和表现层分离，逻辑层可以优化成单独一个线程运行</li>
+<li>可以客户端计算服务器做转发，然后多个客户端投票机制判定结果是否正常。</li>
+<li>或者状态同步，客户端发送操作，服务器计算结果并转发</li>
+<li>或者只搞结算服，游戏结束把每一帧结果都发送到结算服，判定结果再进行返回。或者改为仲裁机制，有人投诉再进行结果判定。</li>
+</ul>
+</li>
+<li>mmo slg<ul>
+<li><img src="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/image-20230731203603381.png" srcset="/img/loading.gif" lazyload alt="image-20230731203603381"></li>
+<li>逻辑都在服务器，客户端只做表现。</li>
+<li>在登录时，网关会先从player取出数据，在player上挂载一个map，把unit临时挂在这个map上。然后进入游戏场景时，相当于一个传送的机制。可以减少登录时的逻辑。修改登录获取数据的get方法来实现，还可以减少map上的压力。</li>
+<li>一个unit上可能会挂在上百个组件，当创建unit到map时如果一起反序列化上百个组件，退出map时又序列化上百个组件无疑会带来很大的性能负担。而有些组件实际并没有使用到造成性能浪费。<ul>
+<li>ET对需要序列化的组件做了优化，会存在一个专门管理序列化组件的组件，只有在第一次GetComponent时会进行序列化并且进行标记为需要反序列化。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第二十五节-分析器"><a href="#第二十五节-分析器" class="headerlink" title="第二十五节 分析器"></a>第二十五节 分析器</h2><p><a href="https://www.yuque.com/u28961999/yms0nt">ET分析器介绍 (yuque.com)</a></p>
+<ul>
+<li><strong>HotfixProjectFieldDeclarationAnalyzer</strong><ul>
+<li>Hotfix程序集中只能携带无状态的代码。如果定义了Const变量在热更新时会产生变量参数的变更，造成代码的不稳定。</li>
+</ul>
+</li>
+<li><strong>ClassDeclarationInHotfixAnalyzer</strong><ul>
+<li>数据结构也不能在Hotfix程序集定义，数据结构的变更也会造成热更新的不稳定性。</li>
+</ul>
+</li>
+<li><strong>EntityMethodDeclarationAnalyzer</strong><ul>
+<li>实体类禁止声明方法。</li>
+<li>EnableMethod开后门可以绕过约束</li>
+</ul>
+</li>
+<li><strong>StaticClassCircularDependencyAnalyzer</strong><ul>
+<li>静态类之间不能相互调用</li>
+<li>静态类之间如果互相调用就会造成依赖</li>
+</ul>
+</li>
+<li><strong>UniqueIdAnalyzer</strong><ul>
+<li>避免定义的const int变量参数重复</li>
+<li>框架定义枚举会有侵入性，上层可能会修改到底层的枚举</li>
+</ul>
+</li>
+<li><strong>EntityDelegateDeclarationAnalyzerEntityDelegateDeclarationAnalyzer</strong><ul>
+<li>避免声明Action，避免回调写法</li>
+</ul>
+</li>
+</ul>
 
                 
               </div>
