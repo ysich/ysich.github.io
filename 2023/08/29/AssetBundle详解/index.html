@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ysich">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AssetBundle详解AssetBundle一个AssetBundle有什么？ 一个序列化文件，标识符、是否压缩和清单(manifest)数据。 manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置   资源文件，二进制数据块，支持异步加载 所有资源都被序列化，如果选择压缩则将序列化数据压缩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AssetBundle详解">
+<meta property="og:url" content="http://ysich.github.io/2023/08/29/AssetBundle%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="ysich&#39;Blog">
+<meta property="og:description" content="AssetBundle详解AssetBundle一个AssetBundle有什么？ 一个序列化文件，标识符、是否压缩和清单(manifest)数据。 manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置   资源文件，二进制数据块，支持异步加载 所有资源都被序列化，如果选择压缩则将序列化数据压缩">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-29T03:03:56.000Z">
+<meta property="article:modified_time" content="2023-08-29T03:10:32.428Z">
+<meta property="article:author" content="ysich">
+<meta property="article:tag" content="资源管理 AssetBundle 热更新">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>AssetBundle详解 - ysich&#39;Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>三十六分热</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AssetBundle详解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-29 11:03" pubdate>
+          2023年8月29日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AssetBundle详解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="AssetBundle详解"><a href="#AssetBundle详解" class="headerlink" title="AssetBundle详解"></a>AssetBundle详解</h1><h2 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h2><h3 id="一个AssetBundle有什么？"><a href="#一个AssetBundle有什么？" class="headerlink" title="一个AssetBundle有什么？"></a>一个AssetBundle有什么？</h3><ul>
+<li>一个序列化文件，标识符、是否压缩和清单(manifest)数据。<ul>
+<li>manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置</li>
+</ul>
+</li>
+<li>资源文件，二进制数据块，支持异步加载<ul>
+<li>所有资源都被序列化，如果选择压缩则将序列化数据压缩。</li>
+</ul>
+</li>
+</ul>
+<h3 id="AssetBundle的压缩方式"><a href="#AssetBundle的压缩方式" class="headerlink" title="AssetBundle的压缩方式"></a>AssetBundle的压缩方式</h3><h4 id="LZMA"><a href="#LZMA" class="headerlink" title="LZMA"></a>LZMA</h4><p>基于文件流</p>
+<p>包体小，解压时间长</p>
+<p>因为使用流的方式，所以使用时必须加载整包，解压后会被重新压缩成LZ4</p>
+<h4 id="LZ4"><a href="#LZ4" class="headerlink" title="LZ4"></a>LZ4</h4><p>基于块(Chunk)的算法，读取文件时只需要解压文件所在的块数据</p>
+<p>加载速度和不加载速度差不多，优势在于在内存中的占用变小了</p>
+<p>会比LZMA的包体大25%，可以使用其他压缩手段进行二次压缩，包体也可以被压得很小。</p>
+<h4 id="差异更新"><a href="#差异更新" class="headerlink" title="差异更新"></a>差异更新</h4><p>可以通过包体的差异更新，在热更新的时候通过算法比对出新增内容再进行更新。因为是基于Chunk的算法，所以比对出来的差异文件会比较小，因为数据相对连续。</p>
+<p>差异更新一般分为两种</p>
+<ul>
+<li>基于源文件(安装包)<ul>
+<li>成功率高，算法简单</li>
+<li>但在移动端保存所有源文件，在更新文件整合后再编译不现实。</li>
+</ul>
+</li>
+<li>基于二进制<ul>
+<li>也是最常用的差异比对方式，也是大多数PC游戏的做法。算是很成熟的技术了</li>
+<li>可以和AB包配合，打出更小的热更包</li>
+</ul>
+</li>
+</ul>
+<h5 id="Bsdiff-基于二进制的比对算法"><a href="#Bsdiff-基于二进制的比对算法" class="headerlink" title="Bsdiff ( 基于二进制的比对算法 )"></a>Bsdiff ( 基于二进制的比对算法 )</h5><p>二进制比对生成差异化文件</p>
+<p>比对两个版本文件的二进制数据，然后生成一个patch文件，再将这个patch打到旧文件就可以生成新文件。也就是游戏中的更新补丁包。</p>
+<p>缺点：需要考虑二进制效率，生成的差异化文件可能会比小包情况大一些。</p>
+<h6 id="AssetBundle压缩算法不同导致的差异化文件差异"><a href="#AssetBundle压缩算法不同导致的差异化文件差异" class="headerlink" title="AssetBundle压缩算法不同导致的差异化文件差异"></a>AssetBundle压缩算法不同导致的差异化文件差异</h6><p><strong>在<code>LZ4</code>和<code>LZMA</code>两种压缩方式中，生成的差异化文件大小也是不同的。因为前面提到的<code>AssetBundle</code>的压缩算法都是先序列化再压缩。这就导致了<code>LZMA</code>的压缩算法可能导致一个<code>Asset</code>的数据分散开导致差异化文件过大，而<code>LZ4</code>压缩则是按块压缩数据相对比较集中。所以<code>LZ4</code>生成的差异化文件都比<code>LZMA</code>小。</strong></p>
+<p><code>Uncompressed</code>(不压缩)的方式则差异不大</p>
+<h6 id="差异化文件-补丁-合并"><a href="#差异化文件-补丁-合并" class="headerlink" title="差异化文件(补丁)合并"></a>差异化文件(补丁)合并</h6><p>在合并差异化文件过程中，至少会进行一次文件复制，所以考虑到合并造成的IO消耗，所以单个包的大小还是需要限制一下。</p>
+<p>在patch过程中，可能会造成界面卡顿，所以最好在其他线程中处理。</p>
+<h4 id="补丁文件的版本规划"><a href="#补丁文件的版本规划" class="headerlink" title="补丁文件的版本规划"></a>补丁文件的版本规划</h4><p>保持上个版本的全部文件，然后和新版本的文件做一次diff操作，然后把diff和新版本文件上传CDN。</p>
+<p>如果有玩家多个版本没有更新，那么就下载多个版本的diff进行多次合并。如果跨越的版本数量过多，也可以中间插几个大版本的补丁包来减少补丁数量。</p>
+<h3 id="AssetBundle依赖项"><a href="#AssetBundle依赖项" class="headerlink" title="AssetBundle依赖项"></a>AssetBundle依赖项</h3><p>当<code>Asset</code>被打进<code>AssetBundle包</code>时，其他<code>AssetBundle包</code>依赖这个<code>Asset</code>时会变成依赖这个<code>AssetBundle包</code>。</p>
+<p>当<code>Asset</code>没有打进<code>AssetBundle包</code>，在构建<code>AssetBundle</code>时如果有依赖于这个<code>Asset</code>则会将它打到一起。如果有多个<code>AssetBundle</code>依赖于这个<code>Asset</code>就会被打入多份，造成冗余。</p>
+<p>如果<code>AssetBundle</code>内有依赖对象，在使用时需要先加载依赖的<code>AssetBundle</code>，Unity不会自动加载依赖项。需要自己根据<code>AssetBundleManifest</code>中加载依赖项。</p>
+<p><strong>当精灵图被依赖时，对应的精灵图集也会被打到AssetBundle中，容易造成图集冗余</strong></p>
+<h3 id="AssetBundle之间的重复信息"><a href="#AssetBundle之间的重复信息" class="headerlink" title="AssetBundle之间的重复信息"></a>AssetBundle之间的重复信息</h3><p>公共的资源最好打入一个<code>AssetBundle包</code>中，否则公共资源可能会被构建在多个<code>AssetBundle包</code>中。从而造成资源冗余，安装包的大小变大，运行时的内存占用量变大。</p>
+<p><strong>一个公共材质如果被打入到AssetBundle中会被视为副本，Unity将同一个材质的每个副本都视为独特材质。如果材质被打入到多个AssetBundle中，每个生成的AssetBundle都会包含此材质(包括其着色器和引用纹理)。Unity将同一个材质的每个副本都视为独特材质，所以还会影响到批处理。</strong></p>
+<p>所以在构建时<code>材质</code>和<code>引用的资源</code>尽量打在同一个AssetBundle中。还可以仅标记材质，因为纹理依赖关系也会被包含在AssetBundle中。</p>
+<h3 id="AssetBundle的加载"><a href="#AssetBundle的加载" class="headerlink" title="AssetBundle的加载"></a>AssetBundle的加载</h3><h4 id="AssetBundle-LoadFromMemoryAsync"><a href="#AssetBundle-LoadFromMemoryAsync" class="headerlink" title="AssetBundle.LoadFromMemoryAsync"></a>AssetBundle.LoadFromMemoryAsync</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">AssetBundleCreateRequest createRequest = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(path));<br></code></pre></td></tr></tbody></table></figure>
+
+<p>按字节数组加载AB包。LZMA会在加载时解压，LZ4则会以压缩状态加载。</p>
+<h4 id="AssetBundle-LoadFromFile"><a href="#AssetBundle-LoadFromFile" class="headerlink" title="AssetBundle.LoadFromFile"></a>AssetBundle.LoadFromFile</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> myLoadedAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, <span class="hljs-string">"myassetBundle"</span>));<br></code></pre></td></tr></tbody></table></figure>
+
+<p>从本地存储中加载AB包。未压缩或LZ4直接从磁盘加载AB包，LZMA则先解压再加载到内存中。</p>
+<h4 id="从AssetBundle中加载资源"><a href="#从AssetBundle中加载资源" class="headerlink" title="从AssetBundle中加载资源"></a>从AssetBundle中加载资源</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//加载指定资源</span><br>T objectFromBundle = bundleObject.LoadAsset&lt;T&gt;(assetName);<br><span class="hljs-comment">//加载全部资源</span><br>Unity.Object[] objectArray = loadedAssetBundle.LoadAllAssets();<br><span class="hljs-comment">//加载依赖清单文件</span><br>AssetBundleManifest manifest = assetBundle.LoadAsset&lt;AssetBundleManifest&gt;(<span class="hljs-string">"AssetBundleManifest"</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="AssetBundle的卸载"><a href="#AssetBundle的卸载" class="headerlink" title="AssetBundle的卸载"></a>AssetBundle的卸载</h3><h4 id="AssetBundle-Unload-true"><a href="#AssetBundle-Unload-true" class="headerlink" title="AssetBundle.Unload(true)"></a>AssetBundle.Unload(true)</h4><p>强制卸载掉所有AssetBundle中加载的Asset，包括AssetBundle的映射结构，和从AssetBundle创建出来的所有资源。释放AssetBundle实例。</p>
+<p><strong>会导致正在使用的资源丢失</strong>，需要一套自己的机制(引用计数)来关注是否有正在使用的资源。</p>
+<h4 id="AssetBundle-Unload-false"><a href="#AssetBundle-Unload-false" class="headerlink" title="AssetBundle.Unload(false)"></a>AssetBundle.Unload(false)</h4><p>AssetBundle内的序列化数据会被释放，正在使用的资源还保持完好。等于断开了AssetBundle和实例的联系。再次使用这个AB包时，则会重新实例化一个新的，旧的就引用不到了。就造成了重复资源的冗余。</p>
+<h4 id="Resources-UnloadUnusedAssets"><a href="#Resources-UnloadUnusedAssets" class="headerlink" title="Resources.UnloadUnusedAssets"></a>Resources.UnloadUnusedAssets</h4><p>卸载掉没有使用的Assets，作用范围是整个系统。</p>
+<p>作用方式类似于GC，会遍历所有资源进行引用查询，会阻塞线程。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p><code>AssetBundle.Unload(false)</code>更适用于一次性使用的资源，卸载后，在特定时机触发<code>Resources.UnloadUnusedAssets</code>就能卸载干净了。</p>
+<p><code>AssetBundle.Unload(true)</code>使用时最好添加引用计数作为保护。或在应用程序生命周期中具有明确定义的卸载瞬态 AssetBundle 的时间点，例如在关卡之间或在加载屏幕期间。</p>
+<h3 id="AssetBundle变体"><a href="#AssetBundle变体" class="headerlink" title="AssetBundle变体"></a>AssetBundle变体</h3><p>在Android 生态中有些设备不支持ETC2的纹理只支持ETC1的纹理，那么可以构建AssetBundle变体。使用ETC1支持的资源格式来构建AssetBundle变体，构建足够多的变体来支持Android 生态中不支持ETC2的设备。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%AF%87/" class="category-chain-item">资源管理篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-AssetBundle-%E7%83%AD%E6%9B%B4%E6%96%B0/">#资源管理 AssetBundle 热更新</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AssetBundle详解</div>
+      <div>http://ysich.github.io/2023/08/29/AssetBundle详解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ysich</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/14/%E7%BA%B9%E7%90%86%E8%AF%A6%E8%A7%A3/" title="纹理详解">
+                        <span class="hidden-mobile">纹理详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
