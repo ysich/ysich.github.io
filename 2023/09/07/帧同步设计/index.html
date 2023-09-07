@@ -1,0 +1,966 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ysich">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="帧同步设计第1节 简介状态同步 逻辑计算在服务器 服务器同步变化给客户端 客户端只做表现  帧同步 服务器广播客户端指令 逻辑计算在客户端逻辑层 客户端逻辑层发送变化给表现层 相当于把状态同步的服务器挪到了客户端逻辑层  适合的场景操作少，逻辑变化多 同场景玩家数少，需要同时同步的数量少 同视野单位特别多的场景 只适合开房间类型 不太需要单位信息保密的场景，安全性等级较低的场景 以上条件缺一不可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="帧同步设计">
+<meta property="og:url" content="http://ysich.github.io/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="ysich&#39;Blog">
+<meta property="og:description" content="帧同步设计第1节 简介状态同步 逻辑计算在服务器 服务器同步变化给客户端 客户端只做表现  帧同步 服务器广播客户端指令 逻辑计算在客户端逻辑层 客户端逻辑层发送变化给表现层 相当于把状态同步的服务器挪到了客户端逻辑层  适合的场景操作少，逻辑变化多 同场景玩家数少，需要同时同步的数量少 同视野单位特别多的场景 只适合开房间类型 不太需要单位信息保密的场景，安全性等级较低的场景 以上条件缺一不可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ysich.github.io/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/image-20230817212941518.png">
+<meta property="article:published_time" content="2023-09-07T02:23:48.000Z">
+<meta property="article:modified_time" content="2023-09-07T02:29:50.750Z">
+<meta property="article:author" content="ysich">
+<meta property="article:tag" content="框架 ET框架 帧同步 状态帧同步">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ysich.github.io/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/image-20230817212941518.png">
+  
+  
+  
+  <title>帧同步设计 - ysich&#39;Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>三十六分热</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="帧同步设计"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-07 10:23" pubdate>
+          2023年9月7日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">帧同步设计</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="帧同步设计"><a href="#帧同步设计" class="headerlink" title="帧同步设计"></a>帧同步设计</h1><h2 id="第1节-简介"><a href="#第1节-简介" class="headerlink" title="第1节 简介"></a>第1节 简介</h2><h3 id="状态同步"><a href="#状态同步" class="headerlink" title="状态同步"></a>状态同步</h3><ul>
+<li>逻辑计算在服务器</li>
+<li>服务器同步变化给客户端</li>
+<li>客户端只做表现</li>
+</ul>
+<h3 id="帧同步"><a href="#帧同步" class="headerlink" title="帧同步"></a>帧同步</h3><ul>
+<li>服务器广播客户端指令</li>
+<li>逻辑计算在客户端逻辑层</li>
+<li>客户端逻辑层发送变化给表现层</li>
+<li>相当于把状态同步的服务器挪到了客户端逻辑层</li>
+</ul>
+<h4 id="适合的场景"><a href="#适合的场景" class="headerlink" title="适合的场景"></a>适合的场景</h4><p>操作少，逻辑变化多</p>
+<p>同场景玩家数少，需要同时同步的数量少</p>
+<p>同视野单位特别多的场景</p>
+<p>只适合开房间类型</p>
+<p>不太需要单位信息保密的场景，安全性等级较低的场景</p>
+<p>以上条件缺一不可</p>
+<h4 id="帧同步优势"><a href="#帧同步优势" class="headerlink" title="帧同步优势"></a>帧同步优势</h4><ul>
+<li>流量少<ul>
+<li>具体流量多少看玩家数量</li>
+</ul>
+</li>
+<li>录像文件小<ul>
+<li>只需要记录操作</li>
+<li>状态同步则是保存协议消息</li>
+</ul>
+</li>
+<li>服务器不做验证的话，服务器消耗小</li>
+</ul>
+<h4 id="帧同步误区"><a href="#帧同步误区" class="headerlink" title="帧同步误区"></a>帧同步误区</h4><ul>
+<li>帧同步手感更好</li>
+<li>帧同步开发简单，难度低</li>
+<li>帧同步对网络速度要求低<ul>
+<li>如果需要体验流畅反而网络要求更高</li>
+</ul>
+</li>
+<li>帧同步各个客户端表现一模一样<ul>
+<li>只能保证逻辑层一致</li>
+</ul>
+</li>
+<li>帧同步可以减少服务器</li>
+</ul>
+<h4 id="帧同步的几种方案"><a href="#帧同步的几种方案" class="headerlink" title="帧同步的几种方案"></a>帧同步的几种方案</h4><ul>
+<li>服务器消息驱动帧同步：服务端固定帧率收集消息，定时广播，客户端指令没有帧的概念，帧是由服务端消息驱动的，适合玩家数量稍多的场景，预测只能做表现层的预测，开发难度相对简单</li>
+<li>预测回滚帧同步：服务的固定帧率收集消息，客户端也有自己的帧，适合2-3人的场景，逻辑层有做预测，预测失败则回滚，开发难度大</li>
+</ul>
+<h2 id="第2节-网络0GC处理"><a href="#第2节-网络0GC处理" class="headerlink" title="第2节 网络0GC处理"></a>第2节 网络0GC处理</h2><h3 id="0GC的消除策略"><a href="#0GC的消除策略" class="headerlink" title="0GC的消除策略"></a>0GC的消除策略</h3><p>0GC就是不分配，共用对象池。但是多线程情况下共用对象池存在风险。</p>
+<p>服务端不消除GC</p>
+<p>客户端手动消除消息GC，消除量级比较大的消息</p>
+<h3 id="0GC的方式"><a href="#0GC的方式" class="headerlink" title="0GC的方式"></a>0GC的方式</h3><ul>
+<li>MessagePool<ul>
+<li>线程安全的消息对象池</li>
+</ul>
+</li>
+<li>MemoryPack提供了ref的反序列化方式<ul>
+<li>不是new对象的形式</li>
+</ul>
+</li>
+<li>消息中的成员回收</li>
+<li>消息中容器回收，MemoryPack会对容器调用Clear，容器中最好是struct<ul>
+<li>MemoryPack构建struct的时候用的非反射方式，没有拆装箱避免了gc</li>
+</ul>
+</li>
+<li>MemorySteam GC消除</li>
+<li>Udp Send Recv GC消除</li>
+</ul>
+<h3 id="消息的创建回收"><a href="#消息的创建回收" class="headerlink" title="消息的创建回收"></a>消息的创建回收</h3><ul>
+<li>MessageObject.IsFromPool<ul>
+<li>消息都继承于MessageObject</li>
+</ul>
+</li>
+<li>发送消息时创建，消息传到网络层序列化完成后回收<ol>
+<li>发送的时候需要自己调用Create(true);</li>
+<li>回收是框架自动调用Dispose();</li>
+</ol>
+</li>
+<li>接受消息时创建，消息传到主线程使用完成后回收<ol>
+<li>接收的时候框架自动调用FetchMessage</li>
+<li>回收需要自己调用Dispose();</li>
+</ol>
+</li>
+</ul>
+<h3 id="MemoryBuffer创建回收"><a href="#MemoryBuffer创建回收" class="headerlink" title="MemoryBuffer创建回收"></a>MemoryBuffer创建回收</h3><p>MemoryBuffer是MemoryStream子类，主要为了配合MemoryPack用的</p>
+<p>IBufferWriter接口</p>
+<p>框架自动回收，使用者不需要关心</p>
+<h3 id="MemoryPack-Source-Generator"><a href="#MemoryPack-Source-Generator" class="headerlink" title="MemoryPack Source Generator"></a>MemoryPack Source Generator</h3><p>不像protobuf通过反射生成代码，完全支持unity</p>
+<p>AssemblyBuilder失效</p>
+<p>使用IDE编译Dll，所有代码放到Unity.Codes工程里面，开启ENABLE_CODES启用dll模式，跟ET7中相反</p>
+<p>Unity.Codes分成Model跟Hotfix，报错，没找到问题，所以客户端热重载暂时不能用</p>
+<h2 id="第3节-框架层调整"><a href="#第3节-框架层调整" class="headerlink" title="第3节 框架层调整"></a>第3节 框架层调整</h2><ol>
+<li>EntityRef<ul>
+<li>原本对Entity的引用只能通过InstanceId，现在增加EntityRef持有Entity</li>
+<li>当Entity被释放或者回收掉时，再去取EntityRef则为null</li>
+</ul>
+</li>
+<li>Entity不再统一注册到Root中<ul>
+<li>在原本的设计中Root管理Entity，通过InstanceId为key来取出Entity。</li>
+<li>只有Actor对象的Entity挂载了MailboxComponent的才会注册到ActorMessageDispatcherComponent中</li>
+</ul>
+</li>
+<li>TypeSystem EntitySystemSingleton，可扩展的Entity System机制<ul>
+<li>把之前EventSystem内一些生命周期的事件，抽出到EntitySystemSingleton中。</li>
+<li>LSEntitySystemSingleton</li>
+</ul>
+</li>
+<li>Domain IScene, 更完善，Scene的代码都简化了<ul>
+<li>只要Entity有IScene接口都可以是Domain</li>
+<li>Scene中简化了Parent和Domain的字段</li>
+</ul>
+</li>
+<li>Entity中Components改成SortedDictionary，保证有序<ul>
+<li>原本的Entity中的Components只是字段，在不同机器上的hash值不一样顺序也不一样。帧同步则会有问题，在Entity执行Disponse时，不同机器移除顺序不同则会造成问题。</li>
+</ul>
+</li>
+<li>Mongo序列化BeginInit, SerializeSystem<ul>
+<li>Entity序列化时，调用BeginInit遍历判断Componets是否有ISerializeToEntity接口，有则加入ComponentDB</li>
+<li>增加SerializeSystem，用于判断有些同类型Entity哪些需要存储哪些不需要存储。</li>
+</ul>
+</li>
+<li>配置文件改成了Bson，直接支持Dictionary</li>
+</ol>
+<h2 id="第4节-帧同步架构"><a href="#第4节-帧同步架构" class="headerlink" title="第4节 帧同步架构"></a>第4节 帧同步架构</h2><p><img src="/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/image-20230817212941518.png" srcset="/img/loading.gif" lazyload alt="image-20230817212941518"></p>
+<ul>
+<li>客户端的Room相比服务端的Room多了个表现层</li>
+<li>客户端挂载的是LSClientUpdate，服务端挂载的是LSServerUpdate，客户端相对服务端而言多了预测回滚的功能。</li>
+</ul>
+<h2 id="第5节-LSEntity"><a href="#第5节-LSEntity" class="headerlink" title="第5节 LSEntity"></a>第5节 LSEntity</h2><h3 id="为什么要LSEntity"><a href="#为什么要LSEntity" class="headerlink" title="为什么要LSEntity"></a>为什么要LSEntity</h3><ol>
+<li>限制Entity的Id生成<ul>
+<li>Entity的id都是通过IdGenerater生成，那么不同设备上生成出来的id会不一致。会导致逻辑不一致。</li>
+<li>LSEntity AddChild和AddComponent时生成的id是统一的。</li>
+<li>LSEntity 的Id序列化和反序列操作后不变。</li>
+</ul>
+</li>
+<li>LSWorld不能使用Update LateUpdate Load等等<ul>
+<li>需要专用的Update类似于FixedUpdate，每固定时间触发。</li>
+<li>服务器的Load和客户端的Load，代码不一致可能导致结果也不一致。</li>
+</ul>
+</li>
+<li>序列和反序列化导致InstanceId跟System绑定关系失效，不能写一个老式的FixedUpdate<ul>
+<li>回滚逻辑在把操作进行序列化和反序列后，instanceId产生变化会自增1，导致失效。</li>
+</ul>
+</li>
+<li>用Id跟System绑定，专用的 LSUpdateSystem<ul>
+<li>FixedUpdateSystem的实现</li>
+</ul>
+</li>
+<li>可以针对LSEntity，加上float分析器限制</li>
+</ol>
+<h3 id="LSWorld：LSEntity"><a href="#LSWorld：LSEntity" class="headerlink" title="LSWorld：LSEntity"></a>LSWorld：LSEntity</h3><p>LSWorld只能挂在LSEntity</p>
+<ol>
+<li>定点数部分，纯逻辑层<ul>
+<li>没必要所有代码都使用定点数，只有在于帧同步玩法内才需要。比如Room内LSWorld部分才使用定点数。</li>
+</ul>
+</li>
+<li>序列化反序列化, 回滚的部分<ul>
+<li>只有逻辑层、纯定点数部分才需要回滚。</li>
+</ul>
+</li>
+<li>Id生成器</li>
+<li>随机数<ul>
+<li>服务器生成的随机数种子，使客户端通过Id生成器生成的Id能保持一致。</li>
+</ul>
+</li>
+<li>LSUpdater，注意，这个不是fixedUpdate，记录有哪些Entity有LSUpdate</li>
+</ol>
+<h3 id="System"><a href="#System" class="headerlink" title="System"></a>System</h3><ul>
+<li>LSEntitySystemSington</li>
+<li>LSUpdateSystem</li>
+<li>LSRollbackSystem<ul>
+<li>和表现层做和解用的</li>
+</ul>
+</li>
+</ul>
+<h3 id="LSUpdater-Update驱动"><a href="#LSUpdater-Update驱动" class="headerlink" title="LSUpdater.Update驱动"></a>LSUpdater.Update驱动</h3><p>Room上挂有一个Updater组件，在固定帧调用LSWorld的Updater</p>
+<p>客户端的Update间隔和服务端不一致，客户端可能需要动态调整，时间的膨胀、搜索。在服务端的Room上挂服务端的Update组件，在客户端的Room上挂客户端的Update组件。</p>
+<h3 id="LSRollbacke"><a href="#LSRollbacke" class="headerlink" title="LSRollbacke"></a>LSRollbacke</h3><p>在表现层使用，用于状态回滚。表现层向逻辑层进行一一核对。</p>
+<h2 id="第6节-预测回滚"><a href="#第6节-预测回滚" class="headerlink" title="第6节 预测回滚"></a>第6节 预测回滚</h2><h3 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h3><h4 id="FrameBuffer输入缓存"><a href="#FrameBuffer输入缓存" class="headerlink" title="FrameBuffer输入缓存"></a>FrameBuffer输入缓存</h4><p>给记录的帧率限定数量，当超过限定值时则从记录的第一帧开始覆盖。</p>
+<ul>
+<li>记录所有人的输入。每一帧的输入，每一帧都是一个字典。</li>
+<li>每一帧的快照，记录帧并序列化。</li>
+<li>每一帧都有一个hash值，用于做帧内容的对比。</li>
+</ul>
+<h4 id="FixedTimeCounter-固定时间计算，固定时间可改变"><a href="#FixedTimeCounter-固定时间计算，固定时间可改变" class="headerlink" title="FixedTimeCounter 固定时间计算，固定时间可改变"></a>FixedTimeCounter 固定时间计算，固定时间可改变</h4><p>用来计算FixedUpdate的时间，到FixedTime的时间才会调用LSWorld的Update。</p>
+<p>为什么不用固定时间调用？因为每帧时间不是固定的，客户端的时间会膨胀收缩。如果客户端的时间比服务端慢了，那么客户端的帧的间隔会减小。因为要保证客户端的预测帧一直跑在服务器的权威帧之前。</p>
+<h4 id="LSWorld"><a href="#LSWorld" class="headerlink" title="LSWorld"></a>LSWorld</h4><p>Room的child 可以有多个，持有Ref的引用性能会高些。</p>
+<h4 id="PredictionFrame-预测帧-AuthorityFrame-权威帧"><a href="#PredictionFrame-预测帧-AuthorityFrame-权威帧" class="headerlink" title="PredictionFrame 预测帧 AuthorityFrame 权威帧"></a>PredictionFrame 预测帧 AuthorityFrame 权威帧</h4><p>预测帧就是客户端根据玩家操作预测出来的帧。服务器在做转发时，如果当前帧有玩家没输入则使用上一帧输入的数据做预测。</p>
+<p>权威帧对客户端而言就是服务器下发的帧，确认帧。对服务端而言不做预测所以都是权威帧。</p>
+<h3 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h3><p>作用：</p>
+<ol>
+<li>本地立即响应</li>
+<li>提前发送操作给服务端，服务端的权威帧跑到了后可以马上广播</li>
+</ol>
+<p>策略：</p>
+<ol>
+<li>客户端预测自己的输入，直接获取。</li>
+<li>客户端预测别人的输入，取上一帧的输入。避免权威帧到了之后做过多的回滚操作，因为大概率操作和上一帧一样。 </li>
+<li>服务的预测，时间到了，客户端的输入没有发送过来，直接取客户端上一帧的输入，相当于丢弃客户端的输入。</li>
+</ol>
+<h3 id="权威消息处理"><a href="#权威消息处理" class="headerlink" title="权威消息处理"></a>权威消息处理</h3><ol>
+<li><p>权威消息比预测消息早</p>
+<p>如果预测消息晚于权威消息，那么直接使用权威帧就不用预测了。</p>
+</li>
+<li><p>权威消息跟预测内容一样</p>
+<p>消息一样则不用处理</p>
+</li>
+<li><p>权威消息跟预测消息不一致</p>
+<p>如果和预测消息不同，那么就需要进行回滚。客户端先把权威帧的数据拷贝到预测帧中，然后回滚到权威帧时的world，然后执行权威帧。权威帧后面从帧数则要重新进行预测。</p>
+<p>表现层，遍历Room下所有非LSEntity的Components，因为LSEntity是数据层使用的，然后做递归遍历执行所有的RollbackSystem。</p>
+</li>
+</ol>
+<h2 id="第7节-客户端时间膨胀收缩-检测不同步"><a href="#第7节-客户端时间膨胀收缩-检测不同步" class="headerlink" title="第7节 客户端时间膨胀收缩-检测不同步"></a>第7节 客户端时间膨胀收缩-检测不同步</h2><p>客户端的预测帧需要在服务端处理到权威帧下一帧之前到达服务端。</p>
+<h3 id="动态调整客户端fixedTime"><a href="#动态调整客户端fixedTime" class="headerlink" title="动态调整客户端fixedTime"></a>动态调整客户端fixedTime</h3><p>每秒钟，服务端发送客户端的消息延迟时间给客户端 Room2C_AdiustUpdateTime</p>
+<h4 id="消息延迟的时间怎么算？"><a href="#消息延迟的时间怎么算？" class="headerlink" title="消息延迟的时间怎么算？"></a><strong>消息延迟的时间怎么算？</strong></h4><p>比如当服务器跑到第2帧了，但是服务器只记录了第0帧的输入数据，那差距就是2帧的时间。</p>
+<p>当客户端收到服务端同步的消息延迟时，缩放update的间隔，在一秒内完成调整(把每一帧的时间平均分一下)。</p>
+<h4 id="调整公式"><a href="#调整公式" class="headerlink" title="调整公式"></a>调整公式</h4><p><code>新的一帧时间 = （原来的一帧时间 + ( diffTime - 一帧时间 ) ）/ ( 1000 / 一阵时间 )</code></p>
+<p>ps: <code>diffTime - 一帧时间</code> ，因为预期是快一帧的时间所以减去一帧时间。</p>
+<h4 id="调整限制"><a href="#调整限制" class="headerlink" title="调整限制"></a>调整限制</h4><p>给调整的时间加个限制，如果一秒内调整不完那就放到下一秒调整。</p>
+<p>最快一秒25帧，最慢一秒15帧</p>
+<h3 id="不同步检测"><a href="#不同步检测" class="headerlink" title="不同步检测"></a>不同步检测</h3><p>客户端权威帧改变的时候，计算lsworld序列化的hash值给服务端，服务端对比hash值</p>
+<h2 id="第8节-录像Replay"><a href="#第8节-录像Replay" class="headerlink" title="第8节 录像Replay"></a>第8节 录像Replay</h2><h3 id="帧同步录像包含信息"><a href="#帧同步录像包含信息" class="headerlink" title="帧同步录像包含信息"></a>帧同步录像包含信息</h3><ol>
+<li><p>记录初始化信息</p>
+<p>玩家、时间、版本号这类信息</p>
+</li>
+<li><p>记录每帧输入</p>
+<p>记录对局中的每一帧的数据</p>
+</li>
+<li><p>定期记录LSWorld序列化</p>
+<p>如果没有序列化LSWorld，那在回放指定帧时计算过程会很长，计算过程可能导致卡顿。</p>
+<p>比如每一分钟记录一次，播放指定帧时直接取出序列化文件反序列化。</p>
+</li>
+</ol>
+<h3 id="LSReplayUpdater"><a href="#LSReplayUpdater" class="headerlink" title="LSReplayUpdater"></a>LSReplayUpdater</h3><p>LSReplayUpdater是从Replay中取出帧指令执行的，跟客户端和服务端的updater从framebuffer中取数据不同。</p>
+<h3 id="Replay跳转"><a href="#Replay跳转" class="headerlink" title="Replay跳转"></a>Replay跳转</h3><p>JumpReplay</p>
+<p>如果在replay时快照的下标和当前权威帧计算出来的下标一致时，则不再取出快照进行序列化。因为快照是同一份。</p>
+<p>如果跳转的帧小于当前的权威帧，那么还是需要反序列快照进行播放。</p>
+<p><code>fame/快照记录的时间=快照下标</code></p>
+<h3 id="Replay加速播放"><a href="#Replay加速播放" class="headerlink" title="Replay加速播放"></a>Replay加速播放</h3><p>ChangeReplaySpeed</p>
+<p>调整每一帧播放的间隔时间</p>
+<h2 id="第9节-断线重连"><a href="#第9节-断线重连" class="headerlink" title="第9节 断线重连"></a>第9节 断线重连</h2><p>主要在loginGate的部分</p>
+<ol>
+<li><p>判断账号是否在线，需要做顶号操作。可能是旧连接保持连接或者被顶号。</p>
+</li>
+<li><p>判断是否在帧同步房间内。</p>
+</li>
+<li><p>取出当前room数据转发给客户端，客户端根据数据生成room</p>
+</li>
+<li><p>把session挂上玩家，playersession赋值session</p>
+<p>之前的设计session是一个entity。帧同步这里则是PlayerSessionComponent上的一个变量。这样做的好处就是session如果空了，下次断线重连赋值后就可以直接做转发。判空就行，不用判断连接状态。</p>
+</li>
+<li><p>客户端收到Reconnect消息时，进行场景切换。SceneChangeToReconnect</p>
+</li>
+</ol>
+<h2 id="第10节-同步方式变种"><a href="#第10节-同步方式变种" class="headerlink" title="第10节 同步方式变种"></a>第10节 同步方式变种</h2><h3 id="多个LSWorld"><a href="#多个LSWorld" class="headerlink" title="多个LSWorld"></a>多个LSWorld</h3><p>比如守望先锋有两个world，一个计算战斗一个计算回放。两个并行的逻辑层，在进行回放的时候把world进行切换一下就可以看到战斗回放。</p>
+<h3 id="取消每帧序列化"><a href="#取消每帧序列化" class="headerlink" title="取消每帧序列化"></a>取消每帧序列化</h3><p>可以再进行抽象，抽象出<code>权威world</code>和<code>预测world</code>。就不需要每帧都进行序列化，当发生回滚时只需要把<code>权威world</code>copy到<code>预测world</code>中然后生成新的<code>预测world</code>，可以减少每帧序列化产生的gc。</p>
+<p>缺点就是需要同时计算两个world，计算量会更大。</p>
+<h3 id="守望先锋状态帧"><a href="#守望先锋状态帧" class="headerlink" title="守望先锋状态帧"></a>守望先锋状态帧</h3><p>守望先锋既同步<code>操作帧</code>，也同步<code>状态</code>。每帧计算状态脏数据，同步的状态是脏数据。</p>
+<p>因为是纯struct结果，很容易做内存对比取出脏数据。</p>
+<p>如果帧预测成功，则丢弃服务器下发的脏数据。</p>
+<p>帧预测失败则回滚到权威帧，然后应用服务器发过来的脏数据包，继续执行到预测帧。</p>
+<p>优点：脏数据自动计算</p>
+<p>缺点：需要用纯粹的ECS进行内存对比，或者通过计算差异的代码来计算差异，不够灵活。</p>
+<h3 id="ET状态帧"><a href="#ET状态帧" class="headerlink" title="ET状态帧"></a>ET状态帧</h3><ol>
+<li>ET不需要自动计算差异，仍然和做MMO一样，计算变化的消息，每帧把变化的消息打包同步给客户端。</li>
+<li>帧预测成功，则丢弃消息。</li>
+<li>帧预测失败则回滚到权威帧，应用服务器发过来的变化消息，继续执行到预测帧。</li>
+<li>优点：不需要纯ECS，很灵活。<br>缺点：需要跟MMO一样处理任何变化，创建不同的变化消息协议，无法自动化。</li>
+</ol>
+<h3 id="ET状态帧继续扩展"><a href="#ET状态帧继续扩展" class="headerlink" title="ET状态帧继续扩展"></a>ET状态帧继续扩展</h3><p>做两个world，一个权威world，一个预测world。服务器始终和客户端的权威world做状态同步，所以权威world一直是正确的数据。</p>
+<p>使用ET状态帧同步，服务端可以做AOI裁剪，只同步玩家能看到的减少数据和计算量。预测也可以只关心看到的数据。</p>
+<p>不用定点数，因为服务端权威world和客户端的权威world只做状态同步，所以可以不使用定点数。客户端相当于只充当表现层，真正的逻辑层在服务端。</p>
+<p>预测失败，则复制权威world到预测world</p>
+<p>定期同步权威world到预测world，进行校准。</p>
+<p>甚至可以权威world和预测world跟mmo一样只是部分逻辑层。相当于只是状态帧同步加上一个帧预测。</p>
+<h3 id="ET状态同步预测回滚"><a href="#ET状态同步预测回滚" class="headerlink" title="ET状态同步预测回滚"></a>ET状态同步预测回滚</h3><p>状态同步，客户端都是表现，可以认为是表现层的预测回滚。moba等无法逻辑层预测回滚的游戏也能使用这种表现层预测回滚的形式</p>
+<p>比如说demo鼠标点击移动做预测回滚</p>
+<p>本地寻路完成立即移动，不用等服务端返回。向服务端发送寻路请求带一个客户端的时间</p>
+<p>服务端返回寻路消息，这个时候，本地可以根据客户端这次移动了多少时间，重新计算服务端返回的路径应该走到了什么位置。然后表现层插值过去</p>
+<p>收到stop的消息，预测失败，则立即stop到指定位置</p>
+<h3 id="更多方式"><a href="#更多方式" class="headerlink" title="更多方式"></a>更多方式</h3><p>大家取发掘，根据项目灵活应变</p>
+<p>定点数物理库:</p>
+<p><a href="https://et-framework.cn/d/1501-by/3">https://et-framework.cn/d/1501-by/3</a></p>
+<h2 id="第11节-补充"><a href="#第11节-补充" class="headerlink" title="第11节 补充"></a>第11节 补充</h2><h3 id="Updater中为什么要排序？"><a href="#Updater中为什么要排序？" class="headerlink" title="Updater中为什么要排序？"></a>Updater中为什么要排序？</h3><p><strong>LSWorld中的updater中的id为什么要排序？</strong></p>
+<p><strong>两个设备计算一致，id插入的顺序也一致为什么要排序？</strong></p>
+<p>Updater中的Entity是RegisterSystem注册进去的</p>
+<p>反序列化注册Entity domain的时候会RegisterSystem</p>
+<p>反序列化注册domain是从上到下执行的。</p>
+<p>但是在运行时执行的顺序无法保证。而实际运行中的Updater并不是按这个规律执行</p>
+<p>所以都用排序的方式，保持一致性。</p>
+<p><strong>帧同步逻辑内有关执行顺序的逻辑都需要小心，因为执行顺序不同造成的结果也是不同的。</strong></p>
+<h3 id="预测回滚帧同步中逻辑层不能用协程"><a href="#预测回滚帧同步中逻辑层不能用协程" class="headerlink" title="预测回滚帧同步中逻辑层不能用协程"></a>预测回滚帧同步中逻辑层不能用协程</h3><p>预测回滚帧同步中逻辑层不能用协程，服务端驱动的状态帧同步可以</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">// 1</span><br><span class="hljs-keyword">await</span> F1(); <span class="hljs-comment">// 调用F2</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">await</span> F2(); <span class="hljs-comment">// 调用F3</span><br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">await</span> F3(); <span class="hljs-comment">// 调用F4</span><br><span class="hljs-comment">// 4</span><br><span class="hljs-keyword">await</span> F4();<br><span class="hljs-comment">//第四帧回滚到第一帧，协程F1重新执行，没什么问题</span><br><span class="hljs-comment">//第四帧回滚到第二帧，协程状态机并不会重新回到第二帧的状态，导致协程丢失</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>因为协程的连续调用是链式反应。调用F2函数依赖F1函数执行完后才会调用。所以就算数据回滚了，函数的调用顺序也是有依赖关系。所以不能用协程。</p>
+<h3 id="预测回滚帧同步中使用事件的注意事项"><a href="#预测回滚帧同步中使用事件的注意事项" class="headerlink" title="预测回滚帧同步中使用事件的注意事项"></a>预测回滚帧同步中使用事件的注意事项</h3><h4 id="逻辑层抛出事件，表现层订阅事件"><a href="#逻辑层抛出事件，表现层订阅事件" class="headerlink" title="逻辑层抛出事件，表现层订阅事件"></a>逻辑层抛出事件，表现层订阅事件</h4><ul>
+<li>在回滚的时候，就不能触发表现的事件。因为当回滚时，如果表现层监听了逻辑层抛出的事件，那么就会造成表现层的错误。</li>
+<li>解决办法是回滚过程中修改掉LSWorld的SceneType，这样回滚过程中的事件，表现层就订阅不到了</li>
+<li>回滚完成再把LSWorld的SceneType修改正确</li>
+<li>同样，两个demo中all in one，都是靠domain的SceneType来区分事件的</li>
+<li>更加发散，如果使用权威world跟预测world的方案，区分事件也是一样通过SceneType来区分</li>
+</ul>
+<h3 id="怎么做预测？"><a href="#怎么做预测？" class="headerlink" title="怎么做预测？"></a>怎么做预测？</h3><p>预测只是希望预测准确减少回滚的机率，所以只要计算量不大，怎么准确怎么来就行了</p>
+<p>一般容易预测的就是一直触发的输入，比如移动输入，FPS机枪一直按着射击等等</p>
+<p>按一下就弹起的键一般很难预测准确，就没必要预测了</p>
+<p>比如某个职业有设计技能，需要一直按着按键，那么我们就可以做这种预测</p>
+<h3 id="浮点型分析器限制"><a href="#浮点型分析器限制" class="headerlink" title="浮点型分析器限制"></a>浮点型分析器限制</h3><p>LSEntity的浮点型限制，一个类中有任何包含浮点类型的都会编译报错</p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>: <span class="hljs-title">LSEntity</span><br><br>{<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> a;<br><br>    <span class="hljs-keyword">public</span> List&lt;<span class="hljs-built_in">double</span>&gt; b;<br><br>    <span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">float</span>, <span class="hljs-built_in">int</span>&gt; c;<br><br>    <span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">int</span>, <span class="hljs-built_in">double</span>&gt; d;<br><br>    <span class="hljs-keyword">public</span> Dictionary&lt;<span class="hljs-built_in">int</span>, HashSet&lt;<span class="hljs-built_in">double</span>&gt;&gt; e;<br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" class="category-chain-item">框架篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%A1%86%E6%9E%B6-ET%E6%A1%86%E6%9E%B6-%E5%B8%A7%E5%90%8C%E6%AD%A5-%E7%8A%B6%E6%80%81%E5%B8%A7%E5%90%8C%E6%AD%A5/">#框架 ET框架 帧同步 状态帧同步</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>帧同步设计</div>
+      <div>http://ysich.github.io/2023/09/07/帧同步设计/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ysich</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/29/AssetBundle%E8%AF%A6%E8%A7%A3/" title="AssetBundle详解">
+                        <span class="hidden-mobile">AssetBundle详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
