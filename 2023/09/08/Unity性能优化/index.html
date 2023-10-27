@@ -23,11 +23,17 @@
 <meta property="og:site_name" content="ysich&#39;Blog">
 <meta property="og:description" content="Unity性能优化第1节 静态资源优化在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。  Unity在UPR下也提供了asset检测工具Asset Check。  Audio当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。 Force To">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true">
+<meta property="og:image" content="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/TextureSetting.png">
+<meta property="og:image" content="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationRigSetting.png">
+<meta property="og:image" content="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationSetting.png">
+<meta property="og:image" content="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF.png">
 <meta property="article:published_time" content="2023-09-08T01:18:59.000Z">
-<meta property="article:modified_time" content="2023-09-08T01:20:53.186Z">
+<meta property="article:modified_time" content="2023-10-27T02:25:30.238Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="性能优化 资源管理 Asset">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true">
   
   
   
@@ -237,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          644 字
+          6.4k 字
         
       </span>
     
@@ -248,7 +254,7 @@
         
         
         
-          6 分钟
+          54 分钟
         
       </span>
     
@@ -295,7 +301,12 @@
 <p>Unity在UPR下也提供了asset检测工具<code>Asset Check</code>。 </p>
 <h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><p>当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。</p>
 <h4 id="Force-To-Mono单声道"><a href="#Force-To-Mono单声道" class="headerlink" title="Force To Mono单声道"></a>Force To Mono单声道</h4><p>一些双声道资源两个声道的声音一致，或移动设备下听不出区别则可以开启来减少内存。</p>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>我们应该尽可能使用未压缩的<code>WAV格式文件</code>作为源文件。通过不同平台支持的压缩格式进行压缩。</p>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul>
+<li>PCM ：提供高品质但牺牲文件大小最适合使用在很短的音效上。</li>
+<li>ADPCM： 这种格式适用于大量音效上如脚步爆破和武器，它比PCM小3.5倍但CPU使用率远低于Vorbis/MP3</li>
+<li>Vorbis/MP3： 比PCM小但是品质比PCM低，比ADPCM消耗更多CPU。但大多数情况下我们还是应该使用这种格式，这个选择还多了个Quality可以调节质量改变文件大小 （Quality测试1和100对内存影响并不大）</li>
+</ul>
+<p>我们应该尽可能使用未压缩的<code>WAV格式文件</code>作为源文件。通过不同平台支持的压缩格式进行压缩。</p>
 <p>大部分移动平台下使用<code>Vorbis格式</code>进行压缩，如果音频不进行循环还可以使用<code>mp3格式</code>。</p>
 <p>一些操作系统对特定的压缩格式有特定的优化，比如ios下的<code>mp3格式</code>。</p>
 <p>对一些简短常用的音效还可以使用<code>ADPCM格式</code>，可能压缩比不是最好的但是在播放时解码速度快。</p>
@@ -304,19 +315,234 @@
 <p>在<code>Sample Rate Setting</code>中选择复写采样频率。</p>
 <h4 id="加载类型"><a href="#加载类型" class="headerlink" title="加载类型"></a>加载类型</h4><p>不同的音乐类型推荐使用不同的加载类型。<code>Load Type</code>。</p>
 <ul>
-<li>Decompress On Load<ul>
+<li>Decompress On Load   <strong>加载时解压缩</strong><ul>
 <li>音频压缩后大小小于200kb</li>
+<li>注：在加载时解压缩Vorbis编码的声音比使用它压缩大约多十倍的内存（对于ADPCM编码大约是3.5倍</li>
 </ul>
 </li>
-<li>Compressed In Memory<ul>
+<li>Compressed In Memory   <strong>:压缩在内存中</strong><ul>
 <li>音频压缩后大小大于200kb</li>
+<li>在播放时解压缩，解压缩在混音器线程上发生，并可在Profiler窗口的音频面板中的“DSP CPU”部分进行监视。</li>
 </ul>
 </li>
 <li>Streaming<ul>
 <li>适合背景音，较长较大的音频。通过流加载，避免加载卡顿。</li>
+<li>注：即使没有加载任何音频数据，流式片段也会有大约200KB的过载。</li>
 </ul>
 </li>
 </ul>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p>尽可能使用fbx格式。需要先对dcc工具进行导出设置。 </p>
+<p>优化原始导入模型文件，删除不需要的数据</p>
+<ul>
+<li>统一单位</li>
+<li>导出的网格必须是多边形拓扑，不能是贝塞尔曲线、样条曲线、NURBS、NURMS、曲面细分等</li>
+<li>烘培Deformers,在导出之前，确保变形体被烘培到网格模型上，如骨骼形变烘培到蒙皮权重上</li>
+<li>不建议模型使用的纹理随模型导出<ul>
+<li>会降低unity导入的模型导入效率，还会影响资源管理</li>
+</ul>
+</li>
+<li>如果需要导入Blend shape normals时，必须指定光滑组Smooth groups<ul>
+<li>不是任何时候都需要导出光滑组，因为会损失细节</li>
+</ul>
+</li>
+<li>建议导出时不携带摄像机、灯光、材质等场景信息<ul>
+<li>因为和unity的设置都不同，造成冗余</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true" srcset="/img/loading.gif" lazyload alt="2.png"></p>
+<h4 id="原始模型影响性能点"><a href="#原始模型影响性能点" class="headerlink" title="原始模型影响性能点"></a>原始模型影响性能点</h4><p>前期尽量避免，后期比较难修改。</p>
+<ul>
+<li>最小化面数，不需要微三角面，三角面尽量分布均匀<ul>
+<li>微三角面指一个三角面只包含几个像素</li>
+</ul>
+</li>
+<li>合理的拓扑结果与平滑组，尽可能是闭包<ul>
+<li>如果是几个单独面没有封闭，只是看起来是封闭的。那在unity烘焙的时候就会容易出错。</li>
+</ul>
+</li>
+<li>尽量少的材质个数<ul>
+<li>材质数增多容易造成shader和贴图的爆炸</li>
+</ul>
+</li>
+<li>尽可能少的蒙皮网格<ul>
+<li>尽量用相同的</li>
+</ul>
+</li>
+<li>尽可能少的骨骼数量<ul>
+<li>过多骨骼动画容易造成CPU和GPU的性能瓶颈</li>
+</ul>
+</li>
+<li>FK与IK节点没分离，IK节点没删除</li>
+</ul>
+<h4 id="模型优化"><a href="#模型优化" class="headerlink" title="模型优化"></a>模型优化</h4><ul>
+<li>尽可能的将网格合并到一起</li>
+<li>尽可能使用共享材质</li>
+<li>不要使用网格碰撞体</li>
+<li>不必要不要开启网格读写</li>
+<li>使用合理的LOD级别</li>
+<li>Skin Weights受骨骼影响个过多</li>
+<li>合理压缩网格</li>
+<li>不需要rigs和BlendShapes尽量关闭</li>
+<li>如果可能，禁用法线或切线</li>
+<li>多套模型</li>
+</ul>
+<h4 id="Unity导入设置"><a href="#Unity导入设置" class="headerlink" title="Unity导入设置"></a>Unity导入设置</h4><h5 id="模型设置"><a href="#模型设置" class="headerlink" title="模型设置"></a>模型设置</h5><ul>
+<li>Mesh Compression<ul>
+<li>默认不开启，当确保网格正确时可以开启，可以让网格占用空间变小，但是运行时占用内存不变。</li>
+<li>开启后需要检查一遍，闭包比开放的模型出现概率更小</li>
+</ul>
+</li>
+<li>Read/Write<ul>
+<li>会多复制一份副本，一份副本在内存中，一份副本在显存中。需要动态修改时才开启。</li>
+</ul>
+</li>
+<li>Optimize Mesh和Generate Colliders<ul>
+<li>做网格级碰撞用的</li>
+</ul>
+</li>
+</ul>
+<h3 id="Texture"><a href="#Texture" class="headerlink" title="Texture"></a>Texture</h3><h4 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h4><p>应用于模型表面用于增加细节的位图图像。 纹理需要通过材质着色器映射才能到模型表面</p>
+<h5 id="纹理类型"><a href="#纹理类型" class="headerlink" title="纹理类型"></a>纹理类型</h5><ul>
+<li><strong>Default：</strong>默认的纹理类型格式</li>
+<li><strong>Normal map：</strong>法线贴图，可将颜色通道转换为适合实时法线贴图格式</li>
+<li><strong>Editor GUI and Legacy GUI：</strong>在编辑器GUI控件上使用纹理请选择此类型</li>
+<li><strong>Sprite(2D and UI)：</strong>在2D游戏中使用的精灵(Sprite)或UGUI使用的纹理请选择此类型</li>
+<li><strong>Cursor：</strong>鼠标光标自定义纹理类型</li>
+<li><strong>Cookie：</strong>用于光照Cookie剪影类型的纹理</li>
+<li><strong>Lightmap：</strong>光照贴图类型的纹理，编码格式取决于不同的平台</li>
+<li><strong>Single Channel：</strong>如果原始图片文件只有一个通道，请选择此类型</li>
+</ul>
+<h5 id="纹理大小"><a href="#纹理大小" class="headerlink" title="纹理大小"></a>纹理大小</h5><p>纹理大小最好是2的幂次方。纹理大小直接影响内存和显存占用的大小，同时也会对GPU采样、CPU加载带宽造成影响。</p>
+<p>选择合适纹理大小应尽量遵循以下经验：</p>
+<ul>
+<li>不同平台、不同硬件配置选择不同的纹理大小，Unity下可以采用bundle变体设置多套资源、通过Mipmap限制不同平台加载不同level层级的贴图。</li>
+<li>根据纹理用途的不同选择不同的纹理加载方式，如流式纹理加载Texture Streaming、稀疏纹理Sparse Texture、虚拟纹理VirtualTexture等方式。</li>
+<li>不能让美术人员通过增加纹理大小的方式增加细节(容易造成内存爆炸)，可以选择细节贴图DetailMap或增加高反差保留的方式。</li>
+<li>在不降低视觉效果的情况下尽量减小贴图大小，最好的方式是纹理映射的每一个纹素的大小正好符合屏幕上显示像素的大小，如果纹理小了会造成欠采样，纹理显示模糊，如果纹理大了会造成过采样，纹理显示噪点。这一点做到完美平衡很难保障，可以充分利用Unity编辑器下SceneView-&gt;DrawMode-&gt;Mipmap来查看在游戏摄像机视角下哪些纹理过采样，哪些纹理欠采样，进而来调整纹理大小。</li>
+</ul>
+<h5 id="纹理颜色空间"><a href="#纹理颜色空间" class="headerlink" title="纹理颜色空间"></a>纹理颜色空间</h5><p> 默认大多数图像处理工具都会使用sRGB颜色空间处理和导出纹理。但如果你的纹理不是用作颜色信息的话，那就不要使用sRGB空间，如金属度贴图、粗糙度贴图、高度图或者法线贴图等。一旦这些纹理使用sRGB空间会造成视觉表现错误。</p>
+<h5 id="纹理压缩"><a href="#纹理压缩" class="headerlink" title="纹理压缩"></a>纹理压缩</h5><p> 纹理压缩是指图像压缩算法，保持贴图视觉质量的同时，尽量减小纹理数据的大小。默认情况下我们的纹理原始格式采用PNG或TGA这类通用文件格式，但与专用图像格式相比他们访问和采样速度都比较慢，无法通用GPU硬件加速，同时纹理数据量大，占用内存较高。所以在渲染中我们会采用一些硬件支持的纹理压缩格式，如ASTC 、ETC、ETC2、DXT等。</p>
+<p> 如下图为未压缩、ETC2、ASTC6x6三种格式文件大小对比，我们可以看到在质量相差不大的情况下ASTC6x6压缩下大小可以减少到接近未压缩的十分之一。</p>
+<h5 id="纹理图集"><a href="#纹理图集" class="headerlink" title="纹理图集"></a>纹理图集</h5><p>纹理图集是一系列小纹理图像的集合，</p>
+<ul>
+<li>优点：</li>
+</ul>
+<p> 一是采用共同纹理图集的多个静态网格资源可以进行静态合批处理，减少DrawCall调用次数。</p>
+<p> 二是纹理图集可以减少碎纹理过多，因为他们打包在一个图集里，通过压缩可以更有效的利用压缩，降低纹理的内存成本和冗余数据。</p>
+<ul>
+<li>缺点</li>
+</ul>
+<p> 美术需要合理规划模型，并且要求模型有相同的材质着色器，或需要制作通道图去区分不同材质。制作和修改成本较高。</p>
+<h5 id="纹理过滤"><a href="#纹理过滤" class="headerlink" title="纹理过滤"></a>纹理过滤</h5><ul>
+<li><strong>Nearest Point Filtering：</strong>临近点采样过滤最简单、<strong>计算量最小</strong>的纹理过滤形式，但在近距离观察时，纹理会呈现块状。</li>
+<li><strong>Bilinear Filtering：</strong>双线性采样过滤会对临近纹素采样并插值化处理，对纹理像素进行着色。双线性过滤会让像素看上去平滑渐变，但近距离观察时，纹理会变得模糊。</li>
+<li><strong>Trilinear Filtering：</strong>三线性过滤除与双线性过滤相同部分外，还增加了Mipmap等级之间的采样差值混合，用来平滑过度消除Mipmap之间的明显变化。</li>
+<li><strong>Anisotropic Filtering：</strong>各向异性过滤可以改善纹理在倾斜角度下的视觉效果，跟适合用于地表纹理。</li>
+</ul>
+<h5 id="纹理Mipmap"><a href="#纹理Mipmap" class="headerlink" title="纹理Mipmap"></a>纹理Mipmap</h5><ul>
+<li>Mipmap纹理</li>
+</ul>
+<p> 逐级减低分辨率来保存纹理副本。相当于生成了纹理LOD，渲染纹理时，将根据像素在屏幕中占据的纹理空间大小选择合适的Mipmap级别进行采样。渲染具有mipmap对象时，当摄像机离对象较远时将采用较低分辨率的纹理，当摄像机离对象较近时采用较高分辨率的纹理。</p>
+<ul>
+<li>优点：</li>
+</ul>
+<p> GPU不需要在远距离上对对象进行全分辨率纹理采样，因此可以<strong>提高纹理采样性能。</strong></p>
+<p> 同时也解决了远距离下的过采样导致的噪点问题，提高的纹理渲染质量。</p>
+<ul>
+<li>缺点：</li>
+</ul>
+<p> 由于Mipmap纹理要生成低分辨率副本，会造成额外的内存开销。</p>
+<h4 id="导入设置"><a href="#导入设置" class="headerlink" title="导入设置"></a>导入设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/TextureSetting.png" srcset="/img/loading.gif" lazyload alt="TextureSetting"></p>
+<h5 id="Texture-Shape"><a href="#Texture-Shape" class="headerlink" title="Texture Shape"></a>Texture Shape</h5><ul>
+<li>2D 最常用的2D纹理，默认选项</li>
+<li>Cube 一般用于天空和与反射探针，默认支持Default、Normal、Single Channel几种类型纹理，可以通过Assets &gt; Create &gt; Legacy &gt; Cubemap生成，也可以通过C#代码 Camera.RenderToCubemap在脚本中生成</li>
+<li>2D Array 2D纹理数组，可以极大提高大量相同大小和格式的纹理访问效率，但需要特定平台支持，可以通过引擎SystemInfo.supports2DArrayTextures 接口运行时查看是否支持。</li>
+<li>3D 通过纹理位图方式存储或传递一些3D结构话数据，一般用于体积仿真，如雾效、噪声、体积数据、距离场、动画数据等信息，可以外部导入，也可运行时程序化创建。</li>
+</ul>
+<h5 id="Alpha-Source"><a href="#Alpha-Source" class="headerlink" title="Alpha Source"></a>Alpha Source</h5><p>默认选择Input Texture Alpha就好，如果确定不使用原图中的Alpha通道，可以选择None。另外From Gray Scale我们一般不会选用</p>
+<h5 id="Alpha-Is-Transparency"><a href="#Alpha-Is-Transparency" class="headerlink" title="Alpha Is Transparency"></a>Alpha Is Transparency</h5><p>指定Alpha通道是否开启半透明，如果位图像素不关心是否要半透明可以不开启此选项。这样Alpha信息只需要占1bit。节省内存</p>
+<h5 id="Ignore-Png-file-gamma"><a href="#Ignore-Png-file-gamma" class="headerlink" title="Ignore Png file gamma"></a>Ignore Png file gamma</h5><p>是否忽略png文件中的gamma属性，这个选项是否忽略取决于png文件中设置不同gamma属性导致的显示不正常，一般原图制作流程没有特殊设置，这个选项一般默认就好。</p>
+<h5 id="Read-x2F-Write"><a href="#Read-x2F-Write" class="headerlink" title="Read/Write"></a>Read/Write</h5><p>开启此选项会导致内存量增加一倍，默认我们都是不开启，除非你的脚本逻辑中需要动态读写该纹理时需要打开此选项。</p>
+<h5 id="Streaming-Mipmaps-Texture-Streaming部分讲解"><a href="#Streaming-Mipmaps-Texture-Streaming部分讲解" class="headerlink" title="Streaming Mipmaps(Texture Streaming部分讲解)"></a>Streaming Mipmaps(Texture Streaming部分讲解)</h5><h5 id="Virtual-Texture-Only-虚拟部分讲解"><a href="#Virtual-Texture-Only-虚拟部分讲解" class="headerlink" title="Virtual Texture Only(虚拟部分讲解)"></a>Virtual Texture Only(虚拟部分讲解)</h5><h6 id="Generate-Mip-Maps"><a href="#Generate-Mip-Maps" class="headerlink" title="Generate Mip Maps"></a>Generate Mip Maps</h6><p><strong>什么时候不需要生成MipMaps？</strong></p>
+<ol>
+<li>2D场景</li>
+<li>固定视角，摄像机无法缩放远近</li>
+</ol>
+<ul>
+<li>Border Mip Maps 默认不开启，只有当纹理的是Light Cookies类型时，开启此选项来避免colors bleeding现象导致颜色渗透到较低级别的Mip Level纹理边缘上</li>
+<li>MipMap Filtering</li>
+<li>Box 最简单，随尺寸减小，Mipmap纹理变得平滑模糊</li>
+<li>Kaiser，避免平滑模糊的锐化过滤算法。</li>
+<li>Mip Maps Preserve Coverage，只有需要纹理在开启mipmap后也需要做Alpha Coverage时开启。默认不开启。</li>
+<li>Fadeout MipMaps, 纹理Mipmap随Mip层级淡化为灰色，一般不开启，只有在雾效较大时开启不影响视觉效果。</li>
+</ul>
+<h6 id="选择合适纹理过滤的最佳经验："><a href="#选择合适纹理过滤的最佳经验：" class="headerlink" title="选择合适纹理过滤的最佳经验："></a>选择合适纹理过滤的最佳经验：</h6><ul>
+<li>使用双线性过滤平衡性能和视觉质量。</li>
+<li>有选择地使用三线性过滤，因为与双线性过滤相比，它需要更多的内存和带宽。</li>
+<li>使用双线性和 2x 各向异性过滤，而不是三线性和 1x 各向异性过滤，因为这样做不仅视觉效果更好，而且性能也更高。</li>
+<li>保持较低的各向异性级别。仅对关键游戏资源使用高于 2 的级别。</li>
+</ul>
+<h6 id="其他可能有问题的纹理类型"><a href="#其他可能有问题的纹理类型" class="headerlink" title="其他可能有问题的纹理类型"></a>其他可能有问题的纹理类型</h6><ul>
+<li>纹理图集大小设置不合理，图集利用率低</li>
+<li>大量只有颜色差异的图片</li>
+<li>UI背景贴图而不采用9宫格缩放的图</li>
+<li>纯色图没有使用Single Channel</li>
+<li>不合理的半透明UI，占据大量屏幕区域，造成Overdraw开销</li>
+<li>大量2D序列帧动画，而且图片大，还不打图集</li>
+<li>不合理的通道图利用方案</li>
+<li>大量渐变色贴图，没有采用1像素过渡图，也不采用Single Channel, 粒子特效中较为常见。</li>
+</ul>
+<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><h4 id="Rig标签-骨骼设置"><a href="#Rig标签-骨骼设置" class="headerlink" title="Rig标签 骨骼设置"></a>Rig标签 骨骼设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationRigSetting.png" srcset="/img/loading.gif" lazyload alt="AnimationRigSetting"></p>
+<h5 id="Animation-Type"><a href="#Animation-Type" class="headerlink" title="Animation Type"></a><strong>Animation Type</strong></h5><ul>
+<li>None 无动画</li>
+<li>Legacy 旧版动画，不要用</li>
+<li>Generic 通用骨骼框架</li>
+<li>Humanoid 人形骨骼框架</li>
+</ul>
+<h6 id="选择原则："><a href="#选择原则：" class="headerlink" title="选择原则："></a><strong>选择原则：</strong></h6><ul>
+<li>无动画选择None</li>
+<li>非人形动画选择Generic<ul>
+<li>在移动平台推荐使用Generic，但是避免原始骨骼数量爆炸</li>
+</ul>
+</li>
+<li>人形动画<ul>
+<li>人形动画需要Kinematices或Animation Retargeting功能，或者没有有自定义骨骼对象时选择Humanoid Rig</li>
+<li>其他都选择Generic Rig，<strong>在骨骼数差不多的情况下,Generic Rig会比Humanoid Rig省30%甚至更多的CPU的时间</strong>。节省的时间正是Kinematices或Animation Retargeting功能消耗的时间。</li>
+</ul>
+</li>
+</ul>
+<h5 id="Skin-Weights-骨骼优化"><a href="#Skin-Weights-骨骼优化" class="headerlink" title="Skin Weights(骨骼优化)"></a><strong>Skin Weights</strong>(骨骼优化)</h5><p> 默认4根骨头，但对于一些不重要的动画对象可以减少到1根，节省计算量</p>
+<h5 id="Optimize-Bones-骨骼优化"><a href="#Optimize-Bones-骨骼优化" class="headerlink" title="Optimize Bones(骨骼优化)"></a><strong>Optimize Bones(骨骼优化)</strong></h5><p> 建议开启，在导入时自动剔除没有蒙皮顶点的骨骼</p>
+<h5 id="Optimize-Game-Objects-骨骼优化"><a href="#Optimize-Game-Objects-骨骼优化" class="headerlink" title="Optimize Game Objects(骨骼优化)"></a><strong>Optimize Game Objects</strong>(骨骼优化)</h5><p> 在Avatar和Animatior组件中删除导入游戏角色对象的变换层级结构，而使用Unity动画内部结构骨骼，消减骨骼transform带来的性能开销。可以提高角色动画性能, 但有些情况下会造成角色动画错误，这个选项可以尝试开启但要看表现效果而定。注意如果你的角色是可以换装的，在导入时不要开启此选项，但在换装后在运行时在代码中通过调用AnimatorUtility.OptimizeTransformHierarchy接口仍然可以达到此选项效果。</p>
+<h4 id="Animation标签页"><a href="#Animation标签页" class="headerlink" title="Animation标签页"></a>Animation标签页</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationSetting.png" srcset="/img/loading.gif" lazyload alt="AnimationSetting"></p>
+<h5 id="Resmple-Curves"><a href="#Resmple-Curves" class="headerlink" title="Resmple Curves"></a><strong>Resmple Curves</strong></h5><p> 将动画曲线重新采样为四元数数值，并为动画每帧生成一个新的四元数关键帧，仅当导入动画文件包含尤拉曲线时才会显示此选项</p>
+<h5 id="Anim-Compression"><a href="#Anim-Compression" class="headerlink" title="Anim.Compression"></a><strong>Anim.Compression</strong></h5><ul>
+<li><strong>Off</strong> 不压缩,质量最高，内存消耗最大</li>
+<li><strong>Keyframe Reduction</strong> 减少冗余关键帧，减小动画文件大小和内存大小。</li>
+<li><strong>Keyframe Reduction and Compression</strong> 减小关键帧的同时对关键帧存储数据进行压缩，只影响文件大小。</li>
+<li><strong>Optimal</strong>，仅适用于Generic与Humanoide动画类型，Unity决定如何进行压缩。</li>
+</ul>
+<h5 id="Animation-Custom-Properties"><a href="#Animation-Custom-Properties" class="headerlink" title="Animation Custom Properties"></a><strong>Animation Custom Properties</strong></h5><p> 导入用户自定义属性，一般对应<strong>DCC</strong>工具中的<strong>extraUserProperties</strong>字段中定义的数据</p>
+<h4 id="动画曲线数据信息"><a href="#动画曲线数据信息" class="headerlink" title="动画曲线数据信息"></a>动画曲线数据信息</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF.png" srcset="/img/loading.gif" lazyload alt="动画曲线数据信息"></p>
+<ul>
+<li>Curves Pos: 位置曲线</li>
+<li>Quaternion: 四元数曲线 Resample Curves开启会有</li>
+<li>Euler: 尤拉曲线</li>
+<li>Scale: 缩放曲线</li>
+<li>Muscles: 肌肉曲线，Humanoid类型下会有</li>
+<li>Generic: 一般属性动画曲线，如颜色，材质等</li>
+<li><strong>PPtr：</strong>精灵动画曲线，一般2D系统下会有</li>
+<li>**Curves Total: **曲线总数</li>
+<li>Constant: 优化为常数的曲线</li>
+<li>Dense: 使用了密集数据（线性插值后的离散值）存储</li>
+<li>Stream: 使用了流式数据（插值的时间和切线数据）存储</li>
+</ul>
+<h5 id="动画文件导入设置优化后信息查看原则"><a href="#动画文件导入设置优化后信息查看原则" class="headerlink" title="动画文件导入设置优化后信息查看原则"></a>动画文件导入设置优化后信息查看原则</h5><ol>
+<li>一看效果差异（与原始制作动画差异是否明显）</li>
+<li>二看曲线数量（总曲线数量与各种曲线数显，常量曲线比重大更好）</li>
+<li>三看动画文件大小（以移动平台为例，动画文件在小几百k或更少为合理，查过1M以上的动画文件考虑是否进行了合理优化）</li>
+</ol>
 
                 
               </div>
@@ -324,6 +550,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87/" class="category-chain-item">性能优化篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">
