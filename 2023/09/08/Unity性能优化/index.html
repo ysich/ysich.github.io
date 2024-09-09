@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ysich">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="Unity性能优化第1节 静态资源优化在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。  Unity在UPR下也提供了asset检测工具Asset Check。  Audio当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。 Force To">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Unity性能优化第1节 静态资源优化在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。  Unity在UPR下也提供了asset检测工具Asset Check。  Audio当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。 Force To">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity性能优化">
 <meta property="og:url" content="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
@@ -32,272 +36,183 @@
 <meta property="article:modified_time" content="2023-10-27T02:25:30.238Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="性能优化 资源管理 Asset">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true">
-  
-  
-  
-  <title>Unity性能优化 - ysich&#39;Blog</title>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<link rel="canonical" href="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  <title>Unity性能优化 | ysich'Blog</title>
   
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-  
-<meta name="generator" content="Hexo 6.3.0">
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>三十六分热</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ysich'Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
 </nav>
 
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
 
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ysich">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ysich'Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Unity性能优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-08 09:18:59" itemprop="dateCreated datePublished" datetime="2023-09-08T09:18:59+08:00">2023-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-27 10:25:30" itemprop="dateModified" datetime="2023-10-27T10:25:30+08:00">2023-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">性能优化篇</span></a>
+                </span>
+            </span>
+
           
-            <span id="subtitle" data-typed-text="Unity性能优化"></span>
-          
+
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-08 09:18" pubdate>
-          2023年9月8日 上午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          6.4k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          54 分钟
-        
-      </span>
-    
+      </header>
 
     
     
-  </div>
-
-
-        
-      </div>
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Unity性能优化</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="Unity性能优化"><a href="#Unity性能优化" class="headerlink" title="Unity性能优化"></a>Unity性能优化</h1><h2 id="第1节-静态资源优化"><a href="#第1节-静态资源优化" class="headerlink" title="第1节 静态资源优化"></a>第1节 静态资源优化</h2><p>在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。 </p>
+        <h1 id="Unity性能优化"><a href="#Unity性能优化" class="headerlink" title="Unity性能优化"></a>Unity性能优化</h1><h2 id="第1节-静态资源优化"><a href="#第1节-静态资源优化" class="headerlink" title="第1节 静态资源优化"></a>第1节 静态资源优化</h2><p>在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。 </p>
 <p>Unity在UPR下也提供了asset检测工具<code>Asset Check</code>。 </p>
 <h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><p>当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。</p>
 <h4 id="Force-To-Mono单声道"><a href="#Force-To-Mono单声道" class="headerlink" title="Force To Mono单声道"></a>Force To Mono单声道</h4><p>一些双声道资源两个声道的声音一致，或移动设备下听不出区别则可以开启来减少内存。</p>
@@ -350,7 +265,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true" srcset="/img/loading.gif" lazyload alt="2.png"></p>
+<p><img src="https://github.com/lwwhb/Unity2022_SUNTAIL_Stylized_Fantasy_Village_Optimization/blob/main/Documents/Pics/2.png?raw=true" alt="2.png"></p>
 <h4 id="原始模型影响性能点"><a href="#原始模型影响性能点" class="headerlink" title="原始模型影响性能点"></a>原始模型影响性能点</h4><p>前期尽量避免，后期比较难修改。</p>
 <ul>
 <li>最小化面数，不需要微三角面，三角面尽量分布均匀<ul>
@@ -453,7 +368,7 @@
 <li>缺点：</li>
 </ul>
 <p> 由于Mipmap纹理要生成低分辨率副本，会造成额外的内存开销。</p>
-<h4 id="导入设置"><a href="#导入设置" class="headerlink" title="导入设置"></a>导入设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/TextureSetting.png" srcset="/img/loading.gif" lazyload alt="TextureSetting"></p>
+<h4 id="导入设置"><a href="#导入设置" class="headerlink" title="导入设置"></a>导入设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/TextureSetting.png" alt="TextureSetting"></p>
 <h5 id="Texture-Shape"><a href="#Texture-Shape" class="headerlink" title="Texture Shape"></a>Texture Shape</h5><ul>
 <li>2D 最常用的2D纹理，默认选项</li>
 <li>Cube 一般用于天空和与反射探针，默认支持Default、Normal、Single Channel几种类型纹理，可以通过Assets &gt; Create &gt; Legacy &gt; Cubemap生成，也可以通过C#代码 Camera.RenderToCubemap在脚本中生成</li>
@@ -493,7 +408,7 @@
 <li>不合理的通道图利用方案</li>
 <li>大量渐变色贴图，没有采用1像素过渡图，也不采用Single Channel, 粒子特效中较为常见。</li>
 </ul>
-<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><h4 id="Rig标签-骨骼设置"><a href="#Rig标签-骨骼设置" class="headerlink" title="Rig标签 骨骼设置"></a>Rig标签 骨骼设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationRigSetting.png" srcset="/img/loading.gif" lazyload alt="AnimationRigSetting"></p>
+<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><h4 id="Rig标签-骨骼设置"><a href="#Rig标签-骨骼设置" class="headerlink" title="Rig标签 骨骼设置"></a>Rig标签 骨骼设置</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationRigSetting.png" alt="AnimationRigSetting"></p>
 <h5 id="Animation-Type"><a href="#Animation-Type" class="headerlink" title="Animation Type"></a><strong>Animation Type</strong></h5><ul>
 <li>None 无动画</li>
 <li>Legacy 旧版动画，不要用</li>
@@ -515,7 +430,7 @@
 <h5 id="Skin-Weights-骨骼优化"><a href="#Skin-Weights-骨骼优化" class="headerlink" title="Skin Weights(骨骼优化)"></a><strong>Skin Weights</strong>(骨骼优化)</h5><p> 默认4根骨头，但对于一些不重要的动画对象可以减少到1根，节省计算量</p>
 <h5 id="Optimize-Bones-骨骼优化"><a href="#Optimize-Bones-骨骼优化" class="headerlink" title="Optimize Bones(骨骼优化)"></a><strong>Optimize Bones(骨骼优化)</strong></h5><p> 建议开启，在导入时自动剔除没有蒙皮顶点的骨骼</p>
 <h5 id="Optimize-Game-Objects-骨骼优化"><a href="#Optimize-Game-Objects-骨骼优化" class="headerlink" title="Optimize Game Objects(骨骼优化)"></a><strong>Optimize Game Objects</strong>(骨骼优化)</h5><p> 在Avatar和Animatior组件中删除导入游戏角色对象的变换层级结构，而使用Unity动画内部结构骨骼，消减骨骼transform带来的性能开销。可以提高角色动画性能, 但有些情况下会造成角色动画错误，这个选项可以尝试开启但要看表现效果而定。注意如果你的角色是可以换装的，在导入时不要开启此选项，但在换装后在运行时在代码中通过调用AnimatorUtility.OptimizeTransformHierarchy接口仍然可以达到此选项效果。</p>
-<h4 id="Animation标签页"><a href="#Animation标签页" class="headerlink" title="Animation标签页"></a>Animation标签页</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationSetting.png" srcset="/img/loading.gif" lazyload alt="AnimationSetting"></p>
+<h4 id="Animation标签页"><a href="#Animation标签页" class="headerlink" title="Animation标签页"></a>Animation标签页</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/AnimationSetting.png" alt="AnimationSetting"></p>
 <h5 id="Resmple-Curves"><a href="#Resmple-Curves" class="headerlink" title="Resmple Curves"></a><strong>Resmple Curves</strong></h5><p> 将动画曲线重新采样为四元数数值，并为动画每帧生成一个新的四元数关键帧，仅当导入动画文件包含尤拉曲线时才会显示此选项</p>
 <h5 id="Anim-Compression"><a href="#Anim-Compression" class="headerlink" title="Anim.Compression"></a><strong>Anim.Compression</strong></h5><ul>
 <li><strong>Off</strong> 不压缩,质量最高，内存消耗最大</li>
@@ -524,7 +439,7 @@
 <li><strong>Optimal</strong>，仅适用于Generic与Humanoide动画类型，Unity决定如何进行压缩。</li>
 </ul>
 <h5 id="Animation-Custom-Properties"><a href="#Animation-Custom-Properties" class="headerlink" title="Animation Custom Properties"></a><strong>Animation Custom Properties</strong></h5><p> 导入用户自定义属性，一般对应<strong>DCC</strong>工具中的<strong>extraUserProperties</strong>字段中定义的数据</p>
-<h4 id="动画曲线数据信息"><a href="#动画曲线数据信息" class="headerlink" title="动画曲线数据信息"></a>动画曲线数据信息</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF.png" srcset="/img/loading.gif" lazyload alt="动画曲线数据信息"></p>
+<h4 id="动画曲线数据信息"><a href="#动画曲线数据信息" class="headerlink" title="动画曲线数据信息"></a>动画曲线数据信息</h4><p><img src="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF.png" alt="动画曲线数据信息"></p>
 <ul>
 <li>Curves Pos: 位置曲线</li>
 <li>Quaternion: 四元数曲线 Resample Curves开启会有</li>
@@ -544,372 +459,197 @@
 <li>三看动画文件大小（以移动平台为例，动画文件在小几百k或更少为合理，查过1M以上的动画文件考虑是否进行了合理优化）</li>
 </ol>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+    </div>
 
-<span class="category-chains">
-  
-  
     
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87/" class="category-chain-item">性能优化篇</a>
-  
-  
-
-      </span>
     
-  
-</span>
+    
 
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-Asset/">#性能优化 资源管理 Asset</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Unity性能优化</div>
-      <div>http://ysich.github.io/2023/09/08/Unity性能优化/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>ysich</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2023年9月8日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-Asset/" rel="tag"># 性能优化 资源管理 Asset</a>
           </div>
-        </div>
-      
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/" rel="prev" title="帧同步设计">
+      <i class="fa fa-chevron-left"></i> 帧同步设计
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/10/27/AUP%E5%BC%82%E6%AD%A5%E4%B8%8A%E4%BC%A0%E7%AE%A1%E7%BA%BF/" rel="next" title="AUP异步上传管线">
+      AUP异步上传管线 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-    <div class="license-icon iconfont"></div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/10/27/AUP%E5%BC%82%E6%AD%A5%E4%B8%8A%E4%BC%A0%E7%AE%A1%E7%BA%BF/" title="AUP异步上传管线">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AUP异步上传管线</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/" title="帧同步设计">
-                        <span class="hidden-mobile">帧同步设计</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Unity性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E8%8A%82-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">第1节 静态资源优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Audio"><span class="nav-number">1.1.1.</span> <span class="nav-text">Audio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Force-To-Mono%E5%8D%95%E5%A3%B0%E9%81%93"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Force To Mono单声道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%8E%87"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">采样率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">加载类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">1.1.2.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%9E%8B%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%E7%82%B9"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">原始模型影响性能点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">模型优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity%E5%AF%BC%E5%85%A5%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">Unity导入设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">模型设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Texture"><span class="nav-number">1.1.3.</span> <span class="nav-text">Texture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">纹理类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.1.3.1.2.</span> <span class="nav-text">纹理大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E9%A2%9C%E8%89%B2%E7%A9%BA%E9%97%B4"><span class="nav-number">1.1.3.1.3.</span> <span class="nav-text">纹理颜色空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.1.3.1.4.</span> <span class="nav-text">纹理压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E5%9B%BE%E9%9B%86"><span class="nav-number">1.1.3.1.5.</span> <span class="nav-text">纹理图集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E8%BF%87%E6%BB%A4"><span class="nav-number">1.1.3.1.6.</span> <span class="nav-text">纹理过滤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%B9%E7%90%86Mipmap"><span class="nav-number">1.1.3.1.7.</span> <span class="nav-text">纹理Mipmap</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">导入设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Texture-Shape"><span class="nav-number">1.1.3.2.1.</span> <span class="nav-text">Texture Shape</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Alpha-Source"><span class="nav-number">1.1.3.2.2.</span> <span class="nav-text">Alpha Source</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Alpha-Is-Transparency"><span class="nav-number">1.1.3.2.3.</span> <span class="nav-text">Alpha Is Transparency</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ignore-Png-file-gamma"><span class="nav-number">1.1.3.2.4.</span> <span class="nav-text">Ignore Png file gamma</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Read-x2F-Write"><span class="nav-number">1.1.3.2.5.</span> <span class="nav-text">Read&#x2F;Write</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Streaming-Mipmaps-Texture-Streaming%E9%83%A8%E5%88%86%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.1.3.2.6.</span> <span class="nav-text">Streaming Mipmaps(Texture Streaming部分讲解)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Virtual-Texture-Only-%E8%99%9A%E6%8B%9F%E9%83%A8%E5%88%86%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.1.3.2.7.</span> <span class="nav-text">Virtual Texture Only(虚拟部分讲解)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Generate-Mip-Maps"><span class="nav-number">1.1.3.2.7.1.</span> <span class="nav-text">Generate Mip Maps</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%BA%B9%E7%90%86%E8%BF%87%E6%BB%A4%E7%9A%84%E6%9C%80%E4%BD%B3%E7%BB%8F%E9%AA%8C%EF%BC%9A"><span class="nav-number">1.1.3.2.7.2.</span> <span class="nav-text">选择合适纹理过滤的最佳经验：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8F%AF%E8%83%BD%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E7%BA%B9%E7%90%86%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.3.2.7.3.</span> <span class="nav-text">其他可能有问题的纹理类型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation"><span class="nav-number">1.1.4.</span> <span class="nav-text">Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rig%E6%A0%87%E7%AD%BE-%E9%AA%A8%E9%AA%BC%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Rig标签 骨骼设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Animation-Type"><span class="nav-number">1.1.4.1.1.</span> <span class="nav-text">Animation Type</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="nav-number">1.1.4.1.1.1.</span> <span class="nav-text">选择原则：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Skin-Weights-%E9%AA%A8%E9%AA%BC%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.4.1.2.</span> <span class="nav-text">Skin Weights(骨骼优化)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optimize-Bones-%E9%AA%A8%E9%AA%BC%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.4.1.3.</span> <span class="nav-text">Optimize Bones(骨骼优化)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optimize-Game-Objects-%E9%AA%A8%E9%AA%BC%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.4.1.4.</span> <span class="nav-text">Optimize Game Objects(骨骼优化)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Animation%E6%A0%87%E7%AD%BE%E9%A1%B5"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Animation标签页</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Resmple-Curves"><span class="nav-number">1.1.4.2.1.</span> <span class="nav-text">Resmple Curves</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Anim-Compression"><span class="nav-number">1.1.4.2.2.</span> <span class="nav-text">Anim.Compression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Animation-Custom-Properties"><span class="nav-number">1.1.4.2.3.</span> <span class="nav-text">Animation Custom Properties</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%9B%B2%E7%BA%BF%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">动画曲线数据信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%8C%96%E5%90%8E%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B%E5%8E%9F%E5%88%99"><span class="nav-number">1.1.4.3.1.</span> <span class="nav-text">动画文件导入设置优化后信息查看原则</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
-    </div>
+      <!--/noindex-->
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ysich</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
 
 
 
+      </div>
+
+    </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ysich</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
-</div>
 
-    
+        
 
-    
-  </main>
 
-  <footer>
-    <div class="footer-inner">
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-  </footer>
+<script src="/js/utils.js"></script>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<script src="/js/motion.js"></script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script src="/js/schemes/muse.js"></script>
 
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+
+
+
+
+
+
+
+
 
 
   
 
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
+  
+
 </body>
 </html>

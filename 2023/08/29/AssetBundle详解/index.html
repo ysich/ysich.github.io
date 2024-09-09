@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ysich">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="AssetBundle详解AssetBundle一个AssetBundle有什么？ 一个序列化文件，标识符、是否压缩和清单(manifest)数据。 manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置   资源文件，二进制数据块，支持异步加载 所有资源都被序列化，如果选择压缩则将序列化数据压缩">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="AssetBundle详解AssetBundle一个AssetBundle有什么？ 一个序列化文件，标识符、是否压缩和清单(manifest)数据。 manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置   资源文件，二进制数据块，支持异步加载 所有资源都被序列化，如果选择压缩则将序列化数据压缩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AssetBundle详解">
 <meta property="og:url" content="http://ysich.github.io/2023/08/29/AssetBundle%E8%AF%A6%E8%A7%A3/index.html">
@@ -27,271 +31,176 @@
 <meta property="article:modified_time" content="2023-08-29T03:10:32.428Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="资源管理 AssetBundle 热更新">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>AssetBundle详解 - ysich&#39;Blog</title>
+<meta name="twitter:card" content="summary">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<link rel="canonical" href="http://ysich.github.io/2023/08/29/AssetBundle%E8%AF%A6%E8%A7%A3/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  <title>AssetBundle详解 | ysich'Blog</title>
   
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-  
-<meta name="generator" content="Hexo 6.3.0">
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>三十六分热</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ysich'Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
 </nav>
 
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/08/29/AssetBundle%E8%AF%A6%E8%A7%A3/">
 
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ysich">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ysich'Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AssetBundle详解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-29 11:03:56 / 修改时间：11:10:32" itemprop="dateCreated datePublished" datetime="2023-08-29T11:03:56+08:00">2023-08-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">资源管理篇</span></a>
+                </span>
+            </span>
+
           
-            <span id="subtitle" data-typed-text="AssetBundle详解"></span>
-          
+
         </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-29 11:03" pubdate>
-          2023年8月29日 上午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          3.1k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          26 分钟
-        
-      </span>
-    
+      </header>
 
     
     
-  </div>
-
-
-        
-      </div>
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">AssetBundle详解</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="AssetBundle详解"><a href="#AssetBundle详解" class="headerlink" title="AssetBundle详解"></a>AssetBundle详解</h1><h2 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h2><h3 id="一个AssetBundle有什么？"><a href="#一个AssetBundle有什么？" class="headerlink" title="一个AssetBundle有什么？"></a>一个AssetBundle有什么？</h3><ul>
+        <h1 id="AssetBundle详解"><a href="#AssetBundle详解" class="headerlink" title="AssetBundle详解"></a>AssetBundle详解</h1><h2 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h2><h3 id="一个AssetBundle有什么？"><a href="#一个AssetBundle有什么？" class="headerlink" title="一个AssetBundle有什么？"></a>一个AssetBundle有什么？</h3><ul>
 <li>一个序列化文件，标识符、是否压缩和清单(manifest)数据。<ul>
 <li>manifest数据是由对象的名称为key的查找表(lookup table)，每个条目都提供了一个字节的索引来标识对象在AssetBundle数据段的位置</li>
 </ul>
@@ -337,13 +246,13 @@
 <h3 id="AssetBundle之间的重复信息"><a href="#AssetBundle之间的重复信息" class="headerlink" title="AssetBundle之间的重复信息"></a>AssetBundle之间的重复信息</h3><p>公共的资源最好打入一个<code>AssetBundle包</code>中，否则公共资源可能会被构建在多个<code>AssetBundle包</code>中。从而造成资源冗余，安装包的大小变大，运行时的内存占用量变大。</p>
 <p><strong>一个公共材质如果被打入到AssetBundle中会被视为副本，Unity将同一个材质的每个副本都视为独特材质。如果材质被打入到多个AssetBundle中，每个生成的AssetBundle都会包含此材质(包括其着色器和引用纹理)。Unity将同一个材质的每个副本都视为独特材质，所以还会影响到批处理。</strong></p>
 <p>所以在构建时<code>材质</code>和<code>引用的资源</code>尽量打在同一个AssetBundle中。还可以仅标记材质，因为纹理依赖关系也会被包含在AssetBundle中。</p>
-<h3 id="AssetBundle的加载"><a href="#AssetBundle的加载" class="headerlink" title="AssetBundle的加载"></a>AssetBundle的加载</h3><h4 id="AssetBundle-LoadFromMemoryAsync"><a href="#AssetBundle-LoadFromMemoryAsync" class="headerlink" title="AssetBundle.LoadFromMemoryAsync"></a>AssetBundle.LoadFromMemoryAsync</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">AssetBundleCreateRequest createRequest = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(path));<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="AssetBundle的加载"><a href="#AssetBundle的加载" class="headerlink" title="AssetBundle的加载"></a>AssetBundle的加载</h3><h4 id="AssetBundle-LoadFromMemoryAsync"><a href="#AssetBundle-LoadFromMemoryAsync" class="headerlink" title="AssetBundle.LoadFromMemoryAsync"></a>AssetBundle.LoadFromMemoryAsync</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AssetBundleCreateRequest createRequest = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(path));</span><br></pre></td></tr></tbody></table></figure>
 
 <p>按字节数组加载AB包。LZMA会在加载时解压，LZ4则会以压缩状态加载。</p>
-<h4 id="AssetBundle-LoadFromFile"><a href="#AssetBundle-LoadFromFile" class="headerlink" title="AssetBundle.LoadFromFile"></a>AssetBundle.LoadFromFile</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">var</span> myLoadedAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, <span class="hljs-string">"myassetBundle"</span>));<br></code></pre></td></tr></tbody></table></figure>
+<h4 id="AssetBundle-LoadFromFile"><a href="#AssetBundle-LoadFromFile" class="headerlink" title="AssetBundle.LoadFromFile"></a>AssetBundle.LoadFromFile</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLoadedAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, <span class="string">"myassetBundle"</span>));</span><br></pre></td></tr></tbody></table></figure>
 
 <p>从本地存储中加载AB包。未压缩或LZ4直接从磁盘加载AB包，LZMA则先解压再加载到内存中。</p>
-<h4 id="从AssetBundle中加载资源"><a href="#从AssetBundle中加载资源" class="headerlink" title="从AssetBundle中加载资源"></a>从AssetBundle中加载资源</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//加载指定资源</span><br>T objectFromBundle = bundleObject.LoadAsset&lt;T&gt;(assetName);<br><span class="hljs-comment">//加载全部资源</span><br>Unity.Object[] objectArray = loadedAssetBundle.LoadAllAssets();<br><span class="hljs-comment">//加载依赖清单文件</span><br>AssetBundleManifest manifest = assetBundle.LoadAsset&lt;AssetBundleManifest&gt;(<span class="hljs-string">"AssetBundleManifest"</span>);<br></code></pre></td></tr></tbody></table></figure>
+<h4 id="从AssetBundle中加载资源"><a href="#从AssetBundle中加载资源" class="headerlink" title="从AssetBundle中加载资源"></a>从AssetBundle中加载资源</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载指定资源</span></span><br><span class="line">T objectFromBundle = bundleObject.LoadAsset&lt;T&gt;(assetName);</span><br><span class="line"><span class="comment">//加载全部资源</span></span><br><span class="line">Unity.Object[] objectArray = loadedAssetBundle.LoadAllAssets();</span><br><span class="line"><span class="comment">//加载依赖清单文件</span></span><br><span class="line">AssetBundleManifest manifest = assetBundle.LoadAsset&lt;AssetBundleManifest&gt;(<span class="string">"AssetBundleManifest"</span>);</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="AssetBundle的卸载"><a href="#AssetBundle的卸载" class="headerlink" title="AssetBundle的卸载"></a>AssetBundle的卸载</h3><h4 id="AssetBundle-Unload-true"><a href="#AssetBundle-Unload-true" class="headerlink" title="AssetBundle.Unload(true)"></a>AssetBundle.Unload(true)</h4><p>强制卸载掉所有AssetBundle中加载的Asset，包括AssetBundle的映射结构，和从AssetBundle创建出来的所有资源。释放AssetBundle实例。</p>
 <p><strong>会导致正在使用的资源丢失</strong>，需要一套自己的机制(引用计数)来关注是否有正在使用的资源。</p>
@@ -354,372 +263,197 @@
 <p><code>AssetBundle.Unload(true)</code>使用时最好添加引用计数作为保护。或在应用程序生命周期中具有明确定义的卸载瞬态 AssetBundle 的时间点，例如在关卡之间或在加载屏幕期间。</p>
 <h3 id="AssetBundle变体"><a href="#AssetBundle变体" class="headerlink" title="AssetBundle变体"></a>AssetBundle变体</h3><p>在Android 生态中有些设备不支持ETC2的纹理只支持ETC1的纹理，那么可以构建AssetBundle变体。使用ETC1支持的资源格式来构建AssetBundle变体，构建足够多的变体来支持Android 生态中不支持ETC2的设备。</p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+    </div>
 
-<span class="category-chains">
-  
-  
     
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%AF%87/" class="category-chain-item">资源管理篇</a>
-  
-  
-
-      </span>
     
-  
-</span>
+    
 
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-AssetBundle-%E7%83%AD%E6%9B%B4%E6%96%B0/">#资源管理 AssetBundle 热更新</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>AssetBundle详解</div>
-      <div>http://ysich.github.io/2023/08/29/AssetBundle详解/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>ysich</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2023年8月29日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-AssetBundle-%E7%83%AD%E6%9B%B4%E6%96%B0/" rel="tag"># 资源管理 AssetBundle 热更新</a>
           </div>
-        </div>
-      
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/14/%E7%BA%B9%E7%90%86%E8%AF%A6%E8%A7%A3/" rel="prev" title="纹理详解">
+      <i class="fa fa-chevron-left"></i> 纹理详解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/" rel="next" title="帧同步设计">
+      帧同步设计 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-    <div class="license-icon iconfont"></div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/09/07/%E5%B8%A7%E5%90%8C%E6%AD%A5%E8%AE%BE%E8%AE%A1/" title="帧同步设计">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">帧同步设计</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/07/14/%E7%BA%B9%E7%90%86%E8%AF%A6%E8%A7%A3/" title="纹理详解">
-                        <span class="hidden-mobile">纹理详解</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AssetBundle%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">AssetBundle详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AssetBundle"><span class="nav-number">1.1.</span> <span class="nav-text">AssetBundle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAAssetBundle%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个AssetBundle有什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">AssetBundle的压缩方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LZMA"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">LZMA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LZ4"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">LZ4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E5%BC%82%E6%9B%B4%E6%96%B0"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">差异更新</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bsdiff-%E5%9F%BA%E4%BA%8E%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">Bsdiff ( 基于二进制的比对算法 )</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AssetBundle%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E4%B8%8D%E5%90%8C%E5%AF%BC%E8%87%B4%E7%9A%84%E5%B7%AE%E5%BC%82%E5%8C%96%E6%96%87%E4%BB%B6%E5%B7%AE%E5%BC%82"><span class="nav-number">1.1.2.3.1.1.</span> <span class="nav-text">AssetBundle压缩算法不同导致的差异化文件差异</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%AE%E5%BC%82%E5%8C%96%E6%96%87%E4%BB%B6-%E8%A1%A5%E4%B8%81-%E5%90%88%E5%B9%B6"><span class="nav-number">1.1.2.3.1.2.</span> <span class="nav-text">差异化文件(补丁)合并</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E4%B8%81%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%88%E6%9C%AC%E8%A7%84%E5%88%92"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">补丁文件的版本规划</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">AssetBundle依赖项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E4%B9%8B%E9%97%B4%E7%9A%84%E9%87%8D%E5%A4%8D%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.4.</span> <span class="nav-text">AssetBundle之间的重复信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.1.5.</span> <span class="nav-text">AssetBundle的加载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundle-LoadFromMemoryAsync"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">AssetBundle.LoadFromMemoryAsync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundle-LoadFromFile"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">AssetBundle.LoadFromFile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8EAssetBundle%E4%B8%AD%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">从AssetBundle中加载资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E7%9A%84%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.1.6.</span> <span class="nav-text">AssetBundle的卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundle-Unload-true"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">AssetBundle.Unload(true)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundle-Unload-false"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">AssetBundle.Unload(false)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resources-UnloadUnusedAssets"><span class="nav-number">1.1.6.3.</span> <span class="nav-text">Resources.UnloadUnusedAssets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.1.6.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetBundle%E5%8F%98%E4%BD%93"><span class="nav-number">1.1.7.</span> <span class="nav-text">AssetBundle变体</span></a></li></ol></li></ol></li></ol></div>
       </div>
-    </div>
+      <!--/noindex-->
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ysich</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
 
 
 
+      </div>
+
+    </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ysich</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
-</div>
 
-    
+        
 
-    
-  </main>
 
-  <footer>
-    <div class="footer-inner">
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-  </footer>
+<script src="/js/utils.js"></script>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+<script src="/js/motion.js"></script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script src="/js/schemes/muse.js"></script>
 
 
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+
+
+
+
+
+
+
+
 
 
   
 
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
+  
+
 </body>
 </html>
