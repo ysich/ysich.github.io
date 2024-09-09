@@ -1,1053 +1,608 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"ysich.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ysich">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="ysich&#39;Blog">
 <meta property="og:url" content="http://ysich.github.io/page/2/index.html">
 <meta property="og:site_name" content="ysich&#39;Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="ysich">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>ysich&#39;Blog</title>
 
-<link rel="canonical" href="http://ysich.github.io/page/2/">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>ysich'Blog</title>
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-
+  
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
+<body>
+  
 
-  <div class="site-meta">
+  <header>
+    
 
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">ysich'Blog</h1>
-      <span class="logo-line-after"><i></i></span>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>三十六分热</strong>
     </a>
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
 </nav>
 
+  
 
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="每天进步一点点"></span>
+          
+        </div>
 
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
 
 </div>
-    </header>
 
+  </header>
+
+  <main>
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
           
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-          <div class="content index posts-expand">
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/" target="_self">
+          关于CallBack
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/" target="_self">
+        <div>
+          关于CallBackCallback提高cpu利用率不会造成阻塞。做一件事不会等待，等需要时再call back处 应用场景 DMA控制器  cpu做数据复制时会阻塞cpu，cpu 通知硬件进行复制完成后通知回来。不会阻塞整个cpu  网络多路复用  Socket读写过程中，等待数据发送或接收过程cpu的阻塞。等数据过来后再进行通知。  多线程  时间   比如等待5秒后执行一个函数，不需要阻塞线
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-31 10:36" pubdate>
+              2023-01-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
             
-      
+
+<span class="category-chains">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ysich">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ysich'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/" class="post-title-link" itemprop="url">关于CallBack</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-01-31 10:36:16" itemprop="dateCreated datePublished" datetime="2023-01-31T10:36:16+08:00">2023-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-14 09:49:20" itemprop="dateModified" datetime="2023-07-14T09:49:20+08:00">2023-07-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">框架篇</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="关于CallBack"><a href="#关于CallBack" class="headerlink" title="关于CallBack"></a>关于CallBack</h1><h2 id="Callback"><a href="#Callback" class="headerlink" title="Callback"></a><strong>Callback</strong></h2><p>提高cpu利用率不会造成阻塞。做一件事不会等待，等需要时再call back处</p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
-<li>DMA控制器</li>
-</ul>
-<p>cpu做数据复制时会阻塞cpu，cpu 通知硬件进行复制完成后通知回来。不会阻塞整个cpu</p>
-<ul>
-<li>网络多路复用</li>
-</ul>
-<p>Socket读写过程中，等待数据发送或接收过程cpu的阻塞。等数据过来后再进行通知。</p>
-<ul>
-<li><p>多线程</p>
-</li>
-<li><p>时间</p>
-</li>
-</ul>
-<p>比如等待5秒后执行一个函数，不需要阻塞线程5秒后再执行。</p>
-<h3 id="CallBack历史"><a href="#CallBack历史" class="headerlink" title="CallBack历史"></a>CallBack历史</h3><h4 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a><strong>函数指针</strong></h4><p>C语言内通过函数指针的方式，在callback 后用指针执行函数，但是不方便同步上下文且类型不安全（可以传递任意指针）</p>
-<h4 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a><strong>函数对象</strong></h4><p>C++通过函数对象的方式，类型安全、构造时传递函数指针、构造时传递上下文、绑定上下文</p>
-<p>将上下文和回调函数封装成一个类（闭包），做到延迟调用。闭包比较繁琐，当需要上下文对象类型不满足已有扩展的闭包支持的类型时就要进行 闭包类型的扩展。</p>
-<h4 id="谷歌的NewCallBack"><a href="#谷歌的NewCallBack" class="headerlink" title="谷歌的NewCallBack"></a><strong>谷歌的NewCallBack</strong></h4><p>上下文只能绑定前面的参数不能绑定后面的参数、返回的是指针（本质是new一个函数对象执行）如果没有调用会造成内存泄漏（解决方案：使用智能指针包裹）</p>
-<h2 id="Callback-Hell（回调地狱）"><a href="#Callback-Hell（回调地狱）" class="headerlink" title="Callback Hell（回调地狱）"></a><strong>Callback Hell（回调地狱）</strong></h2><p>在处理回调时，我们的逻辑会被截成两段，一段是发起callback 一段是响应callback 。在Callback调用Callback的过程中，代码相应会像波浪一样越推越远。</p>
-<p>易出错、难修改。在callback 中难插入。</p>
-<h2 id="async-await-Task"><a href="#async-await-Task" class="headerlink" title="async await Task"></a>async await Task</h2><p>把int Func() (回调)	转成await Func()</p>
-<p>在C#中通过转换工具TaskCompletionSource <t>转换</t></p>
-<h2 id="ETTask"><a href="#ETTask" class="headerlink" title="ETTask"></a><strong>ETTask</strong></h2><ul>
-<li>简化的Task 生成代码简单</li>
-</ul>
-<p>(.Net Reflector 可以.net stand 2.0反编译)</p>
-<ul>
-<li>解决了GC问题</li>
-</ul>
-<p>Task 使用TaskCompletionSource工具类转换成await Func 时会new 工具类</p>
-<p>ETTask在确保安全的时候使用池消除gc，Set Result (true)时回收</p>
-<p>TaskCompletionSource和Task合并</p>
-<ul>
-<li>不提供多线程处理</li>
-</ul>
-<h2 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h2><p>ET提供<code>WaitAll</code> <code>WaitAny</code>，类比线程同步barrier</p>
-<p>当多个回调同时发起，等所有回调执行完再往下执行</p>
-<p>场景：</p>
-<ol>
-<li>切换场景资源,不需要一个个加载，可以同时加载，等所有加载完再往下执行。</li>
-<li>机器人登录50个，不需要一个个登录。</li>
-</ol>
-<h3 id="协程锁"><a href="#协程锁" class="headerlink" title="协程锁"></a>协程锁</h3><p>应用场景：</p>
-<ol>
-<li>两个逻辑同时加载同一个ab包</li>
-<li>服务器玩家异步加载处理到一半，这时收到下线消息。</li>
-</ol>
-<p>实现：</p>
-<ul>
-<li>CoroutineComponent实现思路：<ol>
-<li>同一种锁，同一个key放入同一个队列</li>
-<li>一个协程执行完后从自己队列中取出下一个执行</li>
-</ol>
-</li>
-</ul>
-<p>问题:</p>
-<p>协程执行取出下一个执行时，如果消息处理不过来会产生队列内的处理逻辑的堆积。队列很多时，堆栈的层级也会很多(因为逐层调用)，导致堆栈爆掉。</p>
-<p>改进：</p>
-<p>取出下一个执行时，不直接执行而是放入update中执行。</p>
-<p>问题：</p>
-<p>协程锁死锁情况，await互相等，永远等不到</p>
-<p>改进：</p>
-<p>ET协程锁添加时间限制，时间到了解锁(超时机制)。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" class="category-chain-item">框架篇</a>
   
   
 
-      
+      </span>
+    
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/01/17/ManagerOfManager/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ysich">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ysich'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/17/ManagerOfManager/" class="post-title-link" itemprop="url">ManagerOfManager</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-17 14:14:51 / 修改时间：16:48:13" itemprop="dateCreated datePublished" datetime="2023-01-17T14:14:51+08:00">2023-01-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">框架篇</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="框架搭建随笔"><a href="#框架搭建随笔" class="headerlink" title="框架搭建随笔"></a>框架搭建随笔</h1><h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><p>使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z</p>
-<ul>
-<li>X 是主版本号，⽤于不向前兼容的更新。</li>
-<li>Y 是中间版本，⽤于可向前兼容的功能性更新。</li>
-<li>Z 是⼩版本号，⽤于功能完善和 bug 修复的更新</li>
-</ul>
-<p>⼀般都是从 v0.1.1 这个版本开始发布的，但是这个版本呢叫做 mvp 版本，也就是最⼩可验证版本。后续发布版本都需要向前兼容</p>
-<h2 id="Obsolete-标签"><a href="#Obsolete-标签" class="headerlink" title="Obsolete 标签"></a>Obsolete 标签</h2><p>使用Obsolete标签标记方法已弃用，使用其他方法。</p>
-<p>添加弃用标签后会报警报提醒</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Obsolete(<span class="string">"方法已过时，请使用xx方法"</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">OpenInFolder</span>(<span class="params"><span class="built_in">string</span> folderPath</span>)</span></span><br><span class="line">{</span><br><span class="line">	Application.OpenURL(<span class="string">"file://"</span> + folderPath);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Partial关键字"><a href="#Partial关键字" class="headerlink" title="Partial关键字"></a>Partial关键字</h2><p>当类后续可能增长的时候使用，各个部分类需要用相同的访问权限。而且每个部分类都需要加<code>partial</code>关键字。</p>
-<h2 id="方法结构重复-解决方案"><a href="#方法结构重复-解决方案" class="headerlink" title="方法结构重复 解决方案"></a>方法结构重复 解决方案</h2><p>当一个方法的的参数类型不同时，如果有共同父类可以将类型设置为父类，子类可以进行使用</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> <span class="title">GetRandomValueFrom</span>(<span class="params"><span class="built_in">int</span>[] values</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">return</span> values[Random.Range(<span class="number">0</span>, values.Length)];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">float</span> <span class="title">GetRandomValueFrom</span>(<span class="params"><span class="built_in">float</span>[] values</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">return</span> values[Random.Range(<span class="number">0</span>, values.Length)];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">GetRandomValueFrom</span>(<span class="params"><span class="built_in">string</span>[] values</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">return</span> values[Random.Range(<span class="number">0</span>, values.Length)];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>可以将类型设置为object</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">object</span> <span class="title">GetRandomValueFrom</span>(<span class="params"><span class="built_in">object</span>[] values</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">return</span> values[Random.Range(<span class="number">0</span>, values.Length)];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="泛型实现结构复用"><a href="#泛型实现结构复用" class="headerlink" title="泛型实现结构复用"></a>泛型实现结构复用</h3><p>使用泛型实现方法复用</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">GetRandomValueFrom</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="keyword">params</span> T[] values</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">return</span> values[Random.Range(<span class="number">0</span>, values.Length)];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="params关键字"><a href="#params关键字" class="headerlink" title="params关键字"></a>params关键字</h3><p>修饰形参<strong>必须为一维数组</strong>，并且方法声明只能有一个<code>params</code>，如果不是一维数组编译器将报错。</p>
-<p>使用 <code>params</code> 参数调用方法时，可以传入：</p>
-<ul>
-<li><p>数组元素类型的参数的逗号分隔列表。</p>
-</li>
-<li><p>指定类型的参数的数组。</p>
-</li>
-<li><p>无参数。 如果未发送任何参数，则 <code>params</code> 列表的长度为零。</p>
-</li>
-</ul>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组元素类型的参数的逗号分隔列表</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Get</span>()</span></span><br><span class="line">{</span><br><span class="line">	GetRandomValueFrom&lt;<span class="built_in">int</span>&gt;(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">}</span><br><span class="line"><span class="comment">//无参数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Get</span>()</span></span><br><span class="line">{</span><br><span class="line">	GetRandomValueFrom&lt;<span class="built_in">int</span>&gt;();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="消息机制"><a href="#消息机制" class="headerlink" title="消息机制"></a>消息机制</h2><h3 id="Unity内置消息机制"><a href="#Unity内置消息机制" class="headerlink" title="Unity内置消息机制"></a>Unity内置消息机制</h3><p>方法调用使用字符串，可能用到反射，尽量不用。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.SendMessageUpward(<span class="string">"MethedName"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="通过委托通知"><a href="#通过委托通知" class="headerlink" title="通过委托通知"></a>通过委托通知</h3><p>A注册特定方法，B声明委托。当B想调用A的方法时，通过委托通知。</p>
-<h3 id="消息机制提供的功能"><a href="#消息机制提供的功能" class="headerlink" title="消息机制提供的功能"></a>消息机制提供的功能</h3><ul>
-<li>注册事件</li>
-<li>注销事件</li>
-<li>发送事件</li>
-</ul>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MsgDispatcher.Register(<span class="string">"消息名"</span>,(obj)=&gt;{ <span class="comment">/* 处理消息 */</span> });</span><br><span class="line">MsgDispatcher.Send(<span class="string">"消息名"</span>,<span class="string">"消息内容"</span>);</span><br><span class="line">MsgDispatcher.UnRegister(<span class="string">"消息名"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="new-Class的优化"><a href="#new-Class的优化" class="headerlink" title="new Class的优化"></a>new Class的优化</h2><p>当一个class作为存储数据时，为了减少new的次数可以做一个对象池进行存储</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title">MsgRecord</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">//私有构造函数后，class无法被new</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">MsgRecord</span>()</span> { }</span><br><span class="line">    <span class="comment">//对象池</span></span><br><span class="line">    <span class="keyword">static</span> Stack&lt;MsgRecord&gt; mMsgRecordPool = <span class="keyword">new</span> Stack&lt;MsgRecord&gt;();</span><br><span class="line">    <span class="comment">//创建对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MsgRecord <span class="title">Allocate</span>(<span class="params"><span class="built_in">string</span> msgName, Action&lt;<span class="built_in">object</span>&gt; onMsgReceived</span>)</span></span><br><span class="line">    {</span><br><span class="line">        MsgRecord msgRecord;</span><br><span class="line">        <span class="keyword">if</span> (mMsgRecordPool.Count &gt; <span class="number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            msgRecord = mMsgRecordPool.Pop();</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            msgRecord = <span class="keyword">new</span> MsgRecord { };</span><br><span class="line">        }</span><br><span class="line">        msgRecord.Name = msgName;</span><br><span class="line">        msgRecord.OnMsgReceived = onMsgReceived;</span><br><span class="line">        <span class="keyword">return</span> msgRecord;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//移除对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Recycle</span>()</span></span><br><span class="line">    {</span><br><span class="line">        Name = <span class="literal">null</span>;</span><br><span class="line">        OnMsgReceived = <span class="literal">null</span>;</span><br><span class="line">        mMsgRecordPool.Push(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name;</span><br><span class="line">    <span class="keyword">public</span> Action&lt;<span class="built_in">object</span>&gt; OnMsgReceived;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="框架的定义"><a href="#框架的定义" class="headerlink" title="框架的定义"></a>框架的定义</h2><p><code>框架</code>：提供⼀个架构（⽂件结构、约定等等），你必须遵守它，只要你遵守，那剩下的就 全部处理通⽤需求了。 </p>
-<p><strong>好架构=好规则</strong></p>
-<h2 id="库的定义"><a href="#库的定义" class="headerlink" title="库的定义"></a>库的定义</h2><p>库，插到既有 架构上，补充特定功能。</p>
-<h2 id="Unity常用架构"><a href="#Unity常用架构" class="headerlink" title="Unity常用架构"></a>Unity常用架构</h2><h3 id="1-EmptyGo"><a href="#1-EmptyGo" class="headerlink" title="1.EmptyGo"></a>1.EmptyGo</h3><p> 在 Hierarchy 上创建⼀个空的 GameObject,然后挂上所有与 GameObject ⽆关的逻辑控制的脚 本。使⽤GameObject.Find() 访问对象数据。 </p>
-<p>缺点:逻辑代码散落在各处,不适合⼤型项⽬。 </p>
-<h3 id="2-Simple-GameManager"><a href="#2-Simple-GameManager" class="headerlink" title="2.Simple GameManager"></a>2.Simple GameManager</h3><p>所有与 GameObject ⽆关的逻辑都放在⼀个单例中。 </p>
-<p>缺点:单⼀⽂件过于庞⼤ </p>
-<h3 id="3-Manager-Of-Managers"><a href="#3-Manager-Of-Managers" class="headerlink" title="3.Manager Of Managers"></a>3.Manager Of Managers</h3><p>将不同的功能单独管理。</p>
-<p>如下:</p>
-<ul>
-<li>MainManager: 作为⼊⼝管理器。</li>
-<li>EventManager: 消息管理。 </li>
-<li>GUIManager: 图形视图管理。 </li>
-<li>AudioManager: ⾳效管理。</li>
-<li>PoolManager: GameObject管理（减少动态开辟内存消耗,减少GC)。  存储各类型的spawnPool，spawnpool存储各prefabPool。删除和添加时如果不需要立即操作，可以分步进行添加删除。(最基本拥有) </li>
-<li>LevelManager: 关卡管理。 (最基本拥有)</li>
-<li>GameManager: 游戏管理。</li>
-<li>SaveManager: 配置&amp;存储管理。(最基本拥有)</li>
-<li><code>Easy save2</code>插件使用二进制操作 ，对数据加密</li>
-<li>MenuManager 菜单管理。</li>
-</ul>
-<h3 id="4-将-View-和-Model-之间增加⼀个媒介层"><a href="#4-将-View-和-Model-之间增加⼀个媒介层" class="headerlink" title="4.将 View 和 Model 之间增加⼀个媒介层"></a>4.将 View 和 Model 之间增加⼀个媒介层</h3><p>UI和逻辑分离</p>
-<p> MVCS:</p>
-<p>​	StrangeIOC 插件。</p>
-<p>​	<code>IBinder.Bind&lt;Key&gt;().To&lt;Value&gt;();</code></p>
-<p>​	<code>IBinder.Bind&lt;Key&gt;().To&lt;Value&gt;().ToName(name);</code>当key和value都相同时，根据name区分</p>
-<p>​	通过event和listener来触发按键的操作</p>
-<p>​	机制依赖于C#的Reflection(反射)，效率慢，模式、思想和理念可借鉴</p>
-<p>MVVM:</p>
-<p>​	uFrame 插件</p>
-<h3 id="5-ECS-Entity-Component-Based-System"><a href="#5-ECS-Entity-Component-Based-System" class="headerlink" title="5.ECS (Entity Component Based System)"></a>5.ECS (Entity Component Based System)</h3><p> Unity 是基于 ECS,⽐较适合 GamePlay 模块使⽤ </p>
-<h2 id="Manager-Of-Managers架构模式"><a href="#Manager-Of-Managers架构模式" class="headerlink" title="Manager Of Managers架构模式"></a>Manager Of Managers架构模式</h2><h3 id="LevelManager"><a href="#LevelManager" class="headerlink" title="LevelManager"></a>LevelManager</h3><p>Unity里的<code>LoadScene方法</code>只能传递scene名字或index。改名或者变换顺序时变得非常麻烦。通过配置表配置，读取level时按顺序读取配置表即可。</p>
-<h3 id="PoolManager"><a href="#PoolManager" class="headerlink" title="PoolManager"></a>PoolManager</h3><p>两个经典操作，Spawn、Despawn</p>
-<h4 id="Spawn"><a href="#Spawn" class="headerlink" title="Spawn"></a>Spawn</h4><p>在创建新资源时，对象池有则直接调用，没有则需要初始化。</p>
-<h4 id="DeSpawn"><a href="#DeSpawn" class="headerlink" title="DeSpawn"></a>DeSpawn</h4><p>当池子容量达到指定上限时，将第一个第二个按照队列顺序进行销毁，先进先出。</p>
-<h4 id="对象池优化"><a href="#对象池优化" class="headerlink" title="对象池优化"></a>对象池优化</h4><p>一个PoolManager下有若干个SpawnPool来管理一类的物体。比如NPC一个Pool，物品一个Pool。一个SpawnPool有若干个PrefabPool，一个PrefabPool只能存储一个Prefab，可以进行单个Prefab的加载和卸载。</p>
-<p>对于每一个PrefabPool可以管理两个List，一个是ActivetedList，一个是DeactivateList，并管理所有Prefab的加载和卸载过程。</p>
-<p>在删除时对数量要严格控制，一帧内不能同时删除太多物体，否则会触发GC。需要PoolManager管理时能够缓释，一帧只删除少量对象。</p>
-<h3 id="SaveManager"><a href="#SaveManager" class="headerlink" title="SaveManager"></a>SaveManager</h3><p><code>Easy Save2</code>二进制进行Load和Save，与Unity很好的结合，Unity类型基本都能Serialized。比Json的一些方案快。</p>
-<h3 id="MainManager"><a href="#MainManager" class="headerlink" title="MainManager"></a>MainManager</h3><p>入口管理器，如资源加载流程、第三方SDK启动流程、热更新检测，都是在入口处完成的。</p>
-<p>在开发阶段不同流程会有不同的log或调试需要进行阶段划分进行屏蔽。</p>
-<p>职责：</p>
-<ul>
-<li>管理多个入口</li>
-<li>负责游戏的启动流程。</li>
-</ul>
-<h4 id="阶段划分"><a href="#阶段划分" class="headerlink" title="阶段划分"></a>阶段划分</h4><ol>
-<li>开发阶段:不断编码-&gt;验证结果-&gt;编码-&gt;验证结果-&gt;….</li>
-<li>出包/真机阶段：跑完整流程，QA测试</li>
-<li>发布阶段：上线</li>
-</ol>
-<p>对应的枚举</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> EnvironmentMode{</span><br><span class="line">    Developing,</span><br><span class="line">    QA,</span><br><span class="line">    Release</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>根据枚举执行抽象方法</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">MainManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> EnvironmentMode mode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> EnvironmentMode mSharedMode;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">bool</span> mModeSetted = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">//不同场景不同mode时只会有一个唯一mode</span></span><br><span class="line">        <span class="keyword">if</span> (!mModeSetted)</span><br><span class="line">        {</span><br><span class="line">            mSharedMode = mode;</span><br><span class="line">            mModeSetted = <span class="literal">true</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">switch</span> (mSharedMode)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">case</span> EnvironmentMode.Developing:</span><br><span class="line">                LaunchInDevelopingMode();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> EnvironmentMode.Test:</span><br><span class="line">                LaunchInTestMode();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> EnvironmentMode.Production:</span><br><span class="line">                LaunchInProductionMode();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">LaunchInDevelopingMode</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">LaunchInTestMode</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">LaunchInProductionMode</span>()</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="GuiManager"><a href="#GuiManager" class="headerlink" title="GuiManager"></a>GuiManager</h3><h4 id="加载卸载"><a href="#加载卸载" class="headerlink" title="加载卸载"></a>加载卸载</h4><p>通过字典管理，加载和卸载通过存储Panel名字为key，GameObject为Value</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;<span class="built_in">string</span>, GameObject&gt; mPanelDict = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, GameObject&gt;();</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">UnLoadPanel</span>(<span class="params"><span class="built_in">string</span> PanelName</span>)</span></span><br><span class="line">       {</span><br><span class="line">           <span class="keyword">if</span> (mPanelDict.ContainsKey(PanelName))</span><br><span class="line">           {</span><br><span class="line">               <span class="keyword">var</span> gObj = mPanelDict[PanelName];</span><br><span class="line">               Destroy(gObj);</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> GameObject <span class="title">LoadPanel</span>(<span class="params"><span class="built_in">string</span> PanelName, UILayer uILayer</span>)</span></span><br><span class="line">       {</span><br><span class="line">           <span class="keyword">var</span> PanelPrefab = Resources.Load&lt;GameObject&gt;(PanelName);</span><br><span class="line">           <span class="keyword">var</span> PanelObj = Instantiate(PanelPrefab, UIRoot.transform);</span><br><span class="line">           PanelObj.name = PanelName;</span><br><span class="line">           mPanelDict.Add(PanelName, PanelObj);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">switch</span> (uILayer) </span><br><span class="line">           {</span><br><span class="line">               <span class="keyword">case</span> UILayer.Bg:</span><br><span class="line">                   PanelObj.transform.SetParent(UIRoot.transform.Find(<span class="string">"Bg"</span>));</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> UILayer.Common:</span><br><span class="line">                   PanelObj.transform.SetParent(UIRoot.transform.Find(<span class="string">"Common"</span>));</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> UILayer.Top:</span><br><span class="line">                   PanelObj.transform.SetParent(UIRoot.transform.Find(<span class="string">"Top"</span>));</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">           }</span><br><span class="line">           <span class="keyword">return</span> PanelObj;</span><br><span class="line">       }</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h4 id="层级管理"><a href="#层级管理" class="headerlink" title="层级管理"></a>层级管理</h4><p>通过枚举分级,在Scene中创建相对应的GameObject来管理对应Panel的层级关系</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> UILayer</span><br><span class="line">{</span><br><span class="line">    Bg,</span><br><span class="line">    Common,</span><br><span class="line">    Top</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="/2023/01/17/ManagerOfManager/1649575865089.png" alt="1649575865089"></p>
-<p>在加载时加载到对应层级的GameObject中</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> GameObject <span class="title">LoadPanel</span>(<span class="params"><span class="built_in">string</span> panelName, UILayer uILayer</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">var</span> canvasObj = GameObject.Find(<span class="string">"Canvas"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> PanelPrefab = Resources.Load&lt;GameObject&gt;(panelName);</span><br><span class="line">    <span class="keyword">var</span> PanelObj = Instantiate(PanelPrefab, canvasObj.transform);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (uILayer)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">case</span> UILayer.Bg: PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Bg"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> UILayer.Common:</span><br><span class="line"> PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Common"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> UILayer.Top:     PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Top"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> PanelObj;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="UIRoot"><a href="#UIRoot" class="headerlink" title="UIRoot"></a>UIRoot</h4><p>将前面所描述的canvas结构，制作为Prefab，名字为UIRoot，管理所有的UIPanel。</p>
-<p>在GUIManager中存储一份，在加载Panel时使用。</p>
-<p><img src="/2023/01/17/ManagerOfManager/1649577942704.png" alt="1649577942704"></p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> GameObject mPrivateUIRoot;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> GameObject UIRoot</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">//懒加载</span></span><br><span class="line">        <span class="keyword">if</span> (mPrivateUIRoot == <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            mPrivateUIRoot = GameObject.Instantiate(Resources.Load&lt;GameObject&gt;(<span class="string">"UIRoot"</span>));</span><br><span class="line">        }</span><br><span class="line">        mPrivateUIRoot.name = <span class="string">"UIRoot"</span>;</span><br><span class="line">        <span class="keyword">return</span> mPrivateUIRoot;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h3><h4 id="播放音效"><a href="#播放音效" class="headerlink" title="播放音效"></a>播放音效</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>音效 <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaySound</span>(<span class="params"><span class="built_in">string</span> soundName</span>)</span></span><br><span class="line">{</span><br><span class="line">    CheckAudioListener();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> doorClip = Resources.Load&lt;AudioClip&gt;(soundName);</span><br><span class="line">    <span class="keyword">var</span> audioSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line"></span><br><span class="line">    audioSource.clip = doorClip;</span><br><span class="line">    audioSource.Play();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>播放背景音</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>背景音 <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlayMusic</span>(<span class="params"><span class="built_in">string</span> soundName, <span class="built_in">bool</span> IsLoop = <span class="literal">true</span></span>)</span></span><br><span class="line">{</span><br><span class="line">    CheckAudioListener();</span><br><span class="line">    <span class="keyword">if</span> (mMusicSource == <span class="literal">null</span>)</span><br><span class="line">    {</span><br><span class="line">        mMusicSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">var</span> doorClip = Resources.Load&lt;AudioClip&gt;(soundName);</span><br><span class="line">    <span class="keyword">var</span> audioSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line"></span><br><span class="line">    audioSource.loop = IsLoop;</span><br><span class="line">    audioSource.clip = doorClip;</span><br><span class="line">    audioSource.Play();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="PoolManager-1"><a href="#PoolManager-1" class="headerlink" title="PoolManager"></a>PoolManager</h3><h4 id="对象池解决的问题"><a href="#对象池解决的问题" class="headerlink" title="对象池解决的问题"></a>对象池解决的问题</h4><ol>
-<li>减少new时候寻址造成的消耗，该消耗的原因是内存碎片。</li>
-<li>减少Object.Instantiate时内部进行序列化和反序列化而造成的CPU消耗。</li>
-</ol>
-<h4 id="简易对象池"><a href="#简易对象池" class="headerlink" title="简易对象池"></a>简易对象池</h4><p>获取的操作一般为Allocate(分配)，放入为Recycle(回收)。也有叫Spawn和Despawn</p>
-<h5 id="定义池接口"><a href="#定义池接口" class="headerlink" title="定义池接口"></a>定义池接口</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IPool</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="function">T <span class="title">Allocate</span>()</span>;</span><br><span class="line">    <span class="function"><span class="built_in">bool</span> <span class="title">Recycle</span>(<span class="params">T obj</span>)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在Allocate和Recycle时不在意对象顺序，只需要位置连续，使用stack容器来存储对象。</p>
-<h5 id="使用一个简单工厂接口来创建对象。"><a href="#使用一个简单工厂接口来创建对象。" class="headerlink" title="使用一个简单工厂接口来创建对象。"></a>使用一个简单工厂接口来创建对象。</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IObjectFactory</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="function">T <span class="title">Create</span>()</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Pool</span>&lt;<span class="title">T</span>&gt; : <span class="title">IPool</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">protected</span> Stack&lt;T&gt; mCachedStack = <span class="keyword">new</span> Stack&lt;T&gt;();</span><br><span class="line">    <span class="keyword">protected</span> IObjectFactory&lt;T&gt; mFactory;</span><br><span class="line">    <span class="keyword">protected</span> <span class="built_in">int</span> MaxNum = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> curCount</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">get</span> { <span class="keyword">return</span> mCachedStack.Count; }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> T <span class="title">Allocate</span>()</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (mCachedStack.Count == <span class="number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">return</span> mFactory.Create();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> mCachedStack.Pop();</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">bool</span> <span class="title">Recycle</span>(<span class="params">T obj</span>)</span>;</span><br><span class="line">    <span class="comment">//public virtual bool Recycle(T obj)</span></span><br><span class="line">    <span class="comment">//{</span></span><br><span class="line">    <span class="comment">//    if (mCachedStack.Count &gt;= MaxNum)</span></span><br><span class="line">    <span class="comment">//    {</span></span><br><span class="line">    <span class="comment">//        return false;</span></span><br><span class="line">    <span class="comment">//    }</span></span><br><span class="line">    <span class="comment">//    mCachedStack.Push(obj);</span></span><br><span class="line">    <span class="comment">//    return true;</span></span><br><span class="line">    <span class="comment">//}</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="基于工厂接口的简易工厂"><a href="#基于工厂接口的简易工厂" class="headerlink" title="基于工厂接口的简易工厂"></a>基于工厂接口的简易工厂</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 基于工厂接口的简易工厂</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name="T"&gt;</span><span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CustomObjectFactroy</span>&lt;<span class="title">T</span>&gt; : <span class="title">IObjectFactory</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 使用委托设置类内部信息</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">private</span> Func&lt;T&gt; mFactoryMethod;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomObjectFactroy</span>(<span class="params">Func&lt;T&gt; factoryMethod</span>)</span></span><br><span class="line">    {</span><br><span class="line">        mFactoryMethod = factoryMethod;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">Create</span>()</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">return</span> mFactoryMethod();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="包含创建方法的简易对象池"><a href="#包含创建方法的简易对象池" class="headerlink" title="包含创建方法的简易对象池"></a>包含创建方法的简易对象池</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 简易对象池</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name="T"&gt;</span><span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SimpleObjectPool</span>&lt;<span class="title">T</span>&gt; : <span class="title">Pool</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="comment">//重置方法</span></span><br><span class="line">    Action&lt;T&gt; mResetMethod;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleObjectPool</span>(<span class="params">Func&lt;T&gt; factoryMethod, Action&lt;T&gt; ResetMethod = <span class="literal">null</span>, <span class="built_in">int</span> initCount = <span class="number">0</span></span>)</span></span><br><span class="line">    {</span><br><span class="line">        mFactory = <span class="keyword">new</span> CustomObjectFactroy&lt;T&gt;(factoryMethod);</span><br><span class="line">        mResetMethod = ResetMethod;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; initCount; i++)</span><br><span class="line">        {</span><br><span class="line">            mCachedStack.Push(mFactory.Create());</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">Recycle</span>(<span class="params">T obj</span>)</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (mResetMethod != <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            mResetMethod(obj);</span><br><span class="line">        }</span><br><span class="line">        mCachedStack.Push(obj);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="复盘"><a href="#复盘" class="headerlink" title="复盘"></a>复盘</h4><p>设计一个比较复杂的模块结构时,可以先设计一个接口(规范)。描述内容有什么</p>
-<p><img src="/2023/01/17/ManagerOfManager/1649780552285.png" alt="1649780552285"></p>
-<p>在mFractroy.Create和Recycle(回收)时，更偏向于自定义的操作 </p>
-<h3 id="LevelManager-1"><a href="#LevelManager-1" class="headerlink" title="LevelManager"></a>LevelManager</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LevelManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">//可换成配置表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;<span class="built_in">string</span>&gt; mLevelNames;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> Index { <span class="keyword">get</span>; <span class="keyword">set</span>; }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params">List&lt;<span class="built_in">string</span>&gt; levelNames</span>)</span></span><br><span class="line">    {</span><br><span class="line">        mLevelNames = levelNames;</span><br><span class="line">        Index = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LoadCurrent</span>()</span></span><br><span class="line">    {</span><br><span class="line">        SceneManager.LoadScene(mLevelNames[Index]);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LoadNext</span>()</span></span><br><span class="line">    {</span><br><span class="line">        Index++;</span><br><span class="line">        <span class="keyword">if</span> (Index &gt;= mLevelNames.Count)</span><br><span class="line">        {</span><br><span class="line">            Index = <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        SceneManager.LoadScene(mLevelNames[Index]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>Probject内-&gt;右键-&gt;Create-&gt;Testing</p>
-<p>创建相对应的c#文件(test模板)<br>在Test Runner 界面内可以看到所有的测试脚本和对应的方法</p>
-<p>类似于自己编写测试用例进行测试</p>
-<p><code>Assert.AreEqual</code>叫做断言，在开发大项目时非常有用的工具。测试通不通过取决于断言通不通过。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ysich">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ysich'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">游戏资源管理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-01-16 12:56:44" itemprop="dateCreated datePublished" datetime="2023-01-16T12:56:44+08:00">2023-01-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-01 17:32:57" itemprop="dateModified" datetime="2023-02-01T17:32:57+08:00">2023-02-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">资源管理篇</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="游戏资源管理"><a href="#游戏资源管理" class="headerlink" title="游戏资源管理"></a>游戏资源管理</h1><p>游戏运行就是一个接一个资源的展示，如何管理好这些展示的资源让游戏能够流畅运行在开发中非常重要。需要在合理的地方调用、加载资源，资源空闲时对其进行卸载以减少内存占用。当内存超出预算可能导致游戏闪退，所以对资源的管理实际就是对内存的优化！</p>
-<p>本文争取一文搞懂资源管理。PS：可能和一个视频学完c++差不多(一个视频一个多月)</p>
-<p>TODOLIST：</p>
-<ul>
-<li><input disabled="" type="checkbox"> 分包策略</li>
-<li><input disabled="" type="checkbox"> 依赖处理</li>
-<li><input disabled="" type="checkbox"> AssetBundle详细</li>
-<li><input disabled="" type="checkbox"> 热更<ul>
-<li><input disabled="" type="checkbox"> 断点续传</li>
-<li><input disabled="" type="checkbox"> 代码热更新/热重载<ul>
-<li><input disabled="" type="checkbox"> Lua重新将函数指针赋值的策略</li>
-<li><input disabled="" type="checkbox"> HybridCLR</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><input disabled="" type="checkbox"> 资源包和资源区分开</li>
-<li><input disabled="" type="checkbox"> 一些资源策略<ul>
-<li><input disabled="" type="checkbox"> 整包只有基础内容，后续章节热更的形式(大资源情况)</li>
-</ul>
-</li>
-<li><input disabled="" type="checkbox"> YooAsset扩展篇</li>
-</ul>
-<h2 id="资源管理主要的需求有哪些？"><a href="#资源管理主要的需求有哪些？" class="headerlink" title="资源管理主要的需求有哪些？"></a>资源管理主要的需求有哪些？</h2><ul>
-<li>为开发与正式版本提供资源的加载和卸载</li>
-<li>支持远程更新资源</li>
-<li>做好版本、平台、渠道的资源管理</li>
-<li>内存优化</li>
-</ul>
-<h2 id="Unity中的两种加载方式"><a href="#Unity中的两种加载方式" class="headerlink" title="Unity中的两种加载方式"></a>Unity中的两种加载方式</h2><h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><ul>
-<li>资源必选放在Resources文件夹下；有容量上限(大概是2G)；重复加载和重复卸载操作，Unity做了容错处理不会报错。不支持热更，只能打整包</li>
-<li>适合放游戏的启动逻辑需要的资源</li>
-<li>可能会延长游戏启动时间</li>
-</ul>
-<h3 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h3><ul>
-<li>可以理解成Unity内的资源压缩包，有不同的压缩方式，解压速度和包体大小也不同(LZMA 和 LZ4)。</li>
-<li>适合做热更，以减少包体的初始大小。</li>
-<li>已加载的资源不允许重复加载，会报错。而使用AssetDatabase则不需要考虑。需要使用引用计数。</li>
-</ul>
-<p>这里还有一些开源的资源管理系统，如YooAsset。</p>
-<h2 id="同步加载与异步加载"><a href="#同步加载与异步加载" class="headerlink" title="同步加载与异步加载"></a>同步加载与异步加载</h2><h3 id="同步加载"><a href="#同步加载" class="headerlink" title="同步加载"></a>同步加载</h3><p>同步加载在加载资源时，会阻塞线程。等加载逻辑完成后才继续执行后续逻辑（图灵机）</p>
-<h3 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h3><p>同步加载在加载较大资源时阻塞明显，造成卡顿。因为Unity中所有的渲染都是放在主线程中的，所以主线程阻塞非常致命不能进行任何玩家操作。</p>
-<p>所以需要使用另外一种加载方式对较大资源进行加载。异步加载使用协程/线程进行加载逻辑，等资源加载完毕后触发资源加载后的callback。</p>
-<p>在一些资源的加载会影响到游戏的展示时，可以在需要之前对资源进行预先加载，保证流程能够顺利进行。</p>
-<h4 id="异步加载的三种状态"><a href="#异步加载的三种状态" class="headerlink" title="异步加载的三种状态"></a>异步加载的三种状态</h4><p>异步加载的逻辑由于执行完成的时间不确定，可能会导致其他逻辑的冲突。所以我们给异步加载按照逻辑划分状态，好让其他逻辑能够做区分，不同状态下处理相应的操作。</p>
-<ul>
-<li><p>未加载</p>
-<p>异步加载还没开始时可能需要准备的事情，比如资源包不在本地需要下载、解密、解压等等。</p>
-</li>
-<li><p>加载中</p>
-<p>资源开始加载后，其他业务逻辑也加载了相同资源时，可以判断这个资源的状态。正在加载则不再进行加载前的准备操作，并把加载后的callback注册进去。</p>
-</li>
-<li><p>已加载</p>
-<p>主要为加载后触发相应callback。</p>
-</li>
-</ul>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> LoaderState</span><br><span class="line">  {</span><br><span class="line">      NONE,           <span class="comment">// 默认</span></span><br><span class="line">      LOADING,        <span class="comment">// 加载中</span></span><br><span class="line">      FINISHED,       <span class="comment">// 完成</span></span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h4><p>玩家在进入一个场景后，假设资源预加载需要10s，玩家却在未加载完资源的过程中退出场景。这时候就会引发资源状态的问题。</p>
-<h2 id="资源缓存池"><a href="#资源缓存池" class="headerlink" title="资源缓存池"></a>资源缓存池</h2><p>资源缓存池为统一存储和调用资源的地方。在加载资源后统一存入池子中，卸载时则将其从池子中删除。</p>
-<p>加载时先判断池子中是否存在此资源包，如果已经加载过了直接则直接使用，未加载再进行加载逻辑。</p>
-<p>以下内容主要以AssetBundle举例</p>
-<figure class="highlight cc"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AssetBundlePool</span>{</span><br><span class="line">	<span class="keyword">private</span> Dictionary&lt;string,AssetBundleInfo&gt; m_LoadAssetBundle = <span class="keyword">new</span> <span class="built_in">Dictionary</span>&lt;string,AssetBundleInfo&gt;();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>引用技术的应用范围很广，很多引擎、框架、插件的底层都离不开引用计数。</p>
-<p>简单思想：被引用+1，不被引用时-1，当为0时触发清空逻辑。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IRefCounter</span></span><br><span class="line">{</span><br><span class="line">    <span class="built_in">int</span> RefCount { <span class="keyword">get</span>; }</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Retain</span>()</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Release</span>()</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SimpleRC</span> : <span class="title">IRefCounter</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> RefCount { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Retain</span>()</span></span><br><span class="line">    {</span><br><span class="line">        RefCount++;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Release</span>()</span></span><br><span class="line">    {</span><br><span class="line">        RefCount--;</span><br><span class="line">        <span class="keyword">if</span> (RefCount == <span class="number">0</span>){ OnZeroRef(); }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">OnZeroRef</span>()</span>{}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="与资源管理结合的引用计数"><a href="#与资源管理结合的引用计数" class="headerlink" title="与资源管理结合的引用计数"></a>与资源管理结合的引用计数</h3><p>资源被使用时引用次数+1，资源解除使用时次数-1，当引用次数为0时则进行卸载逻辑。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AssetBundleInfo</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">private</span> AssetBundle m_AssetBundle;   <span class="comment">//AB包引用</span></span><br><span class="line">    <span class="keyword">public</span> AssetBundle AssetBundle { <span class="keyword">get</span> { <span class="keyword">return</span> m_AssetBundle; } }</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> m_ReferencedCount;           <span class="comment">//引用计数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AssetBundleInfo</span>(<span class="params">AssetBundle assetBundle</span>)</span></span><br><span class="line">    {</span><br><span class="line">        m_AssetBundle = assetBundle;</span><br><span class="line">        m_ReferencedCount = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="与资源缓冲池结合的加载"><a href="#与资源缓冲池结合的加载" class="headerlink" title="与资源缓冲池结合的加载"></a>与资源缓冲池结合的加载</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AssetBundlePool</span>{</span><br><span class="line">	<span class="keyword">private</span> Dictionary&lt;<span class="built_in">string</span>,AssetBundleInfo&gt; m_LoadAssetBundle = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>,AssetBundleInfo&gt;();</span><br><span class="line">	  <span class="function"><span class="keyword">public</span> AssetBundle <span class="title">LoadAssetsFromAB</span>(<span class="params"><span class="built_in">string</span> abName</span>)</span></span><br><span class="line">    {</span><br><span class="line">        AssetBundleInfo assetBundleInfo = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (m_LoadAssetBundle.TryGetValue(abName, <span class="keyword">out</span> assetBundleInfo))</span><br><span class="line">        {   <span class="comment">//检查是否加载过</span></span><br><span class="line">            assetBundleInfo.m_ReferencedCount++;<span class="comment">//这里可以使用封装好的引用计数，为了方便展示直接使用</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">string</span> loadPath = PathUnit.DataPath + PathUnit.ABRootPath + abName;</span><br><span class="line">            <span class="keyword">var</span> ab = AssetBundle.LoadFromFile(loadPath);</span><br><span class="line">            <span class="keyword">if</span> (ab <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">            {</span><br><span class="line">                Debug.Log(<span class="string">"AB包加载失败！"</span>+ loadPath);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                assetBundleInfo = <span class="keyword">new</span> AssetBundleInfo(ab);</span><br><span class="line">                m_LoadAssetBundle.Add(abName, assetBundleInfo);</span><br><span class="line">                <span class="comment">//assetBundleInfo.m_ReferencedCount++;这里不需要加了因为默认值为1</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> assetBundleInfo.AssetBundle;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>异步加载也是相同的操作，但有点不同。需要一个额外的队列记录加载中的文件。当加载中的文件又收到了加载请求时，则需要在列表中查找是否正在加载。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AssetBundleCachePool</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> MonoBehaviour monoBehaviour;</span><br><span class="line">    <span class="keyword">private</span> Dictionary&lt;<span class="built_in">string</span>, AssetBundleInfo&gt; m_LoadAssetBundle = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, AssetBundleInfo&gt;();</span><br><span class="line">    <span class="keyword">private</span> Dictionary&lt;<span class="built_in">string</span>, Action&lt;AssetBundle&gt;&gt; m_LoadingAssetBundle = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, Action&lt;AssetBundle&gt;&gt;();</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadAssetsFormAbAsync</span>(<span class="params"><span class="built_in">string</span> abName, Action&lt;AssetBundle&gt; loadingABAction</span>)</span></span><br><span class="line">    {</span><br><span class="line">        monoBehaviour.StartCoroutine(OnLoadAssetsFormAbAsync(abName, loadingABAction));</span><br><span class="line">    }</span><br><span class="line">    <span class="function">IEnumerator <span class="title">OnLoadAssetsFormAbAsync</span>(<span class="params"><span class="built_in">string</span> abName, Action&lt;AssetBundle&gt; loadingABAction</span>)</span></span><br><span class="line">    {</span><br><span class="line">        AssetBundleInfo assetBundleInfo = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (m_LoadAssetBundle.TryGetValue(abName,<span class="keyword">out</span> assetBundleInfo))</span><br><span class="line">        {</span><br><span class="line">            Debug.Log(<span class="string">"已加载过"</span>);</span><br><span class="line">            AssetBundle assetBundle = assetBundleInfo.AssetBundle;</span><br><span class="line">            <span class="comment">//引用计数+1</span></span><br><span class="line">            assetBundleInfo.m_ReferencedCount++;</span><br><span class="line">            <span class="comment">//触发回调</span></span><br><span class="line">            <span class="keyword">if</span> (loadingABAction != <span class="literal">null</span>)</span><br><span class="line">            {</span><br><span class="line">                loadingABAction.Invoke(assetBundle);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">if</span> (m_LoadingAssetBundle.TryGetValue(abName,<span class="keyword">out</span> Action&lt;AssetBundle&gt; temploadingABAction))</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">if</span> (loadingABAction != <span class="literal">null</span>) { temploadingABAction += loadingABAction; }</span><br><span class="line">                Debug.Log(<span class="string">"正在被加载"</span>);</span><br><span class="line">                <span class="keyword">yield</span> <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                <span class="comment">//这步需要执行，避免与其他逻辑冲突</span></span><br><span class="line">                m_LoadingAssetBundle.Add(abName, loadingABAction);</span><br><span class="line">                <span class="built_in">string</span> loadPath = PathUnit.DataPath + PathUnit.ABRootPath + abName;</span><br><span class="line">                AssetBundleCreateRequest assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(loadPath);</span><br><span class="line">                AssetBundle resAB = assetBundleCreateRequest.assetBundle;</span><br><span class="line">                <span class="keyword">if</span> (resAB <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">                {</span><br><span class="line">                    Debug.LogError(<span class="string">"AB包不能存在"</span>);</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                {</span><br><span class="line">                    assetBundleInfo = <span class="keyword">new</span> AssetBundleInfo(resAB);</span><br><span class="line">                    m_LoadAssetBundle.Add(abName, assetBundleInfo);</span><br><span class="line">                }</span><br><span class="line">                <span class="comment">//加载完成移除加载中列表</span></span><br><span class="line">                <span class="comment">//避免啥异常状况，保险点！先判断是否存在</span></span><br><span class="line">                <span class="keyword">if</span> (m_LoadingAssetBundle.ContainsKey(abName))</span><br><span class="line">                {</span><br><span class="line">                    Action&lt;AssetBundle&gt; action = m_LoadingAssetBundle[abName];</span><br><span class="line">                    m_LoadingAssetBundle.Remove(abName);</span><br><span class="line">                    <span class="keyword">var</span> callBackList =  action.GetInvocationList();</span><br><span class="line">                    <span class="keyword">foreach</span> (Action&lt;AssetBundle&gt; callBack <span class="keyword">in</span> callBackList)</span><br><span class="line">                    {</span><br><span class="line">                        callBack.Invoke(resAB);</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="与资源缓冲池结合的卸载"><a href="#与资源缓冲池结合的卸载" class="headerlink" title="与资源缓冲池结合的卸载"></a>与资源缓冲池结合的卸载</h3><p>为了保持<code>平衡</code>有了加载就一定会有卸载。但是在游戏中(特别是手游)卸载操作需要加上一些限制，因为在短时间内进行了大量资源的卸载增加了大量的IO操作也会造成卡顿（线程阻塞）的。🙂</p>
-<p>所以我们的卸载操作需要与数量和时间扯上关系，在一定时间内只卸载一定数量的资源。</p>
-<p>在引用计数中，如果引用计数为0则标记为可以开始卸载了。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AssetBundleInfo</span>{</span><br><span class="line">     <span class="keyword">public</span> <span class="built_in">int</span> ReferencedCount { </span><br><span class="line">        <span class="keyword">get</span> { <span class="keyword">return</span> m_ReferencedCount; } </span><br><span class="line">        <span class="keyword">set</span> {</span><br><span class="line">            m_ReferencedCount = <span class="keyword">value</span>;</span><br><span class="line">            <span class="keyword">if</span> (m_ReferencedCount&lt;= <span class="number">0</span>)</span><br><span class="line">                IsUnLoadFlag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                IsUnLoadFlag = <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> IsUnLoadFlag { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> m_ReferencedCount;           <span class="comment">//引用计数</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="与时间挂钩"><a href="#与时间挂钩" class="headerlink" title="与时间挂钩"></a>与时间挂钩</h4><p>与时间挂钩就需要有个地方能够一直统计和计算我们的时间并进行回收</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ResourceManager</span>{</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>{</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>本文之前的代码都是没有考虑依赖的，所以如果真的跑起来会发现计数会有偏差。</p>
-<p>一个资源身上用到了别的AB包中的资源，这时候如果只加载自身的AB包，就会出现资源丢失的情况。这时候就需要把当前资源需要用到的依赖包一起加载出来。</p>
-<p>但是我们又要怎么知道这个资源依赖于哪些包？</p>
-<p>这时候就需要用到Unity提供的AB包依赖文件来判断，后缀<code>.manifest·</code>。</p>
-<h2 id="Asset篇"><a href="#Asset篇" class="headerlink" title="Asset篇"></a>Asset篇</h2><h3 id="Asset"><a href="#Asset" class="headerlink" title="Asset"></a>Asset</h3><h4 id="什么是Asst？"><a href="#什么是Asst？" class="headerlink" title="什么是Asst？"></a>什么是Asst？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable1.html" target="_blank"></a><a href="https://blog.uwa4d.com/archives/USparkle_Addressable1.html">浅谈Assets——Unity资源映射</a></p>
-<h3 id="Resources-1"><a href="#Resources-1" class="headerlink" title="Resources"></a>Resources</h3><h4 id="什么是Resources？"><a href="#什么是Resources？" class="headerlink" title="什么是Resources？"></a>什么是Resources？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable2.html" target="_blank"></a><a href="https://blog.uwa4d.com/archives/USparkle_Addressable2.html">Resources目录的优点与痛点</a></p>
-<h3 id="AssetBundle-1"><a href="#AssetBundle-1" class="headerlink" title="AssetBundle"></a>AssetBundle</h3><h4 id="什么是AssetBundle？"><a href="#什么是AssetBundle？" class="headerlink" title="什么是AssetBundle？"></a>什么是AssetBundle？</h4><p><a href="https://blog.uwa4d.com/archives/USparkle_Addressable3.html" target="_blank"></a><a href="https://blog.uwa4d.com/archives/USparkle_Addressable3.html">AssetBundle的原理及最佳实践 </a></p>
-<h2 id="热更篇"><a href="#热更篇" class="headerlink" title="热更篇"></a>热更篇</h2><p>Todo<span class="github-emoji"><span>💁♀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f481-2640.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>这部分内容写在别的地方，比较乱后续整理。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/01/13/Lua%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ysich">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ysich'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/13/Lua%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Lua基础语法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-01-13 14:12:28" itemprop="dateCreated datePublished" datetime="2023-01-13T14:12:28+08:00">2023-01-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-17 14:16:15" itemprop="dateModified" datetime="2023-01-17T14:16:15+08:00">2023-01-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">编程语言篇</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Lua基础语法"><a href="#Lua基础语法" class="headerlink" title="Lua基础语法"></a>Lua基础语法</h1><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
-<li>循环用<code>do</code>，if语句用<code>then</code>，都使用<code>end</code>结尾</li>
-<li>Lua不支持自减和自加操作，只能<code>i=i+1</code>，<code>i=i-1</code></li>
-<li>字符串的第一个位置是1不是0</li>
-</ul>
-<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><ul>
-<li>Lua的字符串可以存储<code>0x00</code>，可以用字符串存储二进制流</li>
-</ul>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p> 用<code>--</code>开头，来写一段<code>单行注释</code> </p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单行注释</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p> 用<code>--[[</code>开头，<code>]]</code>结尾，写一段多行注释。 </p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">	多行</span></span><br><span class="line"><span class="comment">	注释</span></span><br><span class="line"><span class="comment">]]</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>对一个变量进行赋值就相当于声明变量，与python相似</p>
-<h3 id="声明的变量默认为全局变量"><a href="#声明的变量默认为全局变量" class="headerlink" title="声明的变量默认为全局变量"></a><strong>声明的变量默认为全局变量</strong></h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>同时给多个变量赋值，多重赋值</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a,b=<span class="number">1</span>,<span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> b=<span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="nil类型"><a href="#nil类型" class="headerlink" title="nil类型"></a>nil类型</h3><p><strong>没有被声明过的变量都是nil</strong></p>
-<p><strong>nil类型只有一个值，就是nil</strong></p>
-<p>nil类似null类型  if(nil)为false</p>
-<h3 id="number类型"><a href="#number类型" class="headerlink" title="number类型"></a>number类型</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--支持十六进制表示方法</span></span><br><span class="line">a=<span class="number">0x11</span><span class="comment">--输出为17</span></span><br><span class="line"><span class="comment">--科学计数法</span></span><br><span class="line">a=<span class="number">2e10</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="string类型"><a href="#string类型" class="headerlink" title="string类型"></a>string类型</h3><h4 id="单引号、双引号"><a href="#单引号、双引号" class="headerlink" title="单引号、双引号"></a>单引号、双引号</h4><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">"daeqeq"</span></span><br><span class="line">b=<span class="string">'sdarrr'</span></span><br><span class="line"><span class="comment">--转义字符\n</span></span><br><span class="line">d=<span class="string">"sdada\nsdar"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="多行文本"><a href="#多行文本" class="headerlink" title="多行文本"></a>多行文本</h4><p>多行文本无法使用转义字符</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="string">[[asdasfffrrqweqq]]</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>字符串连接符号<code>..</code></p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">"daeqeq"</span></span><br><span class="line">b=<span class="string">'sdarrr'</span></span><br><span class="line">c=a..b</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"asdaf"</span>..<span class="string">"as232"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="数值转字符串"><a href="#数值转字符串" class="headerlink" title="数值转字符串"></a>数值转字符串</h4><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tostring</span>(<span class="number">10</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="字符串转数值"><a href="#字符串转数值" class="headerlink" title="字符串转数值"></a>字符串转数值</h4><p><code>tonumber</code>转换失败为nil</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tonumber</span>(<span class="string">"193"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h4><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">"daeqeq"</span></span><br><span class="line"><span class="built_in">print</span>(#a)</span><br><span class="line"><span class="comment">--等价于s:len()</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="string类型类似char数组"><a href="#string类型类似char数组" class="headerlink" title="string类型类似char数组"></a>string类型类似char数组</h4><p>Lua中string类型 类似于C里的字符数组，可以包含任意数值包括0x00，可以存储二进制流因为都是原原本本存储</p>
-<h5 id="将ascii码转为字符串"><a href="#将ascii码转为字符串" class="headerlink" title="将ascii码转为字符串"></a>将ascii码转为字符串</h5><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="built_in">string</span>.<span class="built_in">char</span>(<span class="number">65</span>)</span><br><span class="line">s=<span class="built_in">string</span>.<span class="built_in">char</span>(<span class="number">0x30</span>,<span class="number">0x31</span>,<span class="number">0x32</span>,<span class="number">0x33</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h5 id="取出string中的某一位的ascii码"><a href="#取出string中的某一位的ascii码" class="headerlink" title="取出string中的某一位的ascii码"></a>取出string中的某一位的ascii码</h5><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="built_in">string</span>.<span class="built_in">byte</span>(s,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="comment">--语法糖，第一个到最后一个</span></span><br><span class="line">s:<span class="built_in">byte</span>(<span class="number">1</span>，<span class="number">-1</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><p>调用c的接口</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> f=<span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"%d,%d"</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(f)</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="function函数"><a href="#function函数" class="headerlink" title="function函数"></a>function函数</h2><p>函数默认返回值为nil，没有任何返回值则为nil</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">function_name</span><span class="params">()</span></span></span><br><span class="line">	<span class="comment">--body</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--函数名放前面</span></span><br><span class="line">f=<span class="function"><span class="keyword">function</span><span class="params">(...)</span></span></span><br><span class="line">    <span class="comment">--body</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(a,b,c)</span></span></span><br><span class="line">    <span class="built_in">print</span>(a,b,c)</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--c没有传值则为nil</span></span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">1</span>,<span class="number">2</span>))<span class="comment">--1</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="函数可以返回多个值"><a href="#函数可以返回多个值" class="headerlink" title="函数可以返回多个值"></a>函数可以返回多个值</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(a,b,c)</span></span></span><br><span class="line">    <span class="keyword">return</span> a,b</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">1</span>,<span class="number">2</span>))</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="多个返回值可以使用多重赋值语句"><a href="#多个返回值可以使用多重赋值语句" class="headerlink" title="多个返回值可以使用多重赋值语句"></a>多个返回值可以使用多重赋值语句</h4><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(a,b,c)</span></span></span><br><span class="line">    <span class="keyword">return</span> a,b</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> i,j=f(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><h3 id="table接口"><a href="#table接口" class="headerlink" title="table接口"></a>table接口</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">table</span>.<span class="built_in">insert</span>(a,<span class="string">"d"</span>)<span class="comment">--插入元素，末尾添加</span></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">insert</span>(a,<span class="number">2</span>,<span class="string">"d"</span>)<span class="comment">--插入元素，第二个位置，后续元素后移</span></span><br><span class="line"><span class="keyword">local</span> s= <span class="built_in">table</span>.<span class="built_in">remove</span>(a,<span class="number">2</span>)<span class="comment">--移除第2个元素</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="table数字下标"><a href="#table数字下标" class="headerlink" title="table数字下标"></a>table数字下标</h3><p>可以存所有东西(number,string,table,function)</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a={<span class="number">1</span>,<span class="string">"ac"</span>,{},<span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="keyword">end</span>}</span><br><span class="line">a[<span class="number">5</span>]=<span class="number">123</span> <span class="comment">--可以直接添加一个元素</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>])</span><br><span class="line"><span class="comment">--获取table长度</span></span><br><span class="line"><span class="built_in">print</span>(#a)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="table字符串下标"><a href="#table字符串下标" class="headerlink" title="table字符串下标"></a>table字符串下标</h3><p>以字符为table的下标</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a={</span><br><span class="line">    a=<span class="number">1</span>,</span><br><span class="line">    b=<span class="string">"1234"</span>,</span><br><span class="line">    c=<span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="keyword">end</span>,</span><br><span class="line">    d=<span class="number">123123</span></span><br><span class="line">}</span><br><span class="line"><span class="built_in">print</span>(a[<span class="string">"a"</span>])</span><br><span class="line"><span class="comment">--下标符合变量命名规范时</span></span><br><span class="line"><span class="built_in">print</span>(a.a)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="全局表-G"><a href="#全局表-G" class="headerlink" title="全局表_G"></a>全局表_G</h3><p><strong>Lua内的所有全局变量都在_G这个table内</strong></p>
-<p>包括<code>table.insert</code>中的table(也是全局变量)也存储在_G中，insert为table的下标</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">_G</span>[<span class="string">"table"</span>][<span class="string">"insert"</span>])</span><br><span class="line"><span class="comment">--function: 0000000063be4590</span></span><br><span class="line"><span class="comment">--输出值为一个函数</span></span><br><span class="line"><span class="comment">--多文件调用知识</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><h3 id="不等于"><a href="#不等于" class="headerlink" title="不等于"></a>不等于</h3><p><strong>在Lua中不等于使用<code>~=</code>表示</strong></p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="literal">true</span></span><br><span class="line">b=<span class="literal">false</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>&gt;<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>&lt;<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>&gt;=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>&lt;=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>==<span class="number">2</span>)</span><br><span class="line"><span class="comment">--不等于</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span>~=<span class="number">2</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="与或非"><a href="#与或非" class="headerlink" title="与或非"></a>与或非</h3><h3 id="只有false和nil表示假"><a href="#只有false和nil表示假" class="headerlink" title="只有false和nil表示假"></a>只有false和nil表示假</h3><p>其他都表示真，包括0</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(a <span class="keyword">and</span> b)</span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">or</span> b)</span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">not</span> a)</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong><code>and``or</code>返回的并不完全是true和false，会直接返回a或者b的值，可以通过短路求值</strong></p>
-<p>只有<code>not</code>返回true和false</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="literal">nil</span> <span class="comment">--真</span></span><br><span class="line">b=<span class="number">0</span>	  <span class="comment">--假</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">and</span> b) <span class="comment">--nil</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">or</span> b)  <span class="comment">--0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">not</span> a)   <span class="comment">--true</span></span><br><span class="line"><span class="built_in">print</span>(b&gt;<span class="number">10</span> <span class="keyword">and</span> <span class="string">"yes"</span> <span class="keyword">or</span> <span class="string">"no"</span>) <span class="comment">--no</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="分支判断"><a href="#分支判断" class="headerlink" title="分支判断"></a>分支判断</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="number">1</span>&gt;<span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"1&gt;10"</span>)</span><br><span class="line"><span class="keyword">elseif</span> <span class="number">1</span>&lt;<span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"1&lt;10"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"no"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>,<span class="number">10</span> <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--步长为2</span></span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="倒序循环"><a href="#倒序循环" class="headerlink" title="倒序循环"></a>倒序循环</h4><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i=<span class="number">10</span>,<span class="number">1</span>,<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>i</code>在过程途中不能赋值，赋值了也没用</p>
-<p>假如对<code>i</code>赋值会被认定为新建了局部变量</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i=<span class="number">10</span>,<span class="number">1</span>,<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line">	<span class="keyword">local</span> i=<span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="break"><a href="#break" class="headerlink" title="break"></a>break</h4><p>通过break退出循环</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i=<span class="number">10</span>,<span class="number">1</span>,<span class="number">-1</span> <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i)</span><br><span class="line">	<span class="keyword">if</span> i == <span class="number">5</span> <span class="keyword">then</span> <span class="keyword">break</span> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">10</span></span><br><span class="line"><span class="keyword">while</span> n&gt;<span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">    n = n - <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h3 id="repeat循环"><a href="#repeat循环" class="headerlink" title="repeat循环"></a>repeat循环</h3><p>和while循环基本一致</p>
-<h2 id="多文件调用"><a href="#多文件调用" class="headerlink" title="多文件调用"></a>多文件调用</h2><h3 id="require和import的区别"><a href="#require和import的区别" class="headerlink" title="require和import的区别"></a>require和import的区别</h3><h4 id="require实现"><a href="#require实现" class="headerlink" title="require实现"></a>require实现</h4><p>换个目录后就需要对路径进行变更</p>
-<p>个人理解：绝对路径</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> MyClassBase = <span class="built_in">require</span>(<span class="string">"app.classes.MyClassBase"</span>)</span><br><span class="line"><span class="keyword">local</span> MyClass = class(<span class="string">"MyClass"</span>, MyClassBase)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> Data1 = <span class="built_in">require</span>(<span class="string">"app.classes.data.Data1"</span>)</span><br><span class="line"><span class="keyword">local</span> Data2 = <span class="built_in">require</span>(<span class="string">"app.classes.data.Data2"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="import实现"><a href="#import实现" class="headerlink" title="import实现"></a>import实现</h4><p>在模块名前添加多个”.” ，这样 import() 会从更上层的目录开始查找模块。</p>
-<p>个人理解：相对路径</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> MyClassBase = import(<span class="string">".MyClassBase"</span>)</span><br><span class="line"><span class="keyword">local</span> MyClass = class(<span class="string">"MyClass"</span>, MyClassBase)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> Data1 = import(<span class="string">".data.Data1"</span>)</span><br><span class="line"><span class="keyword">local</span> Data2 = import(<span class="string">".data.Data2"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><p>运行指定多文件</p>
-<p>末尾不带扩展名</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--.\?lua   把文件名匹配到？内</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"文件名"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>不同层架文件夹用<code>.</code>分隔</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"文件夹名.文件名"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>只会运行一次</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--lua文件有可以return返回值</span></span><br><span class="line"><span class="keyword">local</span> r = <span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">--后面调用的都是前面返回的内容</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="built_in">print</span>(r)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="package-path"><a href="#package-path" class="headerlink" title="package.path"></a>package.path</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">package</span>.<span class="built_in">path</span>=<span class="built_in">package</span>.<span class="built_in">path</span>..<span class="string">";./path/?.lua"</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'hello2'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="多次调用"><a href="#多次调用" class="headerlink" title="多次调用"></a>多次调用</h3><p>调用lua文件内的函数</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--hello.lua</span></span><br><span class="line"><span class="keyword">local</span> hello={}</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello.say</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">//通过返回<span class="built_in">table</span></span><br><span class="line"><span class="keyword">return</span> hello</span><br><span class="line"></span><br><span class="line"><span class="comment">--test.lua</span></span><br><span class="line"><span class="keyword">local</span> test=<span class="built_in">require</span>(<span class="string">'hello'</span>)</span><br><span class="line">//通过<span class="built_in">table</span>内的方法调用</span><br><span class="line">test.say()</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="迭代table"><a href="#迭代table" class="headerlink" title="迭代table"></a>迭代table</h2><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t={<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>}</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>,#t,<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i,t[i])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="迭代器ipairs"><a href="#迭代器ipairs" class="headerlink" title="迭代器ipairs"></a>迭代器ipairs</h3><p>纯数字连续下标可以用</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t={<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>}</span><br><span class="line"><span class="comment">--下标给i，值给j</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">ipairs</span>(t) <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">print</span>(i,j)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">t={</span><br><span class="line">	[<span class="number">1</span>]=<span class="string">"a"</span>,</span><br><span class="line">	[<span class="number">2</span>]=<span class="string">"b"</span>,</span><br><span class="line">	[<span class="number">3</span>]=<span class="string">"c"</span>,</span><br><span class="line">	[<span class="number">5</span>]=<span class="string">"d"</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">--下标给i，值给j</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">ipairs</span>(t) <span class="keyword">do</span></span><br><span class="line">	<span class="comment">--只能遍历到1到3，不连续的后面遍历不到</span></span><br><span class="line">    <span class="built_in">print</span>(i,j)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="迭代器pairs"><a href="#迭代器pairs" class="headerlink" title="迭代器pairs"></a>迭代器pairs</h3><p>可以遍历所有下标</p>
-<p>pairs内部调用的是<code>next</code>函数</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">t={</span><br><span class="line">	[<span class="number">1</span>]=<span class="string">"a"</span>,</span><br><span class="line">	[<span class="number">2</span>]=<span class="string">"b"</span>,</span><br><span class="line">	[<span class="number">3</span>]=<span class="string">"c"</span>,</span><br><span class="line">	[<span class="number">5</span>]=<span class="string">"d"</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">--下标给i，值给j</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">pairs</span>(t) <span class="keyword">do</span></span><br><span class="line">	<span class="comment">--只能遍历到1到3，不连续的后面遍历不到</span></span><br><span class="line">    <span class="built_in">print</span>(i,j)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">t={</span><br><span class="line">	apple=<span class="string">"a"</span>,</span><br><span class="line">	banana=<span class="string">"b"</span>,</span><br><span class="line">	eraser=<span class="string">"c"</span>,</span><br><span class="line">	water=<span class="string">"d"</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">--下标给i，值给j</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> <span class="built_in">pairs</span>(t) <span class="keyword">do</span></span><br><span class="line">	<span class="comment">--只能遍历到1到3，不连续的后面遍历不到</span></span><br><span class="line">    <span class="built_in">print</span>(i,j)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="元表、元方法"><a href="#元表、元方法" class="headerlink" title="元表、元方法"></a>元表、元方法</h2><h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">t={</span><br><span class="line">	a=<span class="number">0</span>,</span><br><span class="line">	add=<span class="function"><span class="keyword">function</span><span class="params">(tab,num)</span></span></span><br><span class="line">		tab.a=tab.a+num</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">--类似于面向对象的方法调用</span></span><br><span class="line">t:add(<span class="number">10</span>)<span class="comment">--等价于t.add(t,10)</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--对象名</span></span><br><span class="line">bag={}</span><br><span class="line"></span><br><span class="line">bagmt={</span><br><span class="line">    <span class="comment">--装入东西的函数</span></span><br><span class="line">    put=<span class="function"><span class="keyword">function</span><span class="params">(t,item)</span></span></span><br><span class="line">        	<span class="built_in">table</span>.<span class="built_in">insert</span>(t.items,item)</span><br><span class="line">        <span class="keyword">end</span>,</span><br><span class="line">    take=<span class="function"><span class="keyword">function</span><span class="params">(t)</span></span></span><br><span class="line">        	<span class="keyword">return</span> <span class="built_in">table</span>.<span class="built_in">remove</span>(t)</span><br><span class="line">    	 <span class="keyword">end</span>,</span><br><span class="line">    list=<span class="function"><span class="keyword">function</span><span class="params">(t)</span></span></span><br><span class="line">        	<span class="keyword">return</span> <span class="built_in">table</span>.<span class="built_in">concat</span>(t.items,<span class="string">","</span>)</span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">}</span><br><span class="line">bagmt[<span class="string">"__index"</span>]=bagmt</span><br><span class="line"><span class="comment">--构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bag.new</span><span class="params">()</span></span></span><br><span class="line">    <span class="keyword">local</span> t={</span><br><span class="line">        items={}</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">setmetatable</span>(t,bagmt)</span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="协程coroutine"><a href="#协程coroutine" class="headerlink" title="协程coroutine"></a>协程coroutine</h2><p>一个lua虚拟机里只能有一个线程</p>
-<h3 id="coroutine-create-可创建一个协程"><a href="#coroutine-create-可创建一个协程" class="headerlink" title="coroutine.create 可创建一个协程"></a>coroutine.create 可创建一个协程</h3><p>返回值为 <code>thread </code>类型</p>
-<figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> co=<span class="built_in">coroutine</span>.<span class="built_in">create</span>(</span><br><span class="line">    <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"hello world!"</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    )</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-
+</span>
 
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CallBack/">#CallBack</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">ysich</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-          <span class="site-state-item-count">14</span>
-          <span class="site-state-item-name">日志</span>
+        <a href="/2023/01/17/ManagerOfManager/" target="_self">
+          ManagerOfManager
         </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/17/ManagerOfManager/" target="_self">
+        <div>
+          框架搭建随笔版本号使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z  X 是主版本号，⽤于不向前兼容的更新。 Y 是中间版本，⽤于可向前兼容的功能性更新。 Z 是⼩版本号，⽤于功能完善和 bug 修复的更新  ⼀般都是从 v0.1.1 这个版本开始发布的，但是这个版本呢叫做 mvp 版本，也就是最⼩可验证版本。后续发布版本都需要向前兼容 Obsolete 标签使用Obsolete标签
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-17 14:14" pubdate>
+              2023-01-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" class="category-chain-item">框架篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Manager-%E6%A1%86%E6%9E%B6/">#Manager 框架</a>
+            
+          </div>
+        
       </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" target="_self">
+          游戏资源管理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" target="_self">
+        <div>
+          游戏资源管理游戏运行就是一个接一个资源的展示，如何管理好这些展示的资源让游戏能够流畅运行在开发中非常重要。需要在合理的地方调用、加载资源，资源空闲时对其进行卸载以减少内存占用。当内存超出预算可能导致游戏闪退，所以对资源的管理实际就是对内存的优化！ 本文争取一文搞懂资源管理。PS：可能和一个视频学完c++差不多(一个视频一个多月) TODOLIST：   分包策略  依赖处理  AssetBundl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-16 12:56" pubdate>
+              2023-01-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%AF%87/" class="category-chain-item">资源管理篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">#资源管理</a>
+            
+          </div>
+        
       </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">标签</span>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/13/Lua%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" target="_self">
+          Lua基础语法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/13/Lua%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" target="_self">
+        <div>
+          Lua基础语法注意点 循环用do，if语句用then，都使用end结尾 Lua不支持自减和自加操作，只能i=i+1，i=i-1 字符串的第一个位置是1不是0  技巧 Lua的字符串可以存储0x00，可以用字符串存储二进制流  注释 用--开头，来写一段单行注释  1-- 单行注释   用--[[开头，]]结尾，写一段多行注释。  1234--[[	多行	注释]]  变量对一个变量进行赋值就相当于声
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-13 14:12" pubdate>
+              2023-01-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AF%87/" class="category-chain-item">编程语言篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lua/">#Lua</a>
+            
+          </div>
+        
       </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
   </nav>
-</div>
 
 
 
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ysich</span>
+  </div>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
-        
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
 
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
 
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-
-
-
-
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

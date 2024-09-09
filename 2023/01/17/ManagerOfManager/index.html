@@ -1,26 +1,22 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"ysich.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="框架搭建随笔版本号使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z  X 是主版本号，⽤于不向前兼容的更新。 Y 是中间版本，⽤于可向前兼容的功能性更新。 Z 是⼩版本号，⽤于功能完善和 bug 修复的更新  ⼀般都是从 v0.1.1 这个版本开始发布的，但是这个版本呢叫做 mvp 版本，也就是最⼩可验证版本。后续发布版本都需要向前兼容 Obsolete 标签使用Obsolete标签">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ysich">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="框架搭建随笔版本号使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z  X 是主版本号，⽤于不向前兼容的更新。 Y 是中间版本，⽤于可向前兼容的功能性更新。 Z 是⼩版本号，⽤于功能完善和 bug 修复的更新  ⼀般都是从 v0.1.1 这个版本开始发布的，但是这个版本呢叫做 mvp 版本，也就是最⼩可验证版本。后续发布版本都需要向前兼容 Obsolete 标签使用Obsolete标签">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ManagerOfManager">
 <meta property="og:url" content="http://ysich.github.io/2023/01/17/ManagerOfManager/index.html">
@@ -34,177 +30,272 @@
 <meta property="article:modified_time" content="2023-01-17T08:48:13.113Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="Manager 框架">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://ysich.github.io/2023/01/17/ManagerOfManager/1649575865089.png">
+  
+  
+  
+  <title>ManagerOfManager - ysich&#39;Blog</title>
 
-<link rel="canonical" href="http://ysich.github.io/2023/01/17/ManagerOfManager/">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>ManagerOfManager | ysich'Blog</title>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ysich.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-
+  
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
+<body>
+  
 
-  <div class="site-meta">
+  <header>
+    
 
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">ysich'Blog</h1>
-      <span class="logo-line-after"><i></i></span>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>三十六分热</strong>
     </a>
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
 </nav>
 
+  
 
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ManagerOfManager"></span>
+          
+        </div>
 
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-17 14:14" pubdate>
+          2023年1月17日 下午
+        </time>
+      </span>
+    
+  </div>
 
-</div>
-    </header>
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.6k 字
+        
+      </span>
+    
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          81 分钟
+        
+      </span>
+    
+
+    
+    
   </div>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ysich.github.io/2023/01/17/ManagerOfManager/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ysich">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ysich'Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          ManagerOfManager
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-17 14:14:51 / 修改时间：16:48:13" itemprop="dateCreated datePublished" datetime="2023-01-17T14:14:51+08:00">2023-01-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">框架篇</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+        
+      </div>
 
       
-        <h1 id="框架搭建随笔"><a href="#框架搭建随笔" class="headerlink" title="框架搭建随笔"></a>框架搭建随笔</h1><h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><p>使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ManagerOfManager</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="框架搭建随笔"><a href="#框架搭建随笔" class="headerlink" title="框架搭建随笔"></a>框架搭建随笔</h1><h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><p>使⽤版本号命名的⽂件格式为: Framework_vX.Y.Z</p>
 <ul>
 <li>X 是主版本号，⽤于不向前兼容的更新。</li>
 <li>Y 是中间版本，⽤于可向前兼容的功能性更新。</li>
@@ -316,13 +407,13 @@
 <h4 id="层级管理"><a href="#层级管理" class="headerlink" title="层级管理"></a>层级管理</h4><p>通过枚举分级,在Scene中创建相对应的GameObject来管理对应Panel的层级关系</p>
 <figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> UILayer</span><br><span class="line">{</span><br><span class="line">    Bg,</span><br><span class="line">    Common,</span><br><span class="line">    Top</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="/2023/01/17/ManagerOfManager/1649575865089.png" alt="1649575865089"></p>
+<p><img src="/2023/01/17/ManagerOfManager/1649575865089.png" srcset="/img/loading.gif" lazyload alt="1649575865089"></p>
 <p>在加载时加载到对应层级的GameObject中</p>
 <figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> GameObject <span class="title">LoadPanel</span>(<span class="params"><span class="built_in">string</span> panelName, UILayer uILayer</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">var</span> canvasObj = GameObject.Find(<span class="string">"Canvas"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> PanelPrefab = Resources.Load&lt;GameObject&gt;(panelName);</span><br><span class="line">    <span class="keyword">var</span> PanelObj = Instantiate(PanelPrefab, canvasObj.transform);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (uILayer)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">case</span> UILayer.Bg: PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Bg"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> UILayer.Common:</span><br><span class="line"> PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Common"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> UILayer.Top:     PanelObj.transform.SetParent(canvasObj.transform.Find(<span class="string">"Top"</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> PanelObj;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="UIRoot"><a href="#UIRoot" class="headerlink" title="UIRoot"></a>UIRoot</h4><p>将前面所描述的canvas结构，制作为Prefab，名字为UIRoot，管理所有的UIPanel。</p>
 <p>在GUIManager中存储一份，在加载Panel时使用。</p>
-<p><img src="/2023/01/17/ManagerOfManager/1649577942704.png" alt="1649577942704"></p>
+<p><img src="/2023/01/17/ManagerOfManager/1649577942704.png" srcset="/img/loading.gif" lazyload alt="1649577942704"></p>
 <figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> GameObject mPrivateUIRoot;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> GameObject UIRoot</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">//懒加载</span></span><br><span class="line">        <span class="keyword">if</span> (mPrivateUIRoot == <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            mPrivateUIRoot = GameObject.Instantiate(Resources.Load&lt;GameObject&gt;(<span class="string">"UIRoot"</span>));</span><br><span class="line">        }</span><br><span class="line">        mPrivateUIRoot.name = <span class="string">"UIRoot"</span>;</span><br><span class="line">        <span class="keyword">return</span> mPrivateUIRoot;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="AudioManager"><a href="#AudioManager" class="headerlink" title="AudioManager"></a>AudioManager</h3><h4 id="播放音效"><a href="#播放音效" class="headerlink" title="播放音效"></a>播放音效</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>音效 <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaySound</span>(<span class="params"><span class="built_in">string</span> soundName</span>)</span></span><br><span class="line">{</span><br><span class="line">    CheckAudioListener();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> doorClip = Resources.Load&lt;AudioClip&gt;(soundName);</span><br><span class="line">    <span class="keyword">var</span> audioSource = gameObject.AddComponent&lt;AudioSource&gt;();</span><br><span class="line"></span><br><span class="line">    audioSource.clip = doorClip;</span><br><span class="line">    audioSource.Play();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -347,7 +438,7 @@
 <h5 id="包含创建方法的简易对象池"><a href="#包含创建方法的简易对象池" class="headerlink" title="包含创建方法的简易对象池"></a>包含创建方法的简易对象池</h5><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 简易对象池</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;typeparam name="T"&gt;</span><span class="doctag">&lt;/typeparam&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SimpleObjectPool</span>&lt;<span class="title">T</span>&gt; : <span class="title">Pool</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">{</span><br><span class="line">    <span class="comment">//重置方法</span></span><br><span class="line">    Action&lt;T&gt; mResetMethod;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleObjectPool</span>(<span class="params">Func&lt;T&gt; factoryMethod, Action&lt;T&gt; ResetMethod = <span class="literal">null</span>, <span class="built_in">int</span> initCount = <span class="number">0</span></span>)</span></span><br><span class="line">    {</span><br><span class="line">        mFactory = <span class="keyword">new</span> CustomObjectFactroy&lt;T&gt;(factoryMethod);</span><br><span class="line">        mResetMethod = ResetMethod;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; initCount; i++)</span><br><span class="line">        {</span><br><span class="line">            mCachedStack.Push(mFactory.Create());</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">Recycle</span>(<span class="params">T obj</span>)</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (mResetMethod != <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            mResetMethod(obj);</span><br><span class="line">        }</span><br><span class="line">        mCachedStack.Push(obj);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="复盘"><a href="#复盘" class="headerlink" title="复盘"></a>复盘</h4><p>设计一个比较复杂的模块结构时,可以先设计一个接口(规范)。描述内容有什么</p>
-<p><img src="/2023/01/17/ManagerOfManager/1649780552285.png" alt="1649780552285"></p>
+<p><img src="/2023/01/17/ManagerOfManager/1649780552285.png" srcset="/img/loading.gif" lazyload alt="1649780552285"></p>
 <p>在mFractroy.Create和Recycle(回收)时，更偏向于自定义的操作 </p>
 <h3 id="LevelManager-1"><a href="#LevelManager-1" class="headerlink" title="LevelManager"></a>LevelManager</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LevelManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">//可换成配置表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;<span class="built_in">string</span>&gt; mLevelNames;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> Index { <span class="keyword">get</span>; <span class="keyword">set</span>; }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params">List&lt;<span class="built_in">string</span>&gt; levelNames</span>)</span></span><br><span class="line">    {</span><br><span class="line">        mLevelNames = levelNames;</span><br><span class="line">        Index = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LoadCurrent</span>()</span></span><br><span class="line">    {</span><br><span class="line">        SceneManager.LoadScene(mLevelNames[Index]);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LoadNext</span>()</span></span><br><span class="line">    {</span><br><span class="line">        Index++;</span><br><span class="line">        <span class="keyword">if</span> (Index &gt;= mLevelNames.Count)</span><br><span class="line">        {</span><br><span class="line">            Index = <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        SceneManager.LoadScene(mLevelNames[Index]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -356,197 +447,372 @@
 <p>类似于自己编写测试用例进行测试</p>
 <p><code>Assert.AreEqual</code>叫做断言，在开发大项目时非常有用的工具。测试通不通过取决于断言通不通过。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" class="category-chain-item">框架篇</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Manager-%E6%A1%86%E6%9E%B6/">#Manager 框架</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ManagerOfManager</div>
+      <div>http://ysich.github.io/2023/01/17/ManagerOfManager/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ysich</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/" title="关于CallBack">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于CallBack</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" title="游戏资源管理">
+                        <span class="hidden-mobile">游戏资源管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
 
-    
-    
-    
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Manager-%E6%A1%86%E6%9E%B6/" rel="tag"># Manager 框架</a>
-          </div>
-
-        
 
 
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/01/16/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" rel="prev" title="游戏资源管理">
-      <i class="fa fa-chevron-left"></i> 游戏资源管理
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/01/31/%E5%85%B3%E4%BA%8ECallBack/" rel="next" title="关于CallBack">
-      关于CallBack <i class="fa fa-chevron-right"></i>
-    </a></div>
+  </aside>
+
+
     </div>
-      </footer>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
-  </article>
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/ysich" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
   
   
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-          </div>
-          
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+  <script>Fluid.plugins.codeWidget();</script>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%9A%8F%E7%AC%94"><span class="nav-number">1.</span> <span class="nav-text">框架搭建随笔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">版本号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Obsolete-%E6%A0%87%E7%AD%BE"><span class="nav-number">1.2.</span> <span class="nav-text">Obsolete 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partial%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.3.</span> <span class="nav-text">Partial关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%BB%93%E6%9E%84%E9%87%8D%E5%A4%8D-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.4.</span> <span class="nav-text">方法结构重复 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E5%AE%9E%E7%8E%B0%E7%BB%93%E6%9E%84%E5%A4%8D%E7%94%A8"><span class="nav-number">1.4.1.</span> <span class="nav-text">泛型实现结构复用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#params%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.4.2.</span> <span class="nav-text">params关键字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">1.5.</span> <span class="nav-text">消息机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unity%E5%86%85%E7%BD%AE%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">1.5.1.</span> <span class="nav-text">Unity内置消息机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%A7%94%E6%89%98%E9%80%9A%E7%9F%A5"><span class="nav-number">1.5.2.</span> <span class="nav-text">通过委托通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.3.</span> <span class="nav-text">消息机制提供的功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Class%E7%9A%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.6.</span> <span class="nav-text">new Class的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.7.</span> <span class="nav-text">框架的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.8.</span> <span class="nav-text">库的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unity%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">1.9.</span> <span class="nav-text">Unity常用架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-EmptyGo"><span class="nav-number">1.9.1.</span> <span class="nav-text">1.EmptyGo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Simple-GameManager"><span class="nav-number">1.9.2.</span> <span class="nav-text">2.Simple GameManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Manager-Of-Managers"><span class="nav-number">1.9.3.</span> <span class="nav-text">3.Manager Of Managers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B0%86-View-%E5%92%8C-Model-%E4%B9%8B%E9%97%B4%E5%A2%9E%E5%8A%A0%E2%BC%80%E4%B8%AA%E5%AA%92%E4%BB%8B%E5%B1%82"><span class="nav-number">1.9.4.</span> <span class="nav-text">4.将 View 和 Model 之间增加⼀个媒介层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ECS-Entity-Component-Based-System"><span class="nav-number">1.9.5.</span> <span class="nav-text">5.ECS (Entity Component Based System)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manager-Of-Managers%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.10.</span> <span class="nav-text">Manager Of Managers架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LevelManager"><span class="nav-number">1.10.1.</span> <span class="nav-text">LevelManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolManager"><span class="nav-number">1.10.2.</span> <span class="nav-text">PoolManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spawn"><span class="nav-number">1.10.2.1.</span> <span class="nav-text">Spawn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DeSpawn"><span class="nav-number">1.10.2.2.</span> <span class="nav-text">DeSpawn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%BC%98%E5%8C%96"><span class="nav-number">1.10.2.3.</span> <span class="nav-text">对象池优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SaveManager"><span class="nav-number">1.10.3.</span> <span class="nav-text">SaveManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MainManager"><span class="nav-number">1.10.4.</span> <span class="nav-text">MainManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E5%88%92%E5%88%86"><span class="nav-number">1.10.4.1.</span> <span class="nav-text">阶段划分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GuiManager"><span class="nav-number">1.10.5.</span> <span class="nav-text">GuiManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.10.5.1.</span> <span class="nav-text">加载卸载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E7%BA%A7%E7%AE%A1%E7%90%86"><span class="nav-number">1.10.5.2.</span> <span class="nav-text">层级管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIRoot"><span class="nav-number">1.10.5.3.</span> <span class="nav-text">UIRoot</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AudioManager"><span class="nav-number">1.10.6.</span> <span class="nav-text">AudioManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88"><span class="nav-number">1.10.6.1.</span> <span class="nav-text">播放音效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoolManager-1"><span class="nav-number">1.10.7.</span> <span class="nav-text">PoolManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.10.7.1.</span> <span class="nav-text">对象池解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E6%98%93%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="nav-number">1.10.7.2.</span> <span class="nav-text">简易对象池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%B1%A0%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.10.7.2.1.</span> <span class="nav-text">定义池接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%8E%A5%E5%8F%A3%E6%9D%A5%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E3%80%82"><span class="nav-number">1.10.7.2.2.</span> <span class="nav-text">使用一个简单工厂接口来创建对象。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="nav-number">1.10.7.2.3.</span> <span class="nav-text">对象池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%B7%A5%E5%8E%82%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%AE%80%E6%98%93%E5%B7%A5%E5%8E%82"><span class="nav-number">1.10.7.2.4.</span> <span class="nav-text">基于工厂接口的简易工厂</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E5%88%9B%E5%BB%BA%E6%96%B9%E6%B3%95%E7%9A%84%E7%AE%80%E6%98%93%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="nav-number">1.10.7.2.5.</span> <span class="nav-text">包含创建方法的简易对象池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E7%9B%98"><span class="nav-number">1.10.7.3.</span> <span class="nav-text">复盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LevelManager-1"><span class="nav-number">1.10.8.</span> <span class="nav-text">LevelManager</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">1.11.</span> <span class="nav-text">单元测试</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">ysich</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">14</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ysich</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-<script src="/js/utils.js"></script>
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
-<script src="/js/motion.js"></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
 
-<script src="/js/schemes/muse.js"></script>
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
-<script src="/js/next-boot.js"></script>
 
 
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
