@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/jpeg/22888641/1702263292750-0db38b30-1fa6-4f1b-a6d6-2a0a27743f46.jpeg">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/22888641/1702263317233-11bd3492-e8a4-4fe4-9df3-a4c8d511d31a.png">
 <meta property="article:published_time" content="2024-09-12T03:10:19.000Z">
-<meta property="article:modified_time" content="2024-09-12T03:17:39.849Z">
+<meta property="article:modified_time" content="2024-09-12T03:42:03.225Z">
 <meta property="article:author" content="ysich">
 <meta property="article:tag" content="性能优化 资源管理">
 <meta name="twitter:card" content="summary_large_image">
@@ -256,7 +256,7 @@
         
         
         
-          75 分钟
+          76 分钟
         
       </span>
     
@@ -313,7 +313,7 @@
 </ul>
 <h3 id="托管内存-Managed-Memory"><a href="#托管内存-Managed-Memory" class="headerlink" title="托管内存 Managed Memory"></a>托管内存 Managed Memory</h3><p><strong>Managed Memory的内存管理是自动的，会通过GC来释放。</strong></p>
 <p>使用托管堆和<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">垃圾回收器</a>自动分配和分配内存的受控<a href="https://docs.unity.cn/cn/2021.3/Manual/performance-memory-overview.html#managed-memory">内存</a>层。</p>
-<p>脚本虚拟机scripting virtual machine，VM）实现了托管内存系统（有时候也被叫做脚本内存系统）。VM 将托管内存分成了三个部分：</p>
+<p>脚本虚拟机（scripting virtual machine，VM）实现了托管内存系统（有时候也被叫做脚本内存系统）。VM 将托管内存分成了三个部分：</p>
 <ul>
 <li><p>托管堆（managed heap）</p>
 </li>
@@ -366,6 +366,8 @@
 <h5 id="Scene"><a href="#Scene" class="headerlink" title="Scene"></a>Scene</h5><p>导致Native Memory增长的原因，最常见的就是Scene。因为是c引擎，所有的实体最终都会反映在c上，而不会反映在托管堆上。所以当我们构建一个GameObject的时候，实际上在Unity的底层会构建一个或多个object来存储这一个GameObject的信息（Component信息等）。所以当一个Scene里面有过多的GameObject存在的时候，Native Memory就会显著的上升，甚至可能导致<strong>内存溢出</strong>。</p>
 <!--注：当我们发现Native Memory大量上升时，可以先着重检查我们的Scene。-->
 
+
+
 <h4 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h4><p><a href="https://www.yuque.com/u22445446/revws8/hwxhzayqa9km#d20d4871">https://www.yuque.com/u22445446/revws8/hwxhzayqa9km#d20d4871</a></p>
 <h5 id="Code-Size"><a href="#Code-Size" class="headerlink" title="Code Size"></a>Code Size</h5><p>代码也是占内存的，需要加载进内存执行。<strong>模板泛型的滥用</strong>，会影响到Code Size以及打包速度（IL2CPP编译速度，单一一个cpp文件编译的话没办法并行的）。例如一个模板函数有四五个不同的泛型参数（float，int，double等），最后展开一个cpp文件可能会很大。因为实际上c++编译的时候我们用的所有的Class，所有的Template最终都会被展开成静态类型。因此当模板函数有很多排列组合时，最后编译会得到所有的排列组合代码，导致文件很大。</p>
 <h5 id="Managed-code-stripping代码裁剪"><a href="#Managed-code-stripping代码裁剪" class="headerlink" title="Managed code stripping代码裁剪"></a>Managed code stripping代码裁剪</h5><p><a href="https://docs.unity.cn/cn/current/Manual/ManagedCodeStripping.html">托管代码剥离 - Unity 手册</a></p>
@@ -382,6 +384,8 @@
 <h5 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h5><p><strong>TypeTree：</strong>Unity前后有很多的版本，不同的版本中很多的类型可能会有数据结构的改变，为了做数据结构的兼容，会在生成数据类型序列化的时候，顺便生成一个叫<strong>TypeTree</strong>的东西。就是当前这个版本用到了哪些变量，它们对应的数据类型是什么，当进行反序列化的时候，根据TypeTree去做反序列化。如果上一个版本的类型在这个版本没有，那TypeTree里就没有它，所以不会去碰到它。如果有新的的TypeTree，但是在当前版本不存在的话，那要用它的默认值来序列化。从而保证了在不同版本之间不会序列化出错。</p>
 <p>在Build AssetBundle的时候，有开关可以关掉TypeTree。</p>
 <figure class="highlight latex"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">BuildAssetBundleOptions.DisableWriteTypeTree<br></code></pre></td></tr></tbody></table></figure>
+
+
 
 <p>当我们当前AssetBundle的使用，和Build它的Unity的版本是一模一样的时候，就可以关闭。</p>
 <p>关掉TypeTree的好处：</p>
@@ -411,7 +415,7 @@
 <p><strong>在移动平台中一般最多使用物理内存中的50%</strong></p>
 <h3 id="频繁分配和释放导致应用闪退"><a href="#频繁分配和释放导致应用闪退" class="headerlink" title="频繁分配和释放导致应用闪退"></a>频繁分配和释放导致应用闪退</h3><p>内存分页（IOS上大部分为16K/page）是内存分配和管理的最小单位，每个页都有一个唯一的物理地址，可以被操作系统和应用程序访问。</p>
 <p>当Unity需要申请内存的时候，都会以block的方式（若干个页）进行申请。<strong>如果某一页在若干次GC（IOS为8次）之后仍然为Empty的话，它就会被释放，实际的物理内存就会被还给物理内存池，以便后续重新分配。</strong></p>
-<p>但由于<strong>Unity是在虚拟内存中管理内存的，因此虚拟空间的地址并不会返还，所以它就变成“Reserved”的了。也就是说这些Reserved地址空间不能再被Unity重复分配了。</strong></p>
+<p>但由于<strong>Unity是在虚拟内存中管理内存的，因此虚拟空间的地址并不会返还，所以它就变成“Reserved”状态了。也就是说这些Reserved地址空间不能再被Unity重复分配了。(PS:这里并不是进行了内存交换而是物理内存回收，内存交换是指内存不足时物理内存和磁盘之间的交换)</strong></p>
 <p>所以在一个32位的操作系统上，如果虚拟内存地址发生频繁分配和释放就会导致地址空间耗尽，从而被系统杀掉。</p>
 <h2 id="GC与内存碎片"><a href="#GC与内存碎片" class="headerlink" title="GC与内存碎片"></a>GC与内存碎片</h2><p>Mono堆申请的物理内存是连续的，并且Mono堆在向操作系统申请扩展内存的时候，非常耗时。所以大部分情况下，Mono堆都会尽量保持自己已经申请到的物理内存，以防止之后要用。所以除了虚拟空间地址之外，Mono堆申请的内存也存在Reserved概念。</p>
 <ol>
@@ -456,7 +460,7 @@
 <li>如果某个APP占用了太多的Dirty内存，OS发送一个内存警告过去，让它释放资源。</li>
 <li>几次警告之后，如果Dirty内存仍然占用很高的话就会被Kill掉。</li>
 </ul>
-<p>由于IOS杀APP的策略也是不透明的，所以如果要防止APP被系统终结，唯一的办法就是尽量降低Dirty内存。</p>
+<p><strong>由于IOS杀APP的策略也是不透明的，所以如果要防止APP被系统终结，唯一的办法就是尽量降低Dirty内存。</strong></p>
 <h5 id="VM-Tracker"><a href="#VM-Tracker" class="headerlink" title="VM Tracker"></a>VM Tracker</h5><p>VM Tracker是XCode Instruments工具组里的一个。它提供比较详细的虚拟内存的分布情况，也是为一个提供Dirty Memory信息的工具。但遗憾的是它没有展示内存分配的目的和时间。</p>
 <p><img src="/2024/09/12/Unity%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E5%8F%8A%E5%88%86%E6%9E%90/v2-2759a18f2a4a43104c7f09c1890f2431_r.jpg" srcset="/img/loading.gif" lazyload alt="img"><img src="https://cdn.nlark.com/yuque/0/2023/jpeg/22888641/1702263292750-0db38b30-1fa6-4f1b-a6d6-2a0a27743f46.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h6 id="表头类型："><a href="#表头类型：" class="headerlink" title="表头类型："></a>表头类型：</h6><ul>
@@ -548,7 +552,7 @@
 <p>差异值会受到不同设备当前环境的共享库影响，可能造成Plugin在在不同机器差异较大。</p>
 <p>方法并非白盒，无法确定实际会受到哪些客观条件或者内部逻辑的影响。</p>
 <p>由于移动平台的脏内存策略，实际上只能测量出虚拟内存的差异值。详情看如下测试结论：不同内存分配方式对实际内存的影响</p>
-<p>很难到控制变量。所以需要针对插件写覆盖面足够全的测试用例。</p>
+<p>很难做到控制变量。所以需要针对插件写覆盖面足够全的测试用例。</p>
 <h5 id="海底捞月"><a href="#海底捞月" class="headerlink" title="海底捞月"></a><strong>海底捞月</strong></h5><p>另外一招就是海底捞月。从最底层的Malloc出发，写Hook函数监听内存申请，最后汇总分析。比如这篇文章：mallochook内存分配回调（glibc-3-内存）。<a href="https://link.zhihu.com/?target=https://www.jianshu.com/p/2beb412bd97b">https://www.jianshu.com/p/2beb412bd97b</a></p>
 <p>这实际上和移动平台的内存工具模式相同。只不过用自定义的方式我们可以更加定制化工具的显示规则。虽然方案可行，但它存在和移动平台工具相同的问题，统计出的堆栈应该如何进行归类。怎么判定哪个函数归属于引擎，哪个归属于三方插件，以及系统共享库或者Framework呢？</p>
 
