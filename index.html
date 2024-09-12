@@ -241,6 +241,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2024/09/12/Unity%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E5%8F%8A%E5%88%86%E6%9E%90/" target="_self">
+          Unity内存分布及分析
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/Unity%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83%E5%8F%8A%E5%88%86%E6%9E%90/" target="_self">
+        <div>
+          Unity内存分布及分析内存分类Unity按照内存管理方式分为：引擎管理内存和用户管理内存。引擎管理内存即引擎运行的时候自己要分配一些内存，例如很多的Manager和Singleton，这些内存开发者一般是碰触不到的。用户管理内存也就是我们开发者开发时使用到的内存，需要我们重点注意。 Unity内存按照分配方式分为：  Native Memory Managed Memory Editor &am
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-12 11:10" pubdate>
+              2024-09-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">#性能优化 资源管理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/09/12/UnityProjectSettings%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%8C%96/" target="_self">
+          UnityProjectSettings设置优化
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/UnityProjectSettings%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%8C%96/" target="_self">
+        <div>
+          Unity Project Settings设置优化1. 降低或禁用Accelerometer FrequencyIOS设备下，Unity 每秒对移动端的加速度计进行几次池操作。如果在应用程序中不会使用，请将其禁用，或者降低其频率，从而提升性能。  2. 禁用不必要的 Player 或Quality 设置在 Player 设置中，对不支持的平台禁用 Auto Graphics API，以便防止生成
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-12 11:05" pubdate>
+              2024-09-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">#性能优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2024/09/09/Unity%E4%B8%AD%E7%9A%84MonoScript/" target="_self">
           Unity中的MonoScript
         </a>
@@ -491,7 +571,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/09/08/Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_self">
         <div>
-          Unity性能优化第1节 静态资源优化在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。  Unity在UPR下也提供了asset检测工具Asset Check。  Audio当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸载。 Force To
+          Unity性能优化第1节 静态资源优化(Native内存优化)在Unity中的资源都存放在asset内，分为了外部导入资源和内部创建资源，无论是哪种资源都涉及到导入问题。在不同平台上合理的资源导入设置能够带来更高的效率。  Unity在UPR下也提供了asset检测工具Asset Check。  Audio当实现静音功能时，不要简单设置音量为0，应该销毁AudioSource组件，将音频从内存中卸
         </div>
       </a>
 
@@ -653,100 +733,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-AssetBundle-%E7%83%AD%E6%9B%B4%E6%96%B0/">#资源管理 AssetBundle 热更新</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/07/14/%E7%BA%B9%E7%90%86%E8%AF%A6%E8%A7%A3/" target="_self">
-          纹理详解
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/14/%E7%BA%B9%E7%90%86%E8%AF%A6%E8%A7%A3/" target="_self">
-        <div>
-          纹理详解图像容量大小bpp每个像素的内存消耗 总图像存储大小 = width * height * bpp Non Power of 2长、宽不全是2的幂次尺寸的图片称为 NPOT（Non Power Of Two）格式的图片。 对于项目中需要压缩的贴图，需要尽量做成POT NPOT转成POT后，进行ToNearest操作可以压缩到六分之一大小。压缩比1：6 图片格式jpg有损压缩 不带Alpha
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-07-14 09:52" pubdate>
-              2023-07-14
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_self">
-          网络游戏架构设计
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_self">
-        <div>
-          网络游戏架构设计第一节 代码结构项目代码结构需要满足的需求热更新需要把Unity的MonoBehaviour等等这些和Unity交互较深的脚本进行分离 至少有一个热更新的程序集 数据跟方法分离，热重载热重载​	热重载只是数据跟方法分离后得到的好处 ​	热重载便于改bug，节省重现环节。 数据跟方法分离​	在C语言中叫做data + function的设计。数据就是定义数据结构，方法则是面向过程的方
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-17 14:07" pubdate>
-              2023-03-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E7%AF%87/" class="category-chain-item">框架篇</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Manager-%E6%A1%86%E6%9E%B6-ET%E6%A1%86%E6%9E%B6/">#Manager 框架 ET框架</a>
             
           </div>
         
